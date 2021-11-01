@@ -8,6 +8,10 @@ body,
   padding: 0;
 }
 
+html {
+  background: #f0f2f5;
+}
+
 html.dark {
   background: #121212;
 }

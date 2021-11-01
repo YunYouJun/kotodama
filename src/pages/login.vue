@@ -50,7 +50,7 @@
 
       <div class="flex justify-between">
         <router-link to="/register">
-          <el-button>注册</el-button>
+          <el-button>{{ t('button.register') }}</el-button>
         </router-link>
         <el-button class="flex" circle>
           <i-ri-github-line />

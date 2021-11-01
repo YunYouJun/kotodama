@@ -7,13 +7,13 @@ button:
   toggle_langs: 切换语言
 
   login: 登录
+  register: 注册
 
 intro:
   desc: 💬 掌控言灵的魔法，一个优雅的纯静态评论管理后台
   dynamic-route: 动态路由演示
   hi: 你好，{name}
   aka: 也叫
-  whats-your-name: 输入你的名字
 not-found: 未找到页面
 placeholder:
   username: 用户名

@@ -16,7 +16,7 @@ const { t } = useI18n()
 <template>
   <div>
     <p class="text-4xl">
-      <carbon-campsite class="inline-block" />
+      <i-carbon-campsite class="inline-block" />
     </p>
     <p>
       <a rel="noreferrer" href="https://github.com/YunYouJun/kotodama" target="_blank">Kotodama</a>
@@ -27,23 +27,6 @@ const { t } = useI18n()
 
     <div class="py-4" />
 
-    <el-button>登陆</el-button>
-
-    <input
-      id="input"
-      v-model="name"
-      :placeholder="t('intro.whats-your-name')"
-      :aria-label="t('intro.whats-your-name')"
-      type="text"
-      autocomplete="false"
-      p="x-4 y-2"
-      w="250px"
-      text="center"
-      bg="transparent"
-      border="~ rounded gray-200 dark:gray-700"
-      outline="none active:none"
-      @keydown.enter="go"
-    />
     <label class="hidden" for="input">{{ t('intro.whats-your-name') }}</label>
 
     <div>
