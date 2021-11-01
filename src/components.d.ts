@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BaseHeader: typeof import('./components/BaseHeader.vue')['default']
     CarbonCampsite: typeof import('~icons/carbon/campsite')['default']
     CarbonDicomOverlay: typeof import('~icons/carbon/dicom-overlay')['default']
     CarbonLanguage: typeof import('~icons/carbon/language')['default']
@@ -12,7 +13,17 @@ declare module 'vue' {
     CarbonPedestrian: typeof import('~icons/carbon/pedestrian')['default']
     CarbonSun: typeof import('~icons/carbon/sun')['default']
     CarbonWarning: typeof import('~icons/carbon/warning')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
     Footer: typeof import('./components/Footer.vue')['default']
+    ICarbonCampsite: typeof import('~icons/carbon/campsite')['default']
+    ICarbonDicomOverlay: typeof import('~icons/carbon/dicom-overlay')['default']
+    ICarbonLanguage: typeof import('~icons/carbon/language')['default']
+    ICarbonLogoGithub: typeof import('~icons/carbon/logo-github')['default']
+    ICarbonMoon: typeof import('~icons/carbon/moon')['default']
+    ICarbonSun: typeof import('~icons/carbon/sun')['default']
+    IMdiLogin: typeof import('~icons/mdi/login')['default']
+    IRiDiscussLine: typeof import('~icons/ri/discuss-line')['default']
+    IRiGithubLine: typeof import('~icons/ri/github-line')['default']
     README: typeof import('./components/README.md')['default']
   }
 }

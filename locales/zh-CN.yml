@@ -5,6 +5,9 @@ button:
   home: 首页
   toggle_dark: 切换深色模式
   toggle_langs: 切换语言
+
+  login: 登录
+
 intro:
   desc: 💬 掌控言灵的魔法，一个优雅的纯静态评论管理后台
   dynamic-route: 动态路由演示
@@ -12,3 +15,14 @@ intro:
   aka: 也叫
   whats-your-name: 输入你的名字
 not-found: 未找到页面
+placeholder:
+  username: 用户名
+  password: 密码
+
+login:
+  title: 登录
+  message: 下次自动登录
+
+error:
+  username: 请输入正确的用户名
+  password: 密码不能少于六个数字

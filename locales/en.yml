@@ -5,6 +5,9 @@ button:
   home: Home
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
+
+  login: Login
+
 intro:
   desc: 💬 Control the magic of speech spirit, an elegant pure static comment management system
   dynamic-route: Demo of dynamic route
@@ -12,3 +15,14 @@ intro:
   aka: Also known as
   whats-your-name: What's your name?
 not-found: Not found
+placeholder:
+  username: Username
+  password: Password
+
+login:
+  title: Login
+  message: Remember Login
+
+error:
+  username: Please enter the correct user name
+  password: The password can not be less than 6 digits

@@ -5,6 +5,7 @@ import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+// import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Markdown from 'vite-plugin-md'
@@ -61,9 +62,13 @@ export default defineConfig({
         // auto import icons
         // https://github.com/antfu/unplugin-icons
         IconsResolver({
-          componentPrefix: '',
+          // componentPrefix: '',
           // enabledCollections: ['carbon']
         }),
+        // see src/modules/element.ts
+        // ElementPlusResolver({
+        //   importStyle: "sass",
+        // }),
       ],
 
       dts: 'src/components.d.ts',
@@ -158,6 +163,7 @@ export default defineConfig({
       'vue-router',
       '@vueuse/core',
       '@vueuse/head',
+      'element-plus'
     ],
     exclude: [
       'vue-demi',

@@ -19,15 +19,15 @@ const { t } = useI18n()
       <carbon-campsite class="inline-block" />
     </p>
     <p>
-      <a rel="noreferrer" href="https://github.com/YunYouJun/kotodama" target="_blank">
-        Kotodama
-      </a>
+      <a rel="noreferrer" href="https://github.com/YunYouJun/kotodama" target="_blank">Kotodama</a>
     </p>
     <p>
       <em class="text-sm opacity-75">{{ t('intro.desc') }}</em>
     </p>
 
     <div class="py-4" />
+
+    <el-button>登陆</el-button>
 
     <input
       id="input"
@@ -43,17 +43,11 @@ const { t } = useI18n()
       border="~ rounded gray-200 dark:gray-700"
       outline="none active:none"
       @keydown.enter="go"
-    >
+    />
     <label class="hidden" for="input">{{ t('intro.whats-your-name') }}</label>
 
     <div>
-      <button
-        class="m-3 text-sm btn"
-        :disabled="!name"
-        @click="go"
-      >
-        {{ t('button.go') }}
-      </button>
+      <button class="m-3 text-sm btn" :disabled="!name" @click="go">{{ t('button.go') }}</button>
     </div>
   </div>
 </template>
