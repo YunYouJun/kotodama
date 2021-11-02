@@ -1,36 +1,36 @@
 <script setup lang="ts">
-import { useUserStore } from '~/stores/user'
-
-const user = useUserStore()
-const name = ref(user.savedName)
-
-const router = useRouter()
-const go = () => {
-  if (name.value)
-    router.push(`/hi/${encodeURIComponent(name.value)}`)
-}
-
 const { t } = useI18n()
+
+const pages = [
+  {
+    name: '登录',
+    path: '/login'
+  }
+]
 </script>
 
 <template>
   <div>
-    <p class="text-4xl">
-      <i-carbon-campsite class="inline-block" />
+    <p class="text-6xl" m="t-10 b-5">
+      <i-ri-discuss-line />
     </p>
-    <p>
-      <a rel="noreferrer" href="https://github.com/YunYouJun/kotodama" target="_blank">Kotodama</a>
+    <p class="my-4">
+      <a
+        class="text-xl font-bold"
+        href="https://github.com/YunYouJun/kotodama"
+        target="_blank"
+      >Kotodama</a>
     </p>
     <p>
       <em class="text-sm opacity-75">{{ t('intro.desc') }}</em>
     </p>
 
-    <div class="py-4" />
+    <h2 class="py-5" text="sm" font="bold">已完成页面</h2>
 
-    <label class="hidden" for="input">{{ t('intro.whats-your-name') }}</label>
-
-    <div>
-      <button class="m-3 text-sm btn" :disabled="!name" @click="go">{{ t('button.go') }}</button>
+    <div v-for="page in pages">
+      <router-link :to="page.path">
+        <div class="btn">{{ page.name }}</div>
+      </router-link>
     </div>
   </div>
 </template>

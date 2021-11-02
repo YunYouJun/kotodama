@@ -26,3 +26,8 @@ login:
 error:
   username: Please enter the correct user name
   password: The password can not be less than 6 digits
+
+status:
+  approved: Approved
+  waiting: Waiting
+  spam: Spam

@@ -3,6 +3,6 @@
  * @param name 
  */
 export function validUsername(name: string) {
-  const validUsernames = ['YunYouJun', 'admin']
+  const validUsernames = ['YunYouJun', 'admin', 'me@yunyoujun.cn']
   return validUsernames.includes(name.trim())
 }

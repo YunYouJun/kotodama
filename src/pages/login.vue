@@ -64,13 +64,15 @@
 import { validUsername } from '~/utils/validate'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+import { login } from '~/api/auth'
+import { ElMessage } from 'element-plus'
 
 const router = useRouter()
 const { t } = useI18n()
 
 const loginForm = reactive({
-  username: 'admin',
-  password: '111111'
+  username: '',
+  password: ''
 })
 
 const loginFormEl = ref()
@@ -113,7 +115,26 @@ onMounted(() => {
 function handleLogin() {
   loginFormEl.value.validate((valid: boolean) => {
     if (valid) {
-      router.push('/dashboard')
+      login({
+        email: loginForm.username,
+        password: loginForm.password
+      }).then((res) => {
+        if (res && res.data && res.data.token) {
+          // token
+          localStorage.setItem('waline-token', res.data.token)
+
+          router.push('/dashboard')
+          ElMessage.success({
+            message: '登录成功',
+            showClose: true
+          })
+        } else {
+          ElMessage.success({
+            message: res.errmsg,
+            showClose: true
+          })
+        }
+      })
     }
   })
 }

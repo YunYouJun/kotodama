@@ -11,26 +11,40 @@ const toggleLocales = () => {
 </script>
 
 <template>
-  <nav class="text-xl mt-6">
+  <nav class="text-xl my-3 flex flex-col items-center justify-center">
     <router-link class="icon-btn mx-2" to="/" :title="t('button.home')">
-      <i-carbon-campsite />
+      <i-ri-home-2-line />
     </router-link>
 
-    <button class="icon-btn mx-2 !outline-none" :title="t('button.toggle_dark')" @click="toggleDark()">
-      <i-carbon-moon v-if="isDark" />
-      <i-carbon-sun v-else />
+    <router-link class="icon-btn mx-2" to="/dashboard">
+      <i-ri-dashboard-line />
+    </router-link>
+
+    <button
+      class="icon-btn mx-2 !outline-none"
+      :title="t('button.toggle_dark')"
+      @click="toggleDark()"
+    >
+      <i-ri-moon-line v-if="isDark" />
+      <i-ri-sun-line v-else />
     </button>
 
     <a class="icon-btn mx-2" :title="t('button.toggle_langs')" @click="toggleLocales">
-      <i-carbon-language />
+      <i-ri-translate />
     </a>
 
     <router-link class="icon-btn mx-2" to="/about" :title="t('button.about')">
-      <i-carbon-dicom-overlay />
+      <i-ri-file-info-line />
     </router-link>
 
-    <a class="icon-btn mx-2" rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank" title="GitHub">
-      <i-carbon-logo-github />
+    <a
+      class="icon-btn mx-2"
+      rel="noreferrer"
+      href="https://github.com/antfu/vitesse"
+      target="_blank"
+      title="GitHub"
+    >
+      <i-ri-github-line />
     </a>
   </nav>
 </template>

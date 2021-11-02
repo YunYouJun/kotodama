@@ -8,6 +8,7 @@ import App from './App.vue'
 import 'virtual:windi-base.css'
 import 'virtual:windi-components.css'
 // your custom styles here
+import './styles/index.scss'
 import './styles/main.css'
 // windicss utilities should be the last style import
 import 'virtual:windi-utilities.css'

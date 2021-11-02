@@ -4,7 +4,9 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    BaseHeader: typeof import('./components/BaseHeader.vue')['default']
+    BaseAside: typeof import('./components/Base/BaseAside.vue')['default']
+    BaseFooter: typeof import('./components/Base/BaseFooter.vue')['default']
+    BaseHeader: typeof import('./components/Base/BaseHeader.vue')['default']
     CarbonCampsite: typeof import('~icons/carbon/campsite')['default']
     CarbonDicomOverlay: typeof import('~icons/carbon/dicom-overlay')['default']
     CarbonLanguage: typeof import('~icons/carbon/language')['default']
@@ -13,6 +15,7 @@ declare module 'vue' {
     CarbonPedestrian: typeof import('~icons/carbon/pedestrian')['default']
     CarbonSun: typeof import('~icons/carbon/sun')['default']
     CarbonWarning: typeof import('~icons/carbon/warning')['default']
+    CommentTable: typeof import('./components/dashboard/CommentTable.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     Footer: typeof import('./components/Footer.vue')['default']
     ICarbonCampsite: typeof import('~icons/carbon/campsite')['default']
@@ -24,8 +27,17 @@ declare module 'vue' {
     ICarbonSun: typeof import('~icons/carbon/sun')['default']
     ICarbonWarning: typeof import('~icons/carbon/warning')['default']
     IMdiLogin: typeof import('~icons/mdi/login')['default']
+    IRiDashboardLine: typeof import('~icons/ri/dashboard-line')['default']
     IRiDiscussLine: typeof import('~icons/ri/discuss-line')['default']
+    IRiFileInfoLine: typeof import('~icons/ri/file-info-line')['default']
     IRiGithubLine: typeof import('~icons/ri/github-line')['default']
+    IRiHome2Line: typeof import('~icons/ri/home2-line')['default']
+    IRiHomeLine: typeof import('~icons/ri/home-line')['default']
+    IRiLanguageLine: typeof import('~icons/ri/language-line')['default']
+    IRiMoonLine: typeof import('~icons/ri/moon-line')['default']
+    IRiSunLine: typeof import('~icons/ri/sun-line')['default']
+    IRiTranslate: typeof import('~icons/ri/translate')['default']
+    IRiTranslateLine: typeof import('~icons/ri/translate-line')['default']
     README: typeof import('./components/README.md')['default']
   }
 }

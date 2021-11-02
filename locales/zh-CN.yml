@@ -26,3 +26,14 @@ login:
 error:
   username: 请输入正确的用户名
   password: 密码不能少于六个数字
+
+dashboard:
+  author: 发布者
+  content: 评论内容
+  createdAt: 创建于
+  updatedAt: 更新于
+
+status:
+  approved: 通过
+  waiting: 待审核
+  spam: 垃圾
