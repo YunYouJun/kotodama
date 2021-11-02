@@ -8,6 +8,7 @@ button:
 
   login: Login
   register: Register
+  exit: Exit
 
 intro:
   desc: 💬 Control the magic of speech spirit, an elegant pure static comment management system

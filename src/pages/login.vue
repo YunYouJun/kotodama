@@ -66,6 +66,7 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { login } from '~/api/auth'
 import { ElMessage } from 'element-plus'
+import { token } from '~/logic/axios'
 
 const router = useRouter()
 const { t } = useI18n()
@@ -121,7 +122,7 @@ function handleLogin() {
       }).then((res) => {
         if (res && res.data && res.data.token) {
           // token
-          localStorage.setItem('waline-token', res.data.token)
+          token.value = res.data.token
 
           router.push('/dashboard')
           ElMessage.success({

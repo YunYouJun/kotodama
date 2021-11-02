@@ -1,5 +1,7 @@
 # kotodama
 
+[![GitHub Pages](https://github.com/YunYouJun/kotodama/actions/workflows/gh-pages.yml/badge.svg?branch=main)](https://github.com/YunYouJun/kotodama/actions/workflows/gh-pages.yml)
+
 > 💬 掌控言灵的魔法，一个优雅的纯静态评论管理后台
 
 [Demo 预览](https://kotodama.yunyoujun.cn)

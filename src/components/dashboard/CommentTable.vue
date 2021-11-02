@@ -2,14 +2,14 @@
   <el-table
     v-loading="loading"
     :data="
-      commentListData.filter(
+      commentListInfo?.data.filter(
         (data) =>
           !search || data.nick.toLowerCase().includes(search.toLowerCase())
       )
     "
     style="width: 100%"
   >
-    <el-table-column type="selection" width="30" />
+    <el-table-column type="selection" width="40" />
     <el-table-column width="150" :label="t('dashboard.author')" prop="nick" />
     <el-table-column width="170" :label="t('dashboard.createdAt')" prop="createdAt">
       <template #default="scope">
@@ -36,30 +36,48 @@
       </template>
     </el-table-column>
   </el-table>
+  <el-pagination
+    class="mt-5"
+    layout="prev, pager, next, jumper"
+    :currentPage="currentPage"
+    :page-size="commentListInfo?.pageSize"
+    :page-count="commentListInfo?.totalPages"
+    @update:current-page="toggleCurrentPage"
+  ></el-pagination>
 </template>
 
 <script lang="ts" setup>
 import dayjs from 'dayjs'
 const { t } = useI18n()
-import { CommentItem, getCommentList } from '~/api/comment';
+import { CommentList, CommentParams, getCommentList } from '~/api/comment';
 
-const commentListData = ref<CommentItem[]>([])
-
+const commentListInfo = ref<CommentList>()
 const loading = ref(true)
+const search = ref('')
+const filter = reactive<CommentParams['filter']>({
+  owner: 'all',
+  status: 'approved',
+  keyword: ''
+})
+const currentPage = ref(1)
 
-onBeforeMount(async () => {
+const fetchCommentList = async () => {
   const { data } = await getCommentList({
-    page: 1,
-    filter: {
-      owner: 'all',
-      status: 'approved',
-      keyword: ''
-    }
+    page: currentPage.value,
+    filter
   })
   loading.value = false
-  console.log(data)
-  commentListData.value = data.data
+  commentListInfo.value = data
+}
+
+onBeforeMount(async () => {
+  fetchCommentList()
 })
 
-const search = ref('')
+const toggleCurrentPage = async (page: number) => {
+  currentPage.value = page
+  loading.value = true
+  await fetchCommentList()
+  loading.value = false
+}
 </script>

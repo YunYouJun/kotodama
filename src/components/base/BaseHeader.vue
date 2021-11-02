@@ -1,17 +1,25 @@
 <script setup lang="ts">
 import { isDark, toggleDark } from '~/logic'
+import { token } from '~/logic/axios'
 
 const { t, availableLocales, locale } = useI18n()
+
+const router = useRouter()
 
 const toggleLocales = () => {
   // change to some real logic
   const locales = availableLocales
   locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length]
 }
+
+const exit = () => {
+  token.value = ''
+  router.push('/login')
+}
 </script>
 
 <template>
-  <nav class="text-xl my-3 flex flex-col items-center justify-center">
+  <nav class="text-xl my-3">
     <router-link class="icon-btn mx-2" to="/" :title="t('button.home')">
       <i-ri-home-2-line />
     </router-link>
@@ -45,6 +53,10 @@ const toggleLocales = () => {
       title="GitHub"
     >
       <i-ri-github-line />
+    </a>
+
+    <a class="icon-btn mx-2" :title="t('button.exit')" @click="exit">
+      <i-mdi-exit-to-app />
     </a>
   </nav>
 </template>

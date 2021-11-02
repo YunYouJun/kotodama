@@ -4,9 +4,9 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    BaseAside: typeof import('./components/Base/BaseAside.vue')['default']
-    BaseFooter: typeof import('./components/Base/BaseFooter.vue')['default']
-    BaseHeader: typeof import('./components/Base/BaseHeader.vue')['default']
+    BaseAside: typeof import('./components/base/BaseAside.vue')['default']
+    BaseFooter: typeof import('./components/base/BaseFooter.vue')['default']
+    BaseHeader: typeof import('./components/base/BaseHeader.vue')['default']
     CarbonCampsite: typeof import('~icons/carbon/campsite')['default']
     CarbonDicomOverlay: typeof import('~icons/carbon/dicom-overlay')['default']
     CarbonLanguage: typeof import('~icons/carbon/language')['default']
@@ -26,6 +26,7 @@ declare module 'vue' {
     ICarbonPedestrian: typeof import('~icons/carbon/pedestrian')['default']
     ICarbonSun: typeof import('~icons/carbon/sun')['default']
     ICarbonWarning: typeof import('~icons/carbon/warning')['default']
+    IMdiExitToApp: typeof import('~icons/mdi/exit-to-app')['default']
     IMdiLogin: typeof import('~icons/mdi/login')['default']
     IRiDashboardLine: typeof import('~icons/ri/dashboard-line')['default']
     IRiDiscussLine: typeof import('~icons/ri/discuss-line')['default']
