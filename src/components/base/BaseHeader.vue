@@ -24,7 +24,7 @@ const exit = () => {
       <i-ri-home-2-line />
     </router-link>
 
-    <router-link class="icon-btn mx-2" to="/dashboard">
+    <router-link v-if="token" class="icon-btn mx-2" to="/dashboard">
       <i-ri-dashboard-line />
     </router-link>
 
@@ -48,14 +48,18 @@ const exit = () => {
     <a
       class="icon-btn mx-2"
       rel="noreferrer"
-      href="https://github.com/antfu/vitesse"
+      href="https://github.com/YunYouJun/kotodama"
       target="_blank"
       title="GitHub"
     >
       <i-ri-github-line />
     </a>
 
-    <a class="icon-btn mx-2" :title="t('button.exit')" @click="exit">
+    <router-link v-if="!token" class="icon-btn mx-2" to="/login" :title="t('button.login')">
+      <i-mdi-login />
+    </router-link>
+
+    <a v-else class="icon-btn mx-2" :title="t('button.exit')" @click="exit">
       <i-mdi-exit-to-app />
     </a>
   </nav>

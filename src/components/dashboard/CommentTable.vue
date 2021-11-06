@@ -125,7 +125,6 @@ const fetchCommentList = async () => {
     page: currentPage.value,
     filter
   })
-  console.log(data.data[0])
   loading.value = false
   commentListInfo.value = data
 }
@@ -144,7 +143,6 @@ const toggleCurrentPage = async (page: number) => {
 const updatePageSize = () => { }
 
 const triggerDeleteComment = async (id: string) => {
-  console.log(id)
   const data = await deleteComment(id)
   if (data.errno === 0) {
     ElMessage.success(t('message.delete_success'))

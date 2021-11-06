@@ -107,8 +107,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'robots.txt', 'safari-pinned-tab.svg'],
       manifest: {
-        name: 'Vitesse',
-        short_name: 'Vitesse',
+        name: 'Kotodama',
+        short_name: '言灵',
         theme_color: '#ffffff',
         icons: [
           {
