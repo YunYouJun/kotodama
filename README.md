@@ -30,6 +30,8 @@ kotodama 是一个纯静态的站点，您可以 fork 其自行部署，也可�
 ```bash
 # fork 或直接 clone 本项目
 git clone https://github.com/YunYouJun/kotodama
+
+cp .env.example .env
 ```
 
 配置 `.env` 中的 `VITE_API_BASE_URL` 环境变量为您的 Waline 后台地址，例如 `https://waline.xxx.com`。
@@ -65,4 +67,4 @@ Fork 本项目。
 如果您无法正常连接您的 Waline 后台 API，您可能需要配置一下安全域名。
 将 `kotodama.yunyoujun.cn` 添加至您的安全域名中。
 
-> [secureDomains](https://waline.js.org/reference/server.html#securedomains)
+> [secureDomains | Waline](https://waline.js.org/reference/server.html#securedomains)

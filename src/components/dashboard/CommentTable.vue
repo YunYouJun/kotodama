@@ -59,12 +59,20 @@
         </div>
       </template>
     </el-table-column>
-    <el-table-column :label="t('dashboard.content')" prop="comment">
+    <el-table-column :label="t('dashboard.content')" min-width="300" prop="comment">
       <template #default="scope">
+        <a
+          class="inline-flex justify-center items-center text-blue-500 text-xs mb-2"
+          :href="url + scope.row.url"
+          target="_blank"
+        >
+          <i-ri-link class="mr-1" />
+          {{ scope.row.url }}
+        </a>
         <div v-html="scope.row.comment"></div>
       </template>
     </el-table-column>
-    <el-table-column width="200" align="right">
+    <el-table-column width="150" align="right">
       <template #header>
         <el-input v-model="search" size="mini" :placeholder="t('placeholder.search')">
           <template #prefix>
@@ -108,6 +116,7 @@ import dayjs from 'dayjs'
 import { ElMessage } from 'element-plus';
 const { t } = useI18n()
 import { CommentList, CommentParams, deleteComment, getCommentList } from '~/api/comment';
+import { url } from '~/stores/user';
 import { getAvatarUrl } from '~/utils';
 
 const commentListInfo = ref<CommentList>()
@@ -127,6 +136,8 @@ const fetchCommentList = async () => {
   })
   loading.value = false
   commentListInfo.value = data
+
+  console.debug(data.data)
 }
 
 onBeforeMount(async () => {

@@ -38,6 +38,8 @@ declare module 'vue' {
     IRiHome2Line: typeof import('~icons/ri/home2-line')['default']
     IRiHomeLine: typeof import('~icons/ri/home-line')['default']
     IRiLanguageLine: typeof import('~icons/ri/language-line')['default']
+    IRiLink: typeof import('~icons/ri/link')['default']
+    IRiLinkLine: typeof import('~icons/ri/link-line')['default']
     IRiMoonLine: typeof import('~icons/ri/moon-line')['default']
     IRiPencilLine: typeof import('~icons/ri/pencil-line')['default']
     IRiRefreshLine: typeof import('~icons/ri/refresh-line')['default']

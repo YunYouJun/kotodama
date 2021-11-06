@@ -79,6 +79,7 @@ import { useRouter } from 'vue-router'
 import { login } from '~/api/auth'
 import { ElMessage } from 'element-plus'
 import { $axios, token } from '~/logic/axios'
+import { url } from '~/stores/user'
 
 const router = useRouter()
 const { t } = useI18n()
@@ -142,9 +143,11 @@ function handleLogin() {
           email: loginForm.username,
           password: loginForm.password
         }).then((res) => {
+          console.debug(res.data)
           if (res && res.data && res.data.token) {
             // token
             token.value = res.data.token
+            url.value = res.data.url
 
             router.push('/dashboard')
             ElMessage.success({
