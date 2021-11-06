@@ -13,6 +13,17 @@
           <h2 text="2xl" p="10">{{ t('login.title') }}</h2>
         </div>
 
+        <el-form-item prop="serverUrl" required>
+          <el-input
+            ref="serverUrlEl"
+            v-model="loginForm.serverUrl"
+            :placeholder="t('placeholder.server_url')"
+            name="serverUrl"
+            type="text"
+            autocomplete="on"
+          />
+        </el-form-item>
+
         <el-form-item prop="username">
           <el-input
             ref="usernameEl"
@@ -67,13 +78,17 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { login } from '~/api/auth'
 import { ElMessage } from 'element-plus'
-import { token } from '~/logic/axios'
+import { $axios, token } from '~/logic/axios'
 
 const router = useRouter()
 const { t } = useI18n()
 
+const namespace = 'waline'
+const serverUrl = useStorage(`${namespace}-serverUrl`, '')
+
 const loading = ref(false)
 const loginForm = reactive({
+  serverUrl: serverUrl,
   username: '',
   password: ''
 })
@@ -116,31 +131,38 @@ onMounted(() => {
  * 处理登录逻辑
  */
 function handleLogin() {
-  loginFormEl.value.validate((valid: boolean) => {
+  loginFormEl.value.validate(async (valid: boolean) => {
     if (valid) {
+      $axios.defaults.baseURL = loginForm.serverUrl
+
       loading.value = true
-      login({
-        email: loginForm.username,
-        password: loginForm.password
-      }).then((res) => {
-        if (res && res.data && res.data.token) {
-          // token
-          token.value = res.data.token
 
-          router.push('/dashboard')
-          ElMessage.success({
-            message: '登录成功',
-            showClose: true
-          })
-        } else {
-          ElMessage.success({
-            message: res.errmsg,
-            showClose: true
-          })
-        }
+      try {
+        await login({
+          email: loginForm.username,
+          password: loginForm.password
+        }).then((res) => {
+          if (res && res.data && res.data.token) {
+            // token
+            token.value = res.data.token
 
-        loading.value = false
-      })
+            router.push('/dashboard')
+            ElMessage.success({
+              message: '登录成功',
+              showClose: true
+            })
+          } else {
+            ElMessage.success({
+              message: res.errmsg,
+              showClose: true
+            })
+          }
+        })
+      } catch {
+
+      }
+
+      loading.value = false
     }
   })
 }

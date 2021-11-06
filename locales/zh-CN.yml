@@ -17,6 +17,7 @@ intro:
   aka: 也叫
 not-found: 未找到页面
 placeholder:
+  server_url: Waline 服务端地址，如 https://waline.xx.xx
   username: 用户名
   password: 密码
   search: 搜索当前页

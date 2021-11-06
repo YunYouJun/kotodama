@@ -17,6 +17,7 @@ intro:
   aka: Also known as
 not-found: Not found
 placeholder:
+  server_url: Server Url
   username: Username
   password: Password
   search: Type to search

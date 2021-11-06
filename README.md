@@ -32,6 +32,8 @@ kotodama 是一个纯静态的站点，您可以 fork 其自行部署，也可�
 git clone https://github.com/YunYouJun/kotodama
 ```
 
+配置 `.env` 中的 `VITE_API_BASE_URL` 环境变量为您的 Waline 后台地址，例如 `https://waline.xxx.com`。
+
 ### 自行构建
 
 ```bash
