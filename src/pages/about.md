@@ -20,3 +20,5 @@ title: About
 将 `kotodama.yunyoujun.cn` 添加至您的安全域名中。
 
 > [secureDomains](https://waline.js.org/reference/server.html#securedomains)
+
+More info see [README.md](https://github.com/YunYouJun/kotodama/blob/main/README.md).
