@@ -19,6 +19,7 @@ not-found: Not found
 placeholder:
   username: Username
   password: Password
+  search: Type to search
 
 login:
   title: Login
@@ -28,7 +29,19 @@ error:
   username: Please enter the correct user name
   password: The password can not be less than 6 digits
 
+dashboard:
+  author: Author
+  content: Content
+  time: Time
+  createdAt: Created At
+  updatedAt: Updated At
+
 status:
   approved: Approved
   waiting: Waiting
   spam: Spam
+
+message:
+  delete: Are you sure you want to delete the comment?
+  delete_success: Delete comment successfully!
+  delete_error: Delete comment failed!

@@ -19,6 +19,7 @@ not-found: 未找到页面
 placeholder:
   username: 用户名
   password: 密码
+  search: 搜索当前页
 
 login:
   title: 登录
@@ -31,6 +32,7 @@ error:
 dashboard:
   author: 发布者
   content: 评论内容
+  time: 时间
   createdAt: 创建于
   updatedAt: 更新于
 
@@ -38,3 +40,8 @@ status:
   approved: 通过
   waiting: 待审核
   spam: 垃圾
+
+message:
+  delete: 您确定要删除该评论吗？
+  delete_success: 删除成功
+  delete_error: 删除失败

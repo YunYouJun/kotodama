@@ -16,3 +16,8 @@ title: About
 ## Waline
 
 适配 [Waline](https://github.com/walinejs/waline) 后台管理
+
+如果您无法正常连接您的 Waline 后台 API，您可能需要配置一下安全域名。
+将 `kotodama.yunyoujun.cn` 添加至您的安全域名中。
+
+> [secureDomains](https://waline.js.org/reference/server.html#securedomains)

@@ -66,3 +66,13 @@ export async function getCommentList(params: CommentParams) {
 export async function replyComment() {
 
 }
+
+/**
+ * 删除评论
+ * @param id 
+ * @returns 
+ */
+export async function deleteComment(id: string) {
+  const { data } = await $axios.delete<WalineResponse<null>>(`/comment/${id}`);
+  return data
+}

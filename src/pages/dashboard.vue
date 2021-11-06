@@ -1,7 +1,7 @@
 <template>
-  <el-card shadow="hover">
+  <div class="bg-white rounded hover:shadow-md transition duration-400" p="5">
     <CommentTable />
-  </el-card>
+  </div>
 </template>
 
 <route lang="yaml">

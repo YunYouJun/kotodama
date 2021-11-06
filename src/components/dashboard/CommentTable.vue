@@ -10,15 +10,53 @@
     style="width: 100%"
   >
     <el-table-column type="selection" width="40" />
-    <el-table-column width="150" :label="t('dashboard.author')" prop="nick" />
-    <el-table-column width="170" :label="t('dashboard.createdAt')" prop="createdAt">
+    <el-table-column width="150" :label="t('dashboard.author')" prop="nick">
       <template #default="scope">
-        <div>{{ dayjs(scope.row.createdAt).format('YYYY-MM-DD HH:mm:ss') }}</div>
+        <div>
+          <div class="flex items-center" m="b-2">
+            <img class="w-6 h-6 rounded-full shadow" :src="getAvatarUrl(scope.row.mail)" />
+            <div class="ml-2">
+              <a
+                v-if="scope.row.link"
+                class="text-blue-500"
+                :href="scope.row.link"
+                target="_blank"
+                font="serif black"
+              >{{ scope.row.nick }}</a>
+              <span v-else font="serif black">{{ scope.row.nick }}</span>
+            </div>
+          </div>
+          <a
+            class="block text-xs text-blue-900"
+            font="mono normal"
+            m="y-2"
+            v-if="scope.row.mail"
+            :href="`mailto:${scope.row.mail}`"
+            target="_blank"
+          >{{ scope.row.mail }}</a>
+          <span class="block" font="mono normal" text="xs" v-if="scope.row.ip">{{ scope.row.ip }}</span>
+        </div>
       </template>
     </el-table-column>
-    <el-table-column width="170" :label="t('dashboard.updatedAt')" prop="updatedAt">
+    <el-table-column width="180" :label="t('dashboard.time')" prop="createdAt">
       <template #default="scope">
-        <div>{{ dayjs(scope.row.createdAt).format('YYYY-MM-DD HH:mm:ss') }}</div>
+        <div
+          p="y-1"
+          class="text-xs opacity-90 flex justify-start items-center"
+          :title="t('dashboard.createdAt')"
+        >
+          <i-ri-pencil-line class="mr-1" />
+          {{ dayjs(scope.row.createdAt).format('YYYY-MM-DD HH:mm:ss') }}
+        </div>
+        <div
+          v-if="scope.row.createdAt !== scope.row.updatedAt"
+          p="y-1"
+          class="text-xs opacity-90 flex justify-start items-center"
+          :title="t('dashboard.updatedAt')"
+        >
+          <i-ri-refresh-line class="mr-1" />
+          {{ dayjs(scope.row.updatedAt).format('YYYY-MM-DD HH:mm:ss') }}
+        </div>
       </template>
     </el-table-column>
     <el-table-column :label="t('dashboard.content')" prop="comment">
@@ -26,30 +64,51 @@
         <div v-html="scope.row.comment"></div>
       </template>
     </el-table-column>
-    <el-table-column align="right">
+    <el-table-column width="200" align="right">
       <template #header>
-        <el-input v-model="search" size="mini" placeholder="Type to search" />
+        <el-input v-model="search" size="mini" :placeholder="t('placeholder.search')">
+          <template #prefix>
+            <el-icon class="el-input__icon">
+              <i-ri-search-line />
+            </el-icon>
+          </template>
+        </el-input>
       </template>
-      <template #default>
-        <el-button size="mini">Edit</el-button>
-        <el-button size="mini" type="danger">Delete</el-button>
+      <template #default="scope">
+        <!-- <el-button size="small" type="primary" plain title="编辑" circle>
+          <i-ri-edit-line />
+        </el-button>-->
+        <el-popconfirm
+          :title="t('message.delete')"
+          @confirm="triggerDeleteComment(scope.row.objectId)"
+        >
+          <template #reference>
+            <el-button size="small" type="danger" plain circle title="删除">
+              <i-ri-delete-bin-line />
+            </el-button>
+          </template>
+        </el-popconfirm>
       </template>
     </el-table-column>
   </el-table>
   <el-pagination
     class="mt-5"
     layout="prev, pager, next, jumper"
-    :currentPage="currentPage"
+    background
+    :current-page="currentPage"
     :page-size="commentListInfo?.pageSize"
     :page-count="commentListInfo?.totalPages"
     @update:current-page="toggleCurrentPage"
+    @update:page-size="updatePageSize"
   ></el-pagination>
 </template>
 
 <script lang="ts" setup>
 import dayjs from 'dayjs'
+import { ElMessage } from 'element-plus';
 const { t } = useI18n()
-import { CommentList, CommentParams, getCommentList } from '~/api/comment';
+import { CommentList, CommentParams, deleteComment, getCommentList } from '~/api/comment';
+import { getAvatarUrl } from '~/utils';
 
 const commentListInfo = ref<CommentList>()
 const loading = ref(true)
@@ -66,6 +125,7 @@ const fetchCommentList = async () => {
     page: currentPage.value,
     filter
   })
+  console.log(data.data[0])
   loading.value = false
   commentListInfo.value = data
 }
@@ -79,5 +139,17 @@ const toggleCurrentPage = async (page: number) => {
   loading.value = true
   await fetchCommentList()
   loading.value = false
+}
+
+const updatePageSize = () => { }
+
+const triggerDeleteComment = async (id: string) => {
+  console.log(id)
+  const data = await deleteComment(id)
+  if (data.errno === 0) {
+    ElMessage.success(t('message.delete_success'))
+  } else {
+    ElMessage.error(t('message.delete_error') + data.errmsg)
+  }
 }
 </script>

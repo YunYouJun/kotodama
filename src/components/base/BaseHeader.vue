@@ -19,7 +19,7 @@ const exit = () => {
 </script>
 
 <template>
-  <nav class="text-xl my-3">
+  <nav class="text-xl my-5">
     <router-link class="icon-btn mx-2" to="/" :title="t('button.home')">
       <i-ri-home-2-line />
     </router-link>
