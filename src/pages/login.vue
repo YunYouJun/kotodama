@@ -44,6 +44,7 @@
             type="primary"
             class="block w-full"
             @click="handleLogin"
+            :loading="loading"
           >{{ t('button.login') }}</el-button>
         </el-form-item>
       </el-form>
@@ -71,6 +72,7 @@ import { token } from '~/logic/axios'
 const router = useRouter()
 const { t } = useI18n()
 
+const loading = ref(false)
 const loginForm = reactive({
   username: '',
   password: ''
@@ -116,6 +118,7 @@ onMounted(() => {
 function handleLogin() {
   loginFormEl.value.validate((valid: boolean) => {
     if (valid) {
+      loading.value = true
       login({
         email: loginForm.username,
         password: loginForm.password
@@ -135,6 +138,8 @@ function handleLogin() {
             showClose: true
           })
         }
+
+        loading.value = false
       })
     }
   })
