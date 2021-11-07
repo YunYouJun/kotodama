@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { token } from '~/stores/user';
+
+const router = useRouter()
 const { t } = useI18n()
 
 const pages = [
@@ -7,6 +10,13 @@ const pages = [
     path: '/login'
   }
 ]
+
+onBeforeMount(() => {
+  // 若已登录，自动进入管理面板
+  if (token.value) {
+    router.push('/dashboard')
+  }
+})
 </script>
 
 <template>
