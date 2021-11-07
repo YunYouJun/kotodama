@@ -33,7 +33,6 @@ export async function login(payload: LoginParams, remember = true) {
   const { data: res } = await $axios.post<LoginParams, AxiosResponse<WalineResponse<TokenData>>>('/token', payload)
   if (res && res.data && res.data.token) {
     const resToken = res.data.token
-    console.log(resToken)
     setAuthorization(resToken)
 
     if (remember) {
