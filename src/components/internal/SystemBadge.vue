@@ -48,8 +48,6 @@ const browser = ua.getBrowser()
 const device = ua.getDevice()
 const cpu = ua.getCPU()
 
-console.log(ua.getResult())
-
 const systemName = ref((os.name || '').toLowerCase())
 const browserName = ref((browser.name || '').toLowerCase())
 const deviceName = ref((device.vendor || '').toLowerCase())
