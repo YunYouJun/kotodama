@@ -16,7 +16,7 @@ import Inspect from 'vite-plugin-inspect'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 
-const markdownWrapperClasses = 'prose prose-sm m-auto text-left max-w-880px'
+const markdownWrapperClasses = 'prose prose-sm m-auto text-left max-w-800px'
 
 export default defineConfig({
   resolve: {

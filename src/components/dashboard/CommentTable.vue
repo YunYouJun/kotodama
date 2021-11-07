@@ -35,6 +35,7 @@
             target="_blank"
           >{{ scope.row.mail }}</a>
           <span class="block" font="mono normal" text="xs" v-if="scope.row.ip">{{ scope.row.ip }}</span>
+          <SystemBadge :ua="scope.row.ua" />
         </div>
       </template>
     </el-table-column>
@@ -170,4 +171,4 @@ const triggerDeleteComment = async (id: string) => {
     ElMessage.error(t('message.delete_error') + data.errmsg)
   }
 }
-</script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 </script>

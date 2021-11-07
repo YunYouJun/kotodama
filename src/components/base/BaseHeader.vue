@@ -4,7 +4,6 @@ import { token } from '~/stores/user'
 
 const { t, availableLocales, locale } = useI18n()
 
-const route = useRoute()
 const router = useRouter()
 
 const toggleLocales = () => {
@@ -25,6 +24,7 @@ const exit = () => {
       <i-ri-dashboard-line />
     </router-link>
     <router-link
+      v-else
       active-class="text-blue-500"
       class="icon-btn mx-2"
       to="/"

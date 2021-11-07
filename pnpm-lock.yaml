@@ -3,12 +3,15 @@ lockfileVersion: 5.3
 specifiers:
   '@antfu/eslint-config': ^0.10.0
   '@iconify-json/carbon': ^1.0.9
+  '@iconify-json/file-icons': ^1.0.1
   '@iconify-json/mdi': ^1.0.8
   '@iconify-json/ri': ^1.0.1
+  '@iconify-json/simple-icons': ^1.0.5
   '@intlify/vite-plugin-vue-i18n': ^2.5.0
   '@types/markdown-it-link-attributes': ^3.0.1
   '@types/md5': ^2.3.1
   '@types/nprogress': ^0.2.0
+  '@types/ua-parser-js': ^0.7.36
   '@vitejs/plugin-vue': ^1.9.4
   '@vue/compiler-sfc': ^3.2.21
   '@vue/server-renderer': ^3.2.21
@@ -30,6 +33,7 @@ specifiers:
   prism-theme-vars: ^0.2.2
   sass: ^1.43.4
   typescript: ^4.4.4
+  ua-parser-js: ^1.0.2
   unplugin-auto-import: ^0.4.13
   unplugin-icons: ^0.12.18
   unplugin-vue-components: ^0.17.2
@@ -57,6 +61,7 @@ dependencies:
   nprogress: 0.2.0
   pinia: 2.0.2_typescript@4.4.4+vue@3.2.21
   prism-theme-vars: 0.2.2
+  ua-parser-js: 1.0.2
   vue: 3.2.21
   vue-demi: 0.12.1_vue@3.2.21
   vue-i18n: 9.1.9_vue@3.2.21
@@ -65,12 +70,15 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config': 0.10.0_eslint@8.2.0+typescript@4.4.4
   '@iconify-json/carbon': 1.0.9
+  '@iconify-json/file-icons': 1.0.1
   '@iconify-json/mdi': 1.0.8
   '@iconify-json/ri': 1.0.1
+  '@iconify-json/simple-icons': 1.0.5
   '@intlify/vite-plugin-vue-i18n': 2.5.0
   '@types/markdown-it-link-attributes': 3.0.1
   '@types/md5': 2.3.1
   '@types/nprogress': 0.2.0
+  '@types/ua-parser-js': 0.7.36
   '@vitejs/plugin-vue': 1.9.4_vite@2.6.13
   '@vue/compiler-sfc': 3.2.21
   '@vue/server-renderer': 3.2.21_vue@3.2.21
@@ -1398,6 +1406,12 @@ packages:
       '@iconify/types': 1.0.10
     dev: true
 
+  /@iconify-json/file-icons/1.0.1:
+    resolution: {integrity: sha1-8RoBlaa0hC4uOCeAwpoQ5YGebuo=, tarball: '@iconify-json/file-icons/download/@iconify-json/file-icons-1.0.1.tgz'}
+    dependencies:
+      '@iconify/types': 1.0.10
+    dev: true
+
   /@iconify-json/mdi/1.0.8:
     resolution: {integrity: sha1-DVDovR2/DUQaqrt2aZmNzsT0EYw=, tarball: '@iconify-json/mdi/download/@iconify-json/mdi-1.0.8.tgz'}
     dependencies:
@@ -1406,6 +1420,12 @@ packages:
 
   /@iconify-json/ri/1.0.1:
     resolution: {integrity: sha1-IKscaJUZKVMyNLPD9UjEwG8lhhI=, tarball: '@iconify-json/ri/download/@iconify-json/ri-1.0.1.tgz'}
+    dependencies:
+      '@iconify/types': 1.0.10
+    dev: true
+
+  /@iconify-json/simple-icons/1.0.5:
+    resolution: {integrity: sha1-U4jd532TxZaiNGkVV1S3w3dvzPc=, tarball: '@iconify-json/simple-icons/download/@iconify-json/simple-icons-1.0.5.tgz'}
     dependencies:
       '@iconify/types': 1.0.10
     dev: true
@@ -1675,6 +1695,10 @@ packages:
 
   /@types/trusted-types/2.0.2:
     resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
+    dev: true
+
+  /@types/ua-parser-js/0.7.36:
+    resolution: {integrity: sha1-m9C0fya1oxUb4hukzp9fpFfF8ZA=, tarball: '@types/ua-parser-js/download/@types/ua-parser-js-0.7.36.tgz'}
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.1.0_b761f0af38be73fc24511eb98a4f842c:
@@ -5932,6 +5956,10 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
+
+  /ua-parser-js/1.0.2:
+    resolution: {integrity: sha1-4pdsNNv7MLFdLDALKlPqyHxXp3U=, tarball: ua-parser-js/download/ua-parser-js-1.0.2.tgz}
+    dev: false
 
   /uc.micro/1.0.6:
     resolution: {integrity: sha1-nEEagCpAmpH8bPdAgbq6NLJEmaw=, tarball: uc.micro/download/uc.micro-1.0.6.tgz}
