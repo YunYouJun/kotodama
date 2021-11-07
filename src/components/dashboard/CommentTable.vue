@@ -38,29 +38,17 @@
         </div>
       </template>
     </el-table-column>
-    <el-table-column width="180" :label="t('dashboard.time')" prop="createdAt">
+
+    <el-table-column :label="t('dashboard.content')" min-width="300" prop="comment">
       <template #default="scope">
         <div
-          p="y-1"
-          class="text-xs opacity-90 flex justify-start items-center"
+          m="r-2"
+          class="text-xs opacity-90 inline-flex justify-start items-center"
           :title="t('dashboard.createdAt')"
         >
           <i-ri-pencil-line class="mr-1" />
           {{ dayjs(scope.row.createdAt).format('YYYY-MM-DD HH:mm:ss') }}
         </div>
-        <div
-          v-if="scope.row.createdAt !== scope.row.updatedAt"
-          p="y-1"
-          class="text-xs opacity-90 flex justify-start items-center"
-          :title="t('dashboard.updatedAt')"
-        >
-          <i-ri-refresh-line class="mr-1" />
-          {{ dayjs(scope.row.updatedAt).format('YYYY-MM-DD HH:mm:ss') }}
-        </div>
-      </template>
-    </el-table-column>
-    <el-table-column :label="t('dashboard.content')" min-width="300" prop="comment">
-      <template #default="scope">
         <a
           class="inline-flex justify-center items-center text-blue-500 text-xs mb-2"
           :href="url + scope.row.url"
@@ -69,10 +57,20 @@
           <i-ri-link class="mr-1" />
           {{ scope.row.url }}
         </a>
+        <div
+          v-if="scope.row.createdAt !== scope.row.updatedAt"
+          m="l-2"
+          class="text-xs opacity-90 flex justify-start items-center"
+          :title="t('dashboard.updatedAt')"
+        >
+          <i-ri-refresh-line class="mr-1" />
+          {{ dayjs(scope.row.updatedAt).format('YYYY-MM-DD HH:mm:ss') }}
+        </div>
         <div v-html="scope.row.comment"></div>
       </template>
     </el-table-column>
-    <el-table-column width="150" align="right">
+
+    <el-table-column width="150">
       <template #header>
         <el-input v-model="search" size="mini" :placeholder="t('placeholder.search')">
           <template #prefix>
@@ -83,24 +81,29 @@
         </el-input>
       </template>
       <template #default="scope">
-        <!-- <el-button size="small" type="primary" plain title="编辑" circle>
-          <i-ri-edit-line />
-        </el-button>-->
-        <el-popconfirm
-          :title="t('message.delete')"
-          @confirm="triggerDeleteComment(scope.row.objectId)"
-        >
-          <template #reference>
-            <el-button size="small" type="danger" plain circle title="删除">
-              <i-ri-delete-bin-line />
+        <div class="mt-2 flex justify-center">
+          <el-tooltip content="Todo: 还没做">
+            <el-button size="small" type="primary" plain title="编辑" circle>
+              <i-ri-edit-line />
             </el-button>
-          </template>
-        </el-popconfirm>
+          </el-tooltip>
+          <el-popconfirm
+            :title="t('message.delete')"
+            @confirm="triggerDeleteComment(scope.row.objectId)"
+          >
+            <template #reference>
+              <el-button size="small" type="danger" plain circle title="删除">
+                <i-ri-delete-bin-line />
+              </el-button>
+            </template>
+          </el-popconfirm>
+        </div>
       </template>
     </el-table-column>
   </el-table>
+
   <el-pagination
-    class="mt-5"
+    class="my-1 py-4 overflow-scroll"
     layout="prev, pager, next, jumper"
     background
     :current-page="currentPage"
@@ -130,14 +133,20 @@ const filter = reactive<CommentParams['filter']>({
 const currentPage = ref(1)
 
 const fetchCommentList = async () => {
-  const { data } = await getCommentList({
-    page: currentPage.value,
-    filter
-  })
-  loading.value = false
-  commentListInfo.value = data
+  try {
+    const { data } = await getCommentList({
+      page: currentPage.value,
+      filter
+    })
+    commentListInfo.value = data
+  } catch {
+    ElMessage.error({
+      message: t('message.load_error'),
+      showClose: true
+    })
+  }
 
-  console.debug(data.data)
+  loading.value = false
 }
 
 onBeforeMount(async () => {

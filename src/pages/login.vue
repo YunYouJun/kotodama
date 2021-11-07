@@ -46,9 +46,9 @@
           />
         </el-form-item>
 
-        <el-form-item>
-          <el-checkbox v-model="checked">{{ t("login.message") }}</el-checkbox>
-        </el-form-item>
+        <!-- <el-form-item>
+          <el-checkbox v-model="remember">{{ t("login.message") }}</el-checkbox>
+        </el-form-item>-->
 
         <el-form-item>
           <el-button
@@ -78,8 +78,8 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { login } from '~/api/auth'
 import { ElMessage } from 'element-plus'
-import { $axios, token } from '~/logic/axios'
-import { url } from '~/stores/user'
+import { $axios } from '~/logic/axios'
+import { token, url } from '~/stores/user'
 
 const router = useRouter()
 const { t } = useI18n()
@@ -97,7 +97,7 @@ const loginForm = reactive({
 const loginFormEl = ref()
 const usernameEl = ref()
 const passwordEl = ref()
-const checked = ref(false)
+const remember = ref(true)
 
 const validateUsername = (rule: any, value: string, callback: Function) => {
   if (!validUsername(value)) {
@@ -139,30 +139,27 @@ function handleLogin() {
       loading.value = true
 
       try {
-        await login({
+        const res = await login({
           email: loginForm.username,
           password: loginForm.password
-        }).then((res) => {
-          console.debug(res.data)
-          if (res && res.data && res.data.token) {
-            // token
-            token.value = res.data.token
-            url.value = res.data.url
+        }, remember.value)
+        if (res && res.data && res.data.token) {
+          // token
+          url.value = res.data.url
 
-            router.push('/dashboard')
-            ElMessage.success({
-              message: '登录成功',
-              showClose: true
-            })
-          } else {
-            ElMessage.success({
-              message: res.errmsg,
-              showClose: true
-            })
-          }
-        })
+          router.push('/dashboard')
+          ElMessage.success({
+            message: t('message.login_success'),
+            showClose: true
+          })
+        } else {
+          ElMessage.success({
+            message: res.errmsg,
+            showClose: true
+          })
+        }
       } catch {
-
+        // token.value = ''
       }
 
       loading.value = false

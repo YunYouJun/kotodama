@@ -62,5 +62,8 @@
     "vite-plugin-windicss": "^1.5.1",
     "vite-ssg": "^0.15.6",
     "vue-tsc": "^0.28.10"
+  },
+  "repository": {
+    "url": "https://github.com/YunYouJun/kotodama"
   }
 }

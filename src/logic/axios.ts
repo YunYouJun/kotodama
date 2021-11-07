@@ -1,8 +1,6 @@
 import axios from "axios"
 import { ElMessage } from "element-plus";
-
-const namespace = 'waline'
-export const token = useStorage(`${namespace}-token`, '')
+import { token } from "~/stores/user";
 
 export const $axios = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL?.toString(),

@@ -1,8 +1,13 @@
+import { config } from "~/config"
+
 /**
  * 验证用户名（伪）
  * @param name 
  */
 export function validUsername(name: string) {
-  const validUsernames = ['YunYouJun', 'admin', 'me@yunyoujun.cn']
-  return validUsernames.includes(name.trim())
+  if (config.enableValid) {
+    return config.validUsernames.includes(name.trim())
+  } else {
+    return true
+  }
 }

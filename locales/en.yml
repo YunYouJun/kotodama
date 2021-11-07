@@ -43,6 +43,8 @@ status:
   spam: Spam
 
 message:
+  login_success: Login successfully!
   delete: Are you sure you want to delete the comment?
   delete_success: Delete comment successfully!
   delete_error: Delete comment failed!
+  load_error: Load data failed!

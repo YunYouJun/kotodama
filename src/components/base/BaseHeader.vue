@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { isDark, toggleDark } from '~/logic'
-import { token } from '~/logic/axios'
+import { token } from '~/stores/user'
 
 const { t, availableLocales, locale } = useI18n()
 
