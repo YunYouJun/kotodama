@@ -62,9 +62,15 @@ Fork 本项目。
 
 ## FAQ
 
-### 403 Authorization 错误
+### Waline 403 Authorization 错误
 
 如果您无法正常连接您的 Waline 后台 API，您可能需要配置一下安全域名。
 将 `kotodama.yunyoujun.cn` 添加至您的安全域名中。
 
 > [secureDomains | Waline](https://waline.js.org/reference/server.html#securedomains)
+
+### 暗色太丑？
+
+别骂了，别骂了，先用亮色模式吧。等咱功能做的差不多了再优化。
+
+More info see [README.md](https://github.com/YunYouJun/kotodama/blob/main/README.md).

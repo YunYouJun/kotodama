@@ -47,6 +47,7 @@ declare module 'vue' {
     IRiSunLine: typeof import('~icons/ri/sun-line')['default']
     IRiTranslate: typeof import('~icons/ri/translate')['default']
     IRiTranslateLine: typeof import('~icons/ri/translate-line')['default']
+    MenuLink: typeof import('./components/global/MenuLink.vue')['default']
     README: typeof import('./components/README.md')['default']
   }
 }

@@ -4,6 +4,7 @@ import { token } from '~/stores/user'
 
 const { t, availableLocales, locale } = useI18n()
 
+const route = useRoute()
 const router = useRouter()
 
 const toggleLocales = () => {
@@ -20,12 +21,16 @@ const exit = () => {
 
 <template>
   <nav class="text-xl my-5">
-    <router-link class="icon-btn mx-2" to="/" :title="t('button.home')">
-      <i-ri-home-2-line />
-    </router-link>
-
-    <router-link v-if="token" class="icon-btn mx-2" to="/dashboard">
+    <router-link v-if="token" class="icon-btn mx-2" active-class="text-blue-500" to="/dashboard">
       <i-ri-dashboard-line />
+    </router-link>
+    <router-link
+      active-class="text-blue-500"
+      class="icon-btn mx-2"
+      to="/"
+      :title="t('button.home')"
+    >
+      <i-ri-home-2-line />
     </router-link>
 
     <button
@@ -41,7 +46,12 @@ const exit = () => {
       <i-ri-translate />
     </a>
 
-    <router-link class="icon-btn mx-2" to="/about" :title="t('button.about')">
+    <router-link
+      class="icon-btn mx-2"
+      active-class="text-blue-500"
+      to="/about"
+      :title="t('button.about')"
+    >
       <i-ri-file-info-line />
     </router-link>
 
