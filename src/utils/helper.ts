@@ -5,6 +5,6 @@ import md5 from 'md5'
  * @param email 
  * @returns 
  */
-export function getAvatarUrl(email: string) {
-  return `https://sdn.geekzu.org/avatar/${md5(email)}?s=40&r=G&d=`;
+export function getAvatarUrl(email: string, size = 40) {
+  return `https://sdn.geekzu.org/avatar/${md5(email)}?s=${size}&r=G&d=`;
 }

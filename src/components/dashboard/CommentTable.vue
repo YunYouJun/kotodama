@@ -19,7 +19,7 @@
               <a
                 v-if="scope.row.link"
                 class="text-blue-500"
-                :href="scope.row.link"
+                :href="(scope.row.link.startsWith('http') ? '' : 'http://') + scope.row.link"
                 target="_blank"
                 font="serif black"
               >{{ scope.row.nick }}</a>

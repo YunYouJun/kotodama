@@ -48,3 +48,9 @@ message:
   delete_success: Delete comment successfully!
   delete_error: Delete comment failed!
   load_error: Load data failed!
+
+user:
+  name: Username
+  url: URL
+  type: Type
+  update: Update

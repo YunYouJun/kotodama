@@ -19,7 +19,7 @@ $axios.interceptors.response.use(function (response) {
       showClose: true
     })
   }
-  return response;
+  return response.data;
 }, function (error) {
   ElMessage.error({
     message: error.message,

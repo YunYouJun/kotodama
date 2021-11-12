@@ -50,3 +50,9 @@ message:
   delete_success: 删除成功
   delete_error: 删除失败
   load_error: 加载失败
+
+user:
+  name: 用户名
+  url: 链接
+  type: 身份类型
+  update: 更新

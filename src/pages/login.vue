@@ -79,7 +79,7 @@ import { useRouter } from 'vue-router'
 import { login } from '~/api/auth'
 import { ElMessage } from 'element-plus'
 import { $axios } from '~/logic/axios'
-import { token, url } from '~/stores/user'
+import { url } from '~/stores/user'
 
 const router = useRouter()
 const { t } = useI18n()

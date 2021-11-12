@@ -30,7 +30,7 @@ export async function setAuthorization(token: string) {
  * @returns 
  */
 export async function login(payload: LoginParams, remember = true) {
-  const { data: res } = await $axios.post<LoginParams, AxiosResponse<WalineResponse<TokenData>>>('/token', payload)
+  const res = await $axios.post<LoginParams, WalineResponse<TokenData>>('/token', payload)
   if (res && res.data && res.data.token) {
     const resToken = res.data.token
     setAuthorization(resToken)
@@ -50,3 +50,9 @@ export async function login(payload: LoginParams, remember = true) {
 }
 
 
+/**
+ * 退出
+ */
+export function logout() {
+  token.value = ''
+}

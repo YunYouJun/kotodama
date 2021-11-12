@@ -1,3 +1,4 @@
+import type { CommentUserInfo } from "./user";
 import { $axios } from "~/logic/axios";
 import { WalineResponse } from "./waline";
 
@@ -19,14 +20,6 @@ export interface BaseItem {
   insertedAt: string
 }
 
-export interface UserInfo {
-  user_id: string
-  nick: string
-  ip: string
-  mail: string
-  link: string
-}
-
 export type CommentItem = {
   comment: string
   pid: string
@@ -37,7 +30,7 @@ export type CommentItem = {
    * 文章链接
    */
   url: string
-} & UserInfo & BaseItem
+} & CommentUserInfo & BaseItem
 
 export interface CommentList {
   data: CommentItem[]
@@ -52,15 +45,14 @@ export interface CommentList {
  * 获取评论列表
  * @param params 
  */
-export async function getCommentList(params: CommentParams) {
-  const { data } = await $axios.get<WalineResponse<CommentList>>('/comment', {
+export async function getCommentList(params: CommentParams): Promise<WalineResponse<CommentList>> {
+  return $axios.get('/comment', {
     params: {
       type: 'list',
       ...params.filter,
       page: params.page,
     }
   })
-  return data
 }
 
 export async function replyComment() {
@@ -72,7 +64,6 @@ export async function replyComment() {
  * @param id 
  * @returns 
  */
-export async function deleteComment(id: string) {
-  const { data } = await $axios.delete<WalineResponse<null>>(`/comment/${id}`);
-  return data
+export async function deleteComment(id: string): Promise<WalineResponse<null>> {
+  return $axios.delete(`/comment/${id}`);
 }

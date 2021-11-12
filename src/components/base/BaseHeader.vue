@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { logout } from '~/api/auth'
 import { isDark, toggleDark } from '~/logic'
 import { token } from '~/stores/user'
 
@@ -13,7 +14,7 @@ const toggleLocales = () => {
 }
 
 const exit = () => {
-  token.value = ''
+  logout()
   router.push('/login')
 }
 </script>
@@ -64,6 +65,10 @@ const exit = () => {
     >
       <i-ri-github-line />
     </a>
+
+    <router-link class="icon-btn mx-2" to="/user">
+      <i-ri-user-line />
+    </router-link>
 
     <router-link v-if="!token" class="icon-btn mx-2" to="/login" :title="t('button.login')">
       <i-mdi-login />
