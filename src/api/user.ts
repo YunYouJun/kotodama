@@ -9,20 +9,36 @@ export interface CommentUserInfo {
   link: string
 }
 
-export interface UserInfo {
-  email: string
-  github: string
-  type: 'administrator' | 'guest'
-  url: string
+interface BaseUserInfo {
   display_name: string
+  url: string
+  github: string
+}
+
+export interface UserInfo extends BaseUserInfo {
+  email: string
+  type: 'administrator' | 'guest'
+}
+
+export interface UserProfile extends BaseUserInfo {
+  password: string
 }
 
 /**
  * 注册用户
  * @param user 
  */
-export async function register(user: UserInfo) {
-  $axios.post('/user', user)
+export async function register(user: UserProfile): Promise<WalineResponse<null>> {
+  return $axios.post('/user', user)
+}
+
+/**
+ * 更新用户信息
+ * @param user 
+ * @returns 
+ */
+export async function updateUser(user: Partial<UserProfile>): Promise<WalineResponse<null>> {
+  return $axios.put('/user', user)
 }
 
 /**

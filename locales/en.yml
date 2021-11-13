@@ -48,9 +48,18 @@ message:
   delete_success: Delete comment successfully!
   delete_error: Delete comment failed!
   load_error: Load data failed!
+  update_success: Update successfully!
+  update_error: Update failed!
+  password_not_same: Two inputs don't match!
+  input_new_password: Please input new password
+  input_password_again: Please input the password again
 
 user:
+  github: GitHub Username
   name: Username
-  url: URL
+  url: URL (Starts with http or https)
   type: Type
-  update: Update
+  update_profile: Update Profile
+  update_password: Update Password
+  password: New Password
+  confirm_password: Confirm Password

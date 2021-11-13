@@ -70,6 +70,8 @@ declare module 'vue' {
     MenuLink: typeof import('./components/global/MenuLink.vue')['default']
     README: typeof import('./components/README.md')['default']
     SystemBadge: typeof import('./components/internal/SystemBadge.vue')['default']
+    UpdatePassword: typeof import('./components/user/UpdatePassword.vue')['default']
+    UpdateProfile: typeof import('./components/user/UpdateProfile.vue')['default']
   }
 }
 

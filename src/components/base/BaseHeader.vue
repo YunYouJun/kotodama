@@ -66,7 +66,7 @@ const exit = () => {
       <i-ri-github-line />
     </a>
 
-    <router-link class="icon-btn mx-2" to="/user">
+    <router-link v-if="token" class="icon-btn mx-2" to="/user">
       <i-ri-user-line />
     </router-link>
 

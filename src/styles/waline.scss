@@ -4,3 +4,9 @@
   margin-left: 2px;
   margin-right: 2px;
 }
+
+.el-table {
+  a {
+    @apply text-blue-500;
+  }
+}

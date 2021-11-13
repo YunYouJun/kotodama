@@ -50,9 +50,22 @@ message:
   delete_success: 删除成功
   delete_error: 删除失败
   load_error: 加载失败
+  update_success: 更新成功
+  update_error: 更新失败
+  password_not_same: 两次输入的密码不一致！
+  input_new_password: 请输入新的密码
+  input_password_again: 请再次输入密码
 
 user:
+  github: GitHub 用户名
   name: 用户名
-  url: 链接
+  url: 链接（以 http 或 https 开头）
   type: 身份类型
-  update: 更新
+  update_profile: 更新档案
+  update_password: 更新密码
+  password: 新的密码
+  confirm_password: 确认密码
+
+title:
+  profile: 用户信息
+  password: 修改密码

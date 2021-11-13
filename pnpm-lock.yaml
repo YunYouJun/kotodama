@@ -28,7 +28,7 @@ specifiers:
   md5: ^2.3.0
   nprogress: ^0.2.0
   pinia: ^2.0.3
-  pnpm: ^6.21.0
+  pnpm: ^6.21.1
   prism-theme-vars: ^0.2.2
   sass: ^1.43.4
   typescript: ^4.4.4
@@ -86,7 +86,7 @@ devDependencies:
   https-localhost: 4.7.0
   markdown-it-link-attributes: 3.0.0
   markdown-it-prism: 2.2.1
-  pnpm: 6.21.0
+  pnpm: 6.21.1
   sass: 1.43.4
   typescript: 4.4.4
   unplugin-auto-import: 0.4.14_@vueuse+core@6.8.0+vite@2.6.14
@@ -5084,8 +5084,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /pnpm/6.21.0:
-    resolution: {integrity: sha512-Emhpjbr7MiINYUP6d/X5c2vPa5ltkA1EhJ0wmGotrYZs7DCFvy6SW+RKTGNddedqLhL14LTK+4pE1rHWcQnnfg==, tarball: pnpm/download/pnpm-6.21.0.tgz}
+  /pnpm/6.21.1:
+    resolution: {integrity: sha512-cekH8bFgZbHerGsmW4JYY5bi0jYyi/K7WZpSf8TQFlP3Kxc50KhCwNWPUzgLVImYyX8SCJcVhyNOoYQKDnmYCw==, tarball: pnpm/download/pnpm-6.21.1.tgz}
     engines: {node: '>=12.17'}
     hasBin: true
     dev: true
