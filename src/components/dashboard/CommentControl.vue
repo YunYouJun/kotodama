@@ -38,8 +38,6 @@
       />
     </div>
     <div v-else v-html="item.comment"></div>
-
-    
   </div>
 
   <div class="flex justify-between absolute left-2 right-2 bottom-1">

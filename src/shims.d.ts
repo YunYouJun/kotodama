@@ -1,7 +1,7 @@
 /* eslint-disable import/no-duplicates */
-
 declare interface Window {
   // extend the window
+  Waline: any
 }
 
 // with vite-plugin-md, markdowns can be treat as Vue components
