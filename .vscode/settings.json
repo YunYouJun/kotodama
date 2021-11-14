@@ -1,7 +1,5 @@
 {
-  "cSpell.words": [
-    "kotodama",
-  ],
+  "cSpell.words": ["kotodama"],
   "i18n-ally.keystyle": "nested",
   "i18n-ally.localesPaths": "locales",
   "i18n-ally.sortKeys": true,
@@ -13,4 +11,5 @@
   "files.associations": {
     "*.css": "postcss",
   },
+  "editor.formatOnSave": false,
 }

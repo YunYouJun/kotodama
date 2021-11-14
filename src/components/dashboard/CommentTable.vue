@@ -2,7 +2,7 @@
   <el-table
     v-loading="loading"
     :data="
-      commentListInfo?.data.filter(
+      commentStore.commentListInfo?.data.filter(
         (data) =>
           !search || data.nick.toLowerCase().includes(search.toLowerCase())
       )
@@ -41,37 +41,6 @@
     </el-table-column>
 
     <el-table-column :label="t('dashboard.content')" min-width="300" prop="comment">
-      <template #default="scope">
-        <div
-          m="r-2"
-          class="text-xs opacity-90 inline-flex justify-start items-center"
-          :title="t('dashboard.createdAt')"
-        >
-          <i-ri-pencil-line class="mr-1" />
-          {{ dayjs(scope.row.createdAt).format('YYYY-MM-DD HH:mm:ss') }}
-        </div>
-        <a
-          class="inline-flex justify-center items-center text-blue-500 text-xs mb-2"
-          :href="url + scope.row.url"
-          target="_blank"
-        >
-          <i-ri-link class="mr-1" />
-          {{ scope.row.url }}
-        </a>
-        <div
-          v-if="scope.row.createdAt !== scope.row.updatedAt"
-          m="l-2"
-          class="text-xs opacity-90 flex justify-start items-center"
-          :title="t('dashboard.updatedAt')"
-        >
-          <i-ri-refresh-line class="mr-1" />
-          {{ dayjs(scope.row.updatedAt).format('YYYY-MM-DD HH:mm:ss') }}
-        </div>
-        <div v-html="scope.row.comment"></div>
-      </template>
-    </el-table-column>
-
-    <el-table-column width="150">
       <template #header>
         <el-input v-model="search" size="mini" :placeholder="t('placeholder.search')">
           <template #prefix>
@@ -82,48 +51,33 @@
         </el-input>
       </template>
       <template #default="scope">
-        <div class="mt-2 flex justify-center">
-          <el-tooltip content="Todo: 还没做">
-            <el-button size="small" type="primary" plain title="编辑" circle>
-              <i-ri-edit-line />
-            </el-button>
-          </el-tooltip>
-          <el-popconfirm
-            :title="t('message.delete')"
-            @confirm="triggerDeleteComment(scope.row.objectId)"
-          >
-            <template #reference>
-              <el-button size="small" type="danger" plain circle title="删除">
-                <i-ri-delete-bin-line />
-              </el-button>
-            </template>
-          </el-popconfirm>
-        </div>
+        <CommentControl :item="scope.row" />
       </template>
     </el-table-column>
   </el-table>
 
-  <el-pagination
-    class="my-1 py-4 overflow-scroll"
-    layout="prev, pager, next, jumper"
-    background
-    :current-page="currentPage"
-    :page-size="commentListInfo?.pageSize"
-    :page-count="commentListInfo?.totalPages"
-    @update:current-page="toggleCurrentPage"
-    @update:page-size="updatePageSize"
-  ></el-pagination>
+  <div class="flex items-center justify-center overflow-x-auto bg-white" p="2">
+    <el-pagination
+      layout="prev, pager, next, jumper"
+      background
+      :current-page="currentPage"
+      :page-size="commentStore.commentListInfo?.pageSize"
+      :page-count="commentStore.commentListInfo?.totalPages"
+      @update:current-page="toggleCurrentPage"
+      @update:page-size="updatePageSize"
+    ></el-pagination>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import dayjs from 'dayjs'
 import { ElMessage } from 'element-plus';
 const { t } = useI18n()
-import { CommentList, CommentParams, deleteComment, getCommentList } from '~/api/comment';
-import { url } from '~/stores/user';
+import { CommentParams,  getCommentList } from '~/api/comment';
+import { useCommentStore } from '~/stores/comment';
 import { getAvatarUrl } from '~/utils';
 
-const commentListInfo = ref<CommentList>()
+const commentStore = useCommentStore()
+
 const loading = ref(true)
 const search = ref('')
 const filter = reactive<CommentParams['filter']>({
@@ -139,7 +93,7 @@ const fetchCommentList = async () => {
       page: currentPage.value,
       filter
     })
-    commentListInfo.value = data
+    commentStore.commentListInfo = data
   } catch {
     ElMessage.error({
       message: t('message.load_error'),
@@ -162,15 +116,4 @@ const toggleCurrentPage = async (page: number) => {
 }
 
 const updatePageSize = () => { }
-
-const triggerDeleteComment = async (id: string) => {
-  const data = await deleteComment(id)
-  if (data.errno === 0) {
-    ElMessage.success(t('message.delete_success'))
-    if (commentListInfo.value)
-      commentListInfo.value.data = commentListInfo.value?.data.filter((item) => item.objectId !== id)
-  } else {
-    ElMessage.error(t('message.delete_error') + data.errmsg)
-  }
-}
 </script>

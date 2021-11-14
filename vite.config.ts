@@ -91,7 +91,9 @@ export default defineConfig({
       headEnabled: true,
       markdownItSetup(md) {
         // https://prismjs.com/
+        // @ts-expect-error types mismatch
         md.use(Prism)
+        // @ts-expect-error types mismatch
         md.use(LinkAttributes, {
           pattern: /^https?:\/\//,
           attrs: {
@@ -163,7 +165,9 @@ export default defineConfig({
       'vue-router',
       '@vueuse/core',
       '@vueuse/head',
-      'element-plus'
+      'element-plus',
+      'axios',
+      'dayjs'
     ],
     exclude: [
       'vue-demi',

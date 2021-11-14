@@ -60,6 +60,15 @@ export async function replyComment() {
 }
 
 /**
+ * 更新评论
+ * @param id
+ * @returns 
+ */
+export async function updateComment(id: string, data: Partial<CommentItem>): Promise<WalineResponse<null>> {
+  return $axios.put(`/comment/${id}`, data);
+}
+
+/**
  * 删除评论
  * @param id 
  * @returns 

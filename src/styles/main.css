@@ -40,8 +40,8 @@ html.dark {
 }
 
 .icon-btn {
-  @apply inline-block cursor-pointer select-none
-    opacity-75 transition duration-200 ease-in-out
-    hover:opacity-100 hover:text-blue-500 inline-flex justify-center items-center;
+  @apply w-8 h-8 inline-flex justify-center items-center cursor-pointer
+    opacity-75 transition duration-200 rounded-full
+   hover:(text-blue-500);
   font-size: 0.9em;
 }
