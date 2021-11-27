@@ -32,7 +32,7 @@
       <el-input
         v-model="item.comment"
         class="w-full"
-        placeholder="编辑内容"
+        :placeholder="t('placeholder.edit_content')"
         type="textarea"
         autosize
       />
@@ -45,7 +45,7 @@
       v-if="item.status !== 'approved'"
       class="icon-btn"
       hover="text-green-500 bg-green-500 bg-opacity-20"
-      title="通过"
+      :title="t('button.approve')"
       @click="updateComment(item.objectId, { status: 'approved' })"
     >
       <i-ri-check-line />
@@ -54,7 +54,7 @@
       v-if="item.status !== 'waiting'"
       class="icon-btn"
       hover="text-blue-500 bg-blue-500 bg-opacity-20"
-      title="移入待审核"
+      :title="t('button.move_to_waiting')"
       @click="updateComment(item.objectId, { status: 'waiting' })"
     >
       <i-ri-todo-line />
@@ -63,16 +63,16 @@
       v-if="item.status !== 'spam'"
       class="icon-btn"
       hover="text-red-500 bg-red-500 bg-opacity-20"
-      title="移入垃圾"
+      :title="t('button.move_to_spam')"
       @click="updateComment(item.objectId, { status: 'spam' })"
     >
       <i-ri-chat-delete-line />
     </div>
 
-    <div v-if="isEditing" class="icon-btn" hover="text-blue-500 bg-blue-500 bg-opacity-20" title="保存" @click="saveComment">
+    <div v-if="isEditing" class="icon-btn" hover="text-blue-500 bg-blue-500 bg-opacity-20" :title="t('button.save')" @click="saveComment">
       <i-ri-save-line />
     </div>
-    <div v-else class="icon-btn" hover="text-blue-500 bg-blue-500 bg-opacity-20" title="编辑" @click="editComment">
+    <div v-else class="icon-btn" hover="text-blue-500 bg-blue-500 bg-opacity-20" :title="t('button.edit')" @click="editComment">
       <i-ri-edit-line />
     </div>
     <div

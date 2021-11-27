@@ -35,7 +35,7 @@ const { t } = useI18n()
     </blockquote>
 
     <router-link v-if="token" class="btn m-1" to="/dashboard">
-      {{ t('button.dashboard') }}
+      {{ t('dashboard.title') }}
     </router-link>
 
     <router-link v-else class="btn m-1" to="/login">

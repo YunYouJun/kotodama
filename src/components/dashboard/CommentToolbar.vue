@@ -44,15 +44,15 @@ interface StatusItem {
 
 const statusItems: StatusItem[] = [
   {
-    title: '已通过',
+    title: t('status.approved'),
     value: 'approved',
     icon: IconRiChatCheckLine,
   }, {
-    title: '待审核',
+    title: t('status.waiting'),
     value: 'waiting',
     icon: IconRiMessageLine,
   }, {
-    title: '垃圾',
+    title: t('status.spam'),
     value: 'spam',
     icon: IconRiChatDeleteLine,
   },
@@ -60,11 +60,11 @@ const statusItems: StatusItem[] = [
 
 const ownerItems = [
   {
-    title: '所有',
+    title: t('owner.all'),
     value: 'all',
   },
   {
-    title: '我的',
+    title: t('owner.mine'),
     value: 'mine',
   },
 ]

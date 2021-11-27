@@ -10,12 +10,19 @@ button:
   register: 注册
   exit: 退出
 
+  save: 保存
+  edit: 编辑
+  approve: 通过
+  move_to_waiting: 移入待审核
+  move_to_spam: 移入垃圾
+
 intro:
   desc: 💬 掌控言灵的魔法，一个优雅的纯静态评论管理后台
   dynamic-route: 动态路由演示
   hi: 你好，{name}
   aka: 也叫
 not-found: 未找到页面
+
 placeholder:
   server_url: Waline 服务端地址，如 https://waline.xx.xx
   email: 邮箱
@@ -24,6 +31,7 @@ placeholder:
   search: 搜索当前页
   keyword: 搜索关键字
   empty: 还没有相关评论哦～
+  edit_content: 编辑内容
 
 login:
   title: 登录
@@ -35,6 +43,7 @@ error:
   password: 密码不能少于六个数字
 
 dashboard:
+  title: 仪表盘
   author: 发布者
   content: 评论内容
   time: 时间
@@ -42,9 +51,13 @@ dashboard:
   updatedAt: 更新于
 
 status:
-  approved: 通过
+  approved: 已通过
   waiting: 待审核
   spam: 垃圾
+
+owner:
+  all: 所有
+  mine: 我的
 
 message:
   login_success: 登录成功

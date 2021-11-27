@@ -10,12 +10,20 @@ button:
   register: Register
   exit: Exit
 
+  save: Save
+  edit: Edit
+  approve: Approve
+  move_to_waiting: Move to Waiting
+  move_to_spam: Move to Spam
+
+
 intro:
   desc: 💬 Control the magic of speech spirit, an elegant pure static comment management system
   dynamic-route: Demo of dynamic route
   hi: Hi, {name}!
   aka: Also known as
 not-found: Not found
+
 placeholder:
   server_url: Server Url
   username: Username
@@ -23,6 +31,7 @@ placeholder:
   search: Type to search
   keyword: Search Keyword
   empty: There are no comments yet~
+  edit_content: Edit Content
 
 login:
   title: Login
@@ -43,6 +52,10 @@ status:
   approved: Approved
   waiting: Waiting
   spam: Spam
+  
+owner:
+  all: All
+  mine: Mine
 
 message:
   login_success: Login successfully!
@@ -65,3 +78,7 @@ user:
   update_password: Update Password
   password: New Password
   confirm_password: Confirm Password
+
+title:
+  profile: User Profile
+  password: Modify Password
