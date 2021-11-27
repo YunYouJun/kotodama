@@ -1,9 +1,9 @@
 export interface WalineResponse<T> {
-  data: T,
+  data: T
   /**
    * 错误信息
    */
-  errmsg: string,
+  errmsg: string
   /**
    * 错误码
    */

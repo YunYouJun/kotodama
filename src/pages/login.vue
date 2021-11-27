@@ -10,7 +10,9 @@
         label-position="left"
       >
         <div class="title-container">
-          <h2 text="2xl" p="10">{{ t('login.title') }}</h2>
+          <h2 text="2xl" p="10">
+            {{ t('login.title') }}
+          </h2>
         </div>
 
         <el-form-item prop="serverUrl" required>
@@ -54,9 +56,11 @@
           <el-button
             type="primary"
             class="block w-full"
-            @click="handleLogin"
             :loading="loading"
-          >{{ t('button.login') }}</el-button>
+            @click="handleLogin"
+          >
+            {{ t('button.login') }}
+          </el-button>
         </el-form-item>
       </el-form>
 
@@ -73,11 +77,11 @@
 </template>
 
 <script lang="ts" setup>
-import { validUsername } from '~/utils/validate'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import { login } from '~/api/auth'
 import { ElMessage } from 'element-plus'
+import { login } from '~/api/auth'
+import { validUsername } from '~/utils/validate'
 import { $axios } from '~/logic/axios'
 import { url } from '~/stores/user'
 
@@ -89,9 +93,9 @@ const serverUrl = useStorage(`${namespace}-serverUrl`, '')
 
 const loading = ref(false)
 const loginForm = reactive({
-  serverUrl: serverUrl,
+  serverUrl,
   username: '',
-  password: ''
+  password: '',
 })
 
 const loginFormEl = ref()
@@ -100,39 +104,36 @@ const passwordEl = ref()
 const remember = ref(true)
 
 const validateUsername = (rule: any, value: string, callback: Function) => {
-  if (!validUsername(value)) {
+  if (!validUsername(value))
     callback(new Error(t('error.username')))
-  } else {
+  else
     callback()
-  }
 }
 
 const validatePassword = (rule: any, value: string, callback: Function) => {
-  if (value.length < 6) {
+  if (value.length < 6)
     callback(new Error(t('error.password')))
-  } else {
+  else
     callback()
-  }
 }
 
 const loginRules = {
   username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-  password: [{ required: true, trigger: 'blur', validator: validatePassword }]
+  password: [{ required: true, trigger: 'blur', validator: validatePassword }],
 }
 
 onMounted(() => {
-  if (loginForm.username === '') {
+  if (loginForm.username === '')
     usernameEl.value.focus()
-  } else if (loginForm.password === '') {
+  else if (loginForm.password === '')
     passwordEl.value.focus()
-  }
 })
 
 /**
  * 处理登录逻辑
  */
 function handleLogin() {
-  loginFormEl.value.validate(async (valid: boolean) => {
+  loginFormEl.value.validate(async(valid: boolean) => {
     if (valid) {
       $axios.defaults.baseURL = loginForm.serverUrl
 
@@ -141,7 +142,7 @@ function handleLogin() {
       try {
         const res = await login({
           email: loginForm.username,
-          password: loginForm.password
+          password: loginForm.password,
         }, remember.value)
         if (res && res.data && res.data.token) {
           // token
@@ -150,15 +151,17 @@ function handleLogin() {
           router.push('/dashboard')
           ElMessage.success({
             message: t('message.login_success'),
-            showClose: true
-          })
-        } else {
-          ElMessage.success({
-            message: res.errmsg,
-            showClose: true
+            showClose: true,
           })
         }
-      } catch {
+        else {
+          ElMessage.success({
+            message: res.errmsg,
+            showClose: true,
+          })
+        }
+      }
+      catch {
         // token.value = ''
       }
 

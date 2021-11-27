@@ -1,5 +1,5 @@
-import { $axios } from "~/logic/axios";
-import { WalineResponse } from "./waline";
+import { WalineResponse } from './waline'
+import { $axios } from '~/logic/axios'
 
 export interface CommentUserInfo {
   user_id: string
@@ -26,7 +26,7 @@ export interface UserProfile extends BaseUserInfo {
 
 /**
  * 注册用户
- * @param user 
+ * @param user
  */
 export async function register(user: UserProfile): Promise<WalineResponse<null>> {
   return $axios.post('/user', user)
@@ -34,8 +34,8 @@ export async function register(user: UserProfile): Promise<WalineResponse<null>>
 
 /**
  * 更新用户信息
- * @param user 
- * @returns 
+ * @param user
+ * @returns
  */
 export async function updateUser(user: Partial<UserProfile>): Promise<WalineResponse<null>> {
   return $axios.put('/user', user)

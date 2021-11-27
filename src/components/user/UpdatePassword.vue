@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form :model="pwdForm" ref="pwdFormRef" :rules="rules">
+    <el-form ref="pwdFormRef" :model="pwdForm" :rules="rules">
       <el-form-item prop="pass" required>
         <el-input
           v-model="pwdForm.pass"
@@ -22,9 +22,11 @@
         <el-button
           type="primary"
           class="w-full"
-          @click="updatePassword"
           :loading="loading"
-        >{{ t('user.update_password') }}</el-button>
+          @click="updatePassword"
+        >
+          {{ t('user.update_password') }}
+        </el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -45,27 +47,27 @@ const pwdForm = ref({
 const validatePass = (rule: any, value: string, callback: any) => {
   if (value === '') {
     callback(new Error(t('message.input_new_password')))
-  } else if (value.length < 6) {
+  }
+  else if (value.length < 6) {
     callback(new Error(t('error.password')))
   }
   else {
-    if (pwdForm.value.checkPass !== '') {
+    if (pwdForm.value.checkPass !== '')
       pwdFormRef.value.validateField('checkPass')
-    }
+
     callback()
   }
 }
 
 const validatePass2 = (rule: any, value: string, callback: any) => {
-  if (value === '') {
+  if (value === '')
     callback(new Error(t('message.input_password_again')))
-  } else if (value.length < 6) {
+  else if (value.length < 6)
     callback(new Error(t('error.password')))
-  } else if (value !== pwdForm.value.pass) {
+  else if (value !== pwdForm.value.pass)
     callback(new Error(t('message.password_not_same')))
-  } else {
+  else
     callback()
-  }
 }
 
 const rules = {
@@ -74,24 +76,25 @@ const rules = {
 }
 
 const updatePassword = () => {
-  pwdFormRef.value.validate(async (valid: boolean) => {
+  pwdFormRef.value.validate(async(valid: boolean) => {
     if (valid) {
       loading.value = true
       await updateUser({
-        password: pwdForm.value.pass
-      }).then(res => {
+        password: pwdForm.value.pass,
+      }).then((res) => {
         if (res.errno === 0) {
           ElMessage.success({
             message: t('message.update_success'),
-            showClose: true
+            showClose: true,
           })
         }
       })
       loading.value = false
-    } else {
+    }
+    else {
       ElMessage.error({
         message: '请检查密码是否一致！',
-        showClose: true
+        showClose: true,
       })
       return false
     }

@@ -1,22 +1,7 @@
 <script setup lang="ts">
-import { token } from '~/stores/user';
+import { token } from '~/stores/user'
 
-const router = useRouter()
 const { t } = useI18n()
-
-const pages = [
-  {
-    name: '登录',
-    path: '/login'
-  }
-]
-
-onBeforeMount(() => {
-  // 若已登录，自动进入管理面板
-  if (token.value) {
-    router.push('/dashboard')
-  }
-})
 </script>
 
 <template>
@@ -40,7 +25,7 @@ onBeforeMount(() => {
       <a class="text-blue-500" href="https://github.com/walinejs/waline" target="_blank">Waline</a> 后台评论接口）开发中……（又不是不能用）
     </div>
 
-    <blockquote>
+    <blockquote m="2">
       More info see
       <a
         class="text-blue-500"
@@ -49,12 +34,12 @@ onBeforeMount(() => {
       >Waline #552.</a>
     </blockquote>
 
-    <h2 class="py-5" text="sm" font="bold">已完成页面</h2>
+    <router-link v-if="token" class="btn m-1" to="/dashboard">
+      {{ t('button.dashboard') }}
+    </router-link>
 
-    <div v-for="page in pages">
-      <router-link :to="page.path">
-        <div class="btn">{{ page.name }}</div>
-      </router-link>
-    </div>
+    <router-link v-else class="btn m-1" to="/login">
+      {{ t('button.login') }}
+    </router-link>
   </div>
 </template>

@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { url } from '~/stores/user';
-import { getScript } from '~/utils';
+import { url } from '~/stores/user'
+import { getScript } from '~/utils'
 
 const route = useRoute()
-const pageUrl = route.query['url']?.toString() || '/'
+const pageUrl = route.query.url?.toString() || '/'
 
 // 文章标题
 const title = ref('')
 
-onBeforeMount(async () => {
+onBeforeMount(async() => {
   // 获取链接页面信息，转换为卡片，后续考虑可以封装为一个单独的 NPM 包
   const data = await fetch(url.value + pageUrl).then(res => res.text())
   const domParser = new DOMParser()
@@ -24,7 +24,12 @@ onMounted(() => {
       el: '#waline',
       serverURL: 'https://waline.yunyoujun.cn',
       path: pageUrl,
-      dark: '.dark'
+      dark: '.dark',
+      emoji: [
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo',
+      ],
     })
   })
 })

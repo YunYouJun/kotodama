@@ -167,7 +167,9 @@ export default defineConfig({
       '@vueuse/head',
       'element-plus',
       'axios',
-      'dayjs'
+      'dayjs',
+      'ua-parser-js',
+      'md5',
     ],
     exclude: [
       'vue-demi',

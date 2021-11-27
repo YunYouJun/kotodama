@@ -28,10 +28,10 @@
       </div>
     </div>
 
-    <div class="w-full" v-if="isEditing">
+    <div v-if="isEditing" class="w-full">
       <el-input
-        class="w-full"
         v-model="item.comment"
+        class="w-full"
         placeholder="编辑内容"
         type="textarea"
         autosize
@@ -41,11 +41,39 @@
   </div>
 
   <div class="flex justify-between absolute left-2 right-2 bottom-1">
+    <div
+      v-if="item.status !== 'approved'"
+      class="icon-btn"
+      hover="text-green-500 bg-green-500 bg-opacity-20"
+      title="通过"
+      @click="updateComment(item.objectId, { status: 'approved' })"
+    >
+      <i-ri-check-line />
+    </div>
+    <div
+      v-if="item.status !== 'waiting'"
+      class="icon-btn"
+      hover="text-blue-500 bg-blue-500 bg-opacity-20"
+      title="移入待审核"
+      @click="updateComment(item.objectId, { status: 'waiting' })"
+    >
+      <i-ri-todo-line />
+    </div>
+    <div
+      v-if="item.status !== 'spam'"
+      class="icon-btn"
+      hover="text-red-500 bg-red-500 bg-opacity-20"
+      title="移入垃圾"
+      @click="updateComment(item.objectId, { status: 'spam' })"
+    >
+      <i-ri-chat-delete-line />
+    </div>
+
     <div v-if="isEditing" class="icon-btn" hover="text-blue-500 bg-blue-500 bg-opacity-20" title="保存" @click="saveComment">
       <i-ri-save-line />
     </div>
     <div v-else class="icon-btn" hover="text-blue-500 bg-blue-500 bg-opacity-20" title="编辑" @click="editComment">
-      <i-ri-edit-line/>
+      <i-ri-edit-line />
     </div>
     <div
       class="icon-btn"
@@ -72,9 +100,9 @@
 
 <script lang="ts" setup>
 import dayjs from 'dayjs'
-import { url } from '~/stores/user';
-
 import { ElMessage } from 'element-plus'
+import { url } from '~/stores/user'
+
 import { CommentItem, deleteComment, updateComment } from '~/api/comment'
 import { useCommentStore } from '~/stores/comment'
 
@@ -89,37 +117,38 @@ const router = useRouter()
 const loading = ref(false)
 const commentStore = useCommentStore()
 
-const triggerDeleteComment = async (id: string) => {
+const triggerDeleteComment = async(id: string) => {
   const data = await deleteComment(id)
   if (data.errno === 0) {
     ElMessage.success(t('message.delete_success'))
     if (commentStore.commentListInfo)
-      commentStore.commentListInfo.data = commentStore.commentListInfo?.data.filter((item) => item.objectId !== id)
-  } else {
+      commentStore.commentListInfo.data = commentStore.commentListInfo?.data.filter(item => item.objectId !== id)
+  }
+  else {
     ElMessage.error(t('message.delete_error') + data.errmsg)
   }
 }
 
 const isEditing = ref(false)
+
 /**
  * 编辑评论
  */
 const editComment = () => {
-  console.log('edit')
   isEditing.value = true
 }
 
 /**
  * 保存评论
  */
-const saveComment = async ()=> {
+const saveComment = async() => {
   loading.value = true
-  const data =await updateComment(props.item.objectId, {
-    comment: props.item.comment
+  const data = await updateComment(props.item.objectId, {
+    comment: props.item.comment,
   })
   if (data.errno === 0) {
     ElMessage.success({
-      message: t('message.update_success')
+      message: t('message.update_success'),
     })
   }
   loading.value = false

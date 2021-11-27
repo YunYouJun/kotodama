@@ -2,7 +2,9 @@
   <el-menu router :collapse="app.isCollapse">
     <el-menu-item v-for="item in menuList" :key="item.index" :index="item.index">
       <component :is="item.icon" class="menu-item-icon -mt-1 mr-4" />
-      <template #title>{{ item.title }}</template>
+      <template #title>
+        {{ item.title }}
+      </template>
     </el-menu-item>
   </el-menu>
 </template>

@@ -21,6 +21,8 @@ placeholder:
   username: Username
   password: Password
   search: Type to search
+  keyword: Search Keyword
+  empty: There are no comments yet~
 
 login:
   title: Login

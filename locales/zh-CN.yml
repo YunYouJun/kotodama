@@ -22,6 +22,8 @@ placeholder:
   username: 用户名
   password: 密码
   search: 搜索当前页
+  keyword: 搜索关键字
+  empty: 还没有相关评论哦～
 
 login:
   title: 登录

@@ -1,16 +1,16 @@
-import type { CommentUserInfo } from "./user";
-import { $axios } from "~/logic/axios";
-import { WalineResponse } from "./waline";
+import type { CommentUserInfo } from './user'
+import { WalineResponse } from './waline'
+import { $axios } from '~/logic/axios'
 
 export type CommentStatus = 'approved' | 'waiting' | 'spam'
 
 export interface CommentParams {
-  page: number;
+  page: number
   filter: {
     owner: string
     keyword: string
     status: CommentStatus
-  };
+  }
 }
 
 export interface BaseItem {
@@ -43,7 +43,7 @@ export interface CommentList {
 
 /**
  * 获取评论列表
- * @param params 
+ * @param params
  */
 export async function getCommentList(params: CommentParams): Promise<WalineResponse<CommentList>> {
   return $axios.get('/comment', {
@@ -51,7 +51,7 @@ export async function getCommentList(params: CommentParams): Promise<WalineRespo
       type: 'list',
       ...params.filter,
       page: params.page,
-    }
+    },
   })
 }
 
@@ -62,17 +62,17 @@ export async function replyComment() {
 /**
  * 更新评论
  * @param id
- * @returns 
+ * @returns
  */
 export async function updateComment(id: string, data: Partial<CommentItem>): Promise<WalineResponse<null>> {
-  return $axios.put(`/comment/${id}`, data);
+  return $axios.put(`/comment/${id}`, data)
 }
 
 /**
  * 删除评论
- * @param id 
- * @returns 
+ * @param id
+ * @returns
  */
 export async function deleteComment(id: string): Promise<WalineResponse<null>> {
-  return $axios.delete(`/comment/${id}`);
+  return $axios.delete(`/comment/${id}`)
 }

@@ -1,6 +1,8 @@
 <template>
+  <CommentToolbar />
+
   <el-table
-    v-loading="loading"
+    v-loading="commentStore.loading"
     :data="
       commentStore.commentListInfo?.data.filter(
         (data) =>
@@ -8,6 +10,7 @@
       )
     "
     style="width: 100%"
+    :empty-text="t('placeholder.empty')"
   >
     <el-table-column type="selection" width="40" />
     <el-table-column width="150" :label="t('dashboard.author')" prop="nick">
@@ -27,14 +30,14 @@
             </div>
           </div>
           <a
+            v-if="scope.row.mail"
             class="block text-xs text-blue-900"
             font="mono normal"
             m="y-2"
-            v-if="scope.row.mail"
             :href="`mailto:${scope.row.mail}`"
             target="_blank"
           >{{ scope.row.mail }}</a>
-          <span class="block" font="mono normal" text="xs" v-if="scope.row.ip">{{ scope.row.ip }}</span>
+          <span v-if="scope.row.ip" class="block" font="mono normal" text="xs">{{ scope.row.ip }}</span>
           <SystemBadge :ua="scope.row.ua" />
         </div>
       </template>
@@ -56,8 +59,9 @@
     </el-table-column>
   </el-table>
 
-  <div class="flex items-center justify-center overflow-x-auto bg-white" p="2">
+  <div class="flex items-center justify-center overflow-auto bg-white" p="y-3">
     <el-pagination
+      class="w-full"
       layout="prev, pager, next, jumper"
       background
       :current-page="currentPage"
@@ -70,49 +74,22 @@
 </template>
 
 <script lang="ts" setup>
-import { ElMessage } from 'element-plus';
+import { useCommentStore } from '~/stores/comment'
+import { getAvatarUrl } from '~/utils'
 const { t } = useI18n()
-import { CommentParams,  getCommentList } from '~/api/comment';
-import { useCommentStore } from '~/stores/comment';
-import { getAvatarUrl } from '~/utils';
 
 const commentStore = useCommentStore()
 
-const loading = ref(true)
 const search = ref('')
-const filter = reactive<CommentParams['filter']>({
-  owner: 'all',
-  status: 'approved',
-  keyword: ''
-})
 const currentPage = ref(1)
 
-const fetchCommentList = async () => {
-  try {
-    const { data } = await getCommentList({
-      page: currentPage.value,
-      filter
-    })
-    commentStore.commentListInfo = data
-  } catch {
-    ElMessage.error({
-      message: t('message.load_error'),
-      showClose: true
-    })
-  }
-
-  loading.value = false
-}
-
-onBeforeMount(async () => {
-  fetchCommentList()
+onBeforeMount(async() => {
+  commentStore.fetchCommentList()
 })
 
-const toggleCurrentPage = async (page: number) => {
-  currentPage.value = page
-  loading.value = true
-  await fetchCommentList()
-  loading.value = false
+const toggleCurrentPage = async(page: number) => {
+  commentStore.currentPage = page
+  await commentStore.fetchCommentList()
 }
 
 const updatePageSize = () => { }

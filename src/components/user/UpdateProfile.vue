@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { ElMessage } from 'element-plus';
-import { getUserInfo, updateUser, UserInfo } from '~/api/user';
-import { getAvatarUrl } from '~/utils';
+import { ElMessage } from 'element-plus'
+import { getUserInfo, updateUser, UserInfo } from '~/api/user'
+import { getAvatarUrl } from '~/utils'
 
 const { t } = useI18n()
 
@@ -10,10 +10,10 @@ const userInfo = ref<UserInfo>({
   github: '',
   type: 'administrator',
   url: '',
-  display_name: ''
+  display_name: '',
 })
 
-onBeforeMount(async () => {
+onBeforeMount(async() => {
   const { data } = await getUserInfo()
   userInfo.value = data
   // console.log(userInfo.value)
@@ -24,11 +24,11 @@ const update = () => {
     display_name: userInfo.value.display_name,
     url: userInfo.value.url,
     github: userInfo.value.github,
-  }).then(res => {
+  }).then((res) => {
     if (res.errno === 0) {
       ElMessage.success({
         message: t('message.update_success'),
-        showClose: true
+        showClose: true,
       })
     }
   })
@@ -120,7 +120,9 @@ const update = () => {
     </el-form-item>
 
     <el-form-item>
-      <el-button type="primary" class="w-full" @click="update">{{ t('user.update_profile') }}</el-button>
+      <el-button type="primary" class="w-full" @click="update">
+        {{ t('user.update_profile') }}
+      </el-button>
     </el-form-item>
   </el-form>
 </template>
