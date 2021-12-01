@@ -1,6 +1,7 @@
 import { WalineResponse } from './waline'
 import { $axios } from '~/logic/axios'
 import { token } from '~/stores/user'
+import type { UserInfo } from '~/api/user'
 
 export interface LoginParams {
   email: string
@@ -52,4 +53,14 @@ export async function login(payload: LoginParams, remember = true) {
  */
 export function logout() {
   token.value = ''
+}
+
+export type RegisterParams = Omit<UserInfo, 'github' | 'type'> & { password: string }
+
+/**
+ * 注册
+ */
+export async function register(payload: RegisterParams) {
+  const res = await $axios.post<RegisterParams, WalineResponse<TokenData>>('/user', payload)
+  return res
 }

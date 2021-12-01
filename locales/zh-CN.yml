@@ -26,6 +26,7 @@ not-found: 未找到页面
 placeholder:
   server_url: Waline 服务端地址，如 https://waline.xx.xx
   email: 邮箱
+  nickname: 昵称
   username: 用户名
   password: 密码
   search: 搜索当前页
@@ -36,6 +37,9 @@ placeholder:
 login:
   title: 登录
   message: 下次自动登录
+
+register:
+  title: 注册
 
 error:
   email: 请输入正确的邮箱地址
@@ -61,6 +65,7 @@ owner:
 
 message:
   login_success: 登录成功
+  register_success: 注册成功
   delete: 您确定要删除该评论吗？
   delete_success: 删除成功
   delete_error: 删除失败

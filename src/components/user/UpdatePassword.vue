@@ -34,41 +34,18 @@
 
 <script setup lang="ts">import { ElMessage } from 'element-plus'
 import { updateUser } from '~/api/user'
+import { useCheckPass } from '~/utils/validate'
 
 const { t } = useI18n()
 
 const loading = ref(false)
 const pwdFormRef = ref()
-const pwdForm = ref({
-  pass: '',
+const pwdForm = reactive({
+  password: '',
   checkPass: '',
 })
 
-const validatePass = (rule: any, value: string, callback: any) => {
-  if (value === '') {
-    callback(new Error(t('message.input_new_password')))
-  }
-  else if (value.length < 6) {
-    callback(new Error(t('error.password')))
-  }
-  else {
-    if (pwdForm.value.checkPass !== '')
-      pwdFormRef.value.validateField('checkPass')
-
-    callback()
-  }
-}
-
-const validatePass2 = (rule: any, value: string, callback: any) => {
-  if (value === '')
-    callback(new Error(t('message.input_password_again')))
-  else if (value.length < 6)
-    callback(new Error(t('error.password')))
-  else if (value !== pwdForm.value.pass)
-    callback(new Error(t('message.password_not_same')))
-  else
-    callback()
-}
+const { validatePass, validatePass2 } = useCheckPass(pwdFormRef, pwdForm)
 
 const rules = {
   pass: [{ validator: validatePass, trigger: 'blur' }],
@@ -80,7 +57,7 @@ const updatePassword = () => {
     if (valid) {
       loading.value = true
       await updateUser({
-        password: pwdForm.value.pass,
+        password: pwdForm.password,
       }).then((res) => {
         if (res.errno === 0) {
           ElMessage.success({

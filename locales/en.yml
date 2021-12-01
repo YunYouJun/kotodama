@@ -26,6 +26,7 @@ not-found: Not found
 
 placeholder:
   server_url: Server Url
+  nickname: Nickname
   username: Username
   password: Password
   search: Type to search
@@ -59,6 +60,7 @@ owner:
 
 message:
   login_success: Login successfully!
+  register_success: Register successfully!
   delete: Are you sure you want to delete the comment?
   delete_success: Delete comment successfully!
   delete_error: Delete comment failed!

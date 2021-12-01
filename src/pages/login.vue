@@ -26,12 +26,12 @@
           />
         </el-form-item>
 
-        <el-form-item prop="username">
+        <el-form-item prop="email">
           <el-input
-            ref="usernameEl"
-            v-model="loginForm.username"
-            :placeholder="t('placeholder.username')"
-            name="username"
+            ref="emailEl"
+            v-model="loginForm.email"
+            :placeholder="t('placeholder.email')"
+            name="email"
             type="text"
             autocomplete="on"
           />
@@ -94,12 +94,12 @@ const serverUrl = useStorage(`${namespace}-serverUrl`, '')
 const loading = ref(false)
 const loginForm = reactive({
   serverUrl,
-  username: '',
+  email: '',
   password: '',
 })
 
 const loginFormEl = ref()
-const usernameEl = ref()
+const emailEl = ref()
 const passwordEl = ref()
 const remember = ref(true)
 
@@ -118,13 +118,13 @@ const validatePassword = (rule: any, value: string, callback: Function) => {
 }
 
 const loginRules = {
-  username: [{ required: true, trigger: 'blur', validator: validateUsername }],
+  email: [{ required: true, trigger: 'blur', validator: validateUsername }],
   password: [{ required: true, trigger: 'blur', validator: validatePassword }],
 }
 
 onMounted(() => {
-  if (loginForm.username === '')
-    usernameEl.value.focus()
+  if (loginForm.email === '')
+    emailEl.value.focus()
   else if (loginForm.password === '')
     passwordEl.value.focus()
 })
@@ -141,7 +141,7 @@ function handleLogin() {
 
       try {
         const res = await login({
-          email: loginForm.username,
+          email: loginForm.email,
           password: loginForm.password,
         }, remember.value)
         if (res && res.data && res.data.token) {
