@@ -17,7 +17,7 @@
       <template #default="scope">
         <div>
           <div class="flex items-center" m="b-2">
-            <img class="w-6 h-6 rounded-full shadow" :src="getAvatarUrl(scope.row.mail)" />
+            <img class="w-6 h-6 rounded-full shadow" :src="getAvatarUrl(scope.row.mail)">
             <div class="ml-2">
               <a
                 v-if="scope.row.link"
@@ -64,12 +64,12 @@
       class="w-full"
       layout="prev, pager, next, jumper"
       background
-      :current-page="currentPage"
+      :current-page="commentStore.currentPage"
       :page-size="commentStore.commentListInfo?.pageSize"
       :page-count="commentStore.commentListInfo?.totalPages"
       @update:current-page="toggleCurrentPage"
       @update:page-size="updatePageSize"
-    ></el-pagination>
+    />
   </div>
 </template>
 
@@ -81,7 +81,6 @@ const { t } = useI18n()
 const commentStore = useCommentStore()
 
 const search = ref('')
-const currentPage = ref(1)
 
 onBeforeMount(async() => {
   commentStore.fetchCommentList()
