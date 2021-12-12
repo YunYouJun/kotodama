@@ -84,16 +84,16 @@ import { login } from '~/api/auth'
 import { validUsername } from '~/utils/validate'
 import { $axios } from '~/logic/axios'
 import { url } from '~/stores/user'
+import { useAppStore } from '~/stores/app'
 
 const router = useRouter()
 const { t } = useI18n()
 
-const namespace = 'waline'
-const serverUrl = useStorage(`${namespace}-serverUrl`, '')
+const app = useAppStore()
 
 const loading = ref(false)
 const loginForm = reactive({
-  serverUrl,
+  serverUrl: app.serverUrl,
   email: '',
   password: '',
 })

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useAppStore } from '~/stores/app'
 import { url } from '~/stores/user'
 import { getScript } from '~/utils'
 
@@ -17,12 +18,14 @@ onBeforeMount(async() => {
   title.value = doc.title
 })
 
+const app = useAppStore()
+
 onMounted(() => {
   // 直接使用 CDN
   getScript('//cdn.jsdelivr.net/npm/@waline/client', () => {
     window.Waline({
       el: '#waline',
-      serverURL: 'https://waline.yunyoujun.cn',
+      serverURL: app.serverUrl,
       path: pageUrl,
       dark: '.dark',
       emoji: [
@@ -51,6 +54,6 @@ onMounted(() => {
         {{ url + pageUrl }}
       </small>
     </a>
-    <div id="waline"></div>
+    <div id="waline" />
   </div>
 </template>

@@ -111,16 +111,16 @@ import { ElMessage } from 'element-plus'
 import { useCheckPass, validUsername } from '~/utils/validate'
 import { $axios } from '~/logic/axios'
 import { register } from '~/api/auth'
+import { useAppStore } from '~/stores/app'
 
 const router = useRouter()
 const { t } = useI18n()
 
-const namespace = 'waline'
-const serverUrl = useStorage(`${namespace}-serverUrl`, '')
+const app = useAppStore()
 
 const loading = ref(false)
 const registerForm = reactive({
-  serverUrl,
+  serverUrl: app.serverUrl,
   display_name: '',
   email: '',
   password: '',

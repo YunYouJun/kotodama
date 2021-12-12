@@ -1,7 +1,13 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 
+const namespace = 'waline'
+
 export const useAppStore = defineStore('app', () => {
   const isCollapse = ref(false)
+  /**
+   * waline server url
+   */
+  const serverUrl = useStorage(`${namespace}-serverUrl`, '')
 
   /**
    * 切换侧边栏展开
@@ -13,6 +19,8 @@ export const useAppStore = defineStore('app', () => {
 
   return {
     isCollapse,
+    serverUrl,
+
     toggleCollapse,
   }
 })
