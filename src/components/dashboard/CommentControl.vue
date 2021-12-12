@@ -37,7 +37,7 @@
         autosize
       />
     </div>
-    <div v-else v-html="item.comment"></div>
+    <div v-else v-html="item.comment" />
   </div>
 
   <div class="flex justify-between absolute left-2 right-2 bottom-1">
@@ -103,13 +103,15 @@ import dayjs from 'dayjs'
 import { ElMessage } from 'element-plus'
 import { url } from '~/stores/user'
 
-import { CommentItem, deleteComment, updateComment } from '~/api/comment'
+import type { CommentItem } from '~/api/comment'
+import { deleteComment, updateComment } from '~/api/comment'
 import { useCommentStore } from '~/stores/comment'
 
 const { t } = useI18n()
 
 const props = defineProps<{
   item: CommentItem
+  isEditing: boolean
 }>()
 
 const router = useRouter()
@@ -130,6 +132,10 @@ const triggerDeleteComment = async(id: string) => {
 }
 
 const isEditing = ref(false)
+
+watch(() => props.item, () => {
+  isEditing.value = false
+})
 
 /**
  * 编辑评论
