@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ElMessage } from 'element-plus'
-import { getUserInfo, updateUser, UserInfo } from '~/api/user'
+import type { UserInfo } from '~/api/user'
+import { getUserInfo, updateUser } from '~/api/user'
 import { getAvatarUrl } from '~/utils'
 
 const { t } = useI18n()
@@ -42,7 +43,7 @@ const update = () => {
       p="1"
       class="rounded-full shadow-lg w-25 h-25"
       :src="getAvatarUrl(userInfo.email, 100)"
-    />
+    >
   </div>
 
   <el-form :model="userInfo">

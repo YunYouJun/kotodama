@@ -1,4 +1,4 @@
-import { WalineResponse } from './waline'
+import type { WalineResponse } from './waline'
 import { $axios } from '~/logic/axios'
 
 export interface CommentUserInfo {

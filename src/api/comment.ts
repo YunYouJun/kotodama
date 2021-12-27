@@ -1,5 +1,5 @@
 import type { CommentUserInfo } from './user'
-import { WalineResponse } from './waline'
+import type { WalineResponse } from './waline'
 import { $axios } from '~/logic/axios'
 
 export type CommentStatus = 'approved' | 'waiting' | 'spam'

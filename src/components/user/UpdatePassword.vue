@@ -7,7 +7,7 @@
           type="password"
           autocomplete="off"
           :placeholder="t('user.password')"
-        ></el-input>
+        />
       </el-form-item>
       <el-form-item prop="checkPass" required>
         <el-input
@@ -15,7 +15,7 @@
           type="password"
           autocomplete="off"
           :placeholder="t('user.confirm_password')"
-        ></el-input>
+        />
       </el-form-item>
 
       <el-form-item>

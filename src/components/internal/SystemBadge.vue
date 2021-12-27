@@ -15,7 +15,8 @@
         <i-ri-chrome-line v-if="browserName.includes('chrome')" style="color: #FFCD46" />
         <i-ri-safari-line v-else-if="browserName === 'safari'" style="color: #006CFF" />
         <i-ri-firefox-line v-else-if="browserName === 'firefox'" style="color: #E66000" />
-        <i-ri-edge-line v-else-if="browserName === 'edge'" style="color: #3277BC" />
+        <i-logos-microsoft-edge v-else-if="browserName === 'edge'" />
+        <!-- <i-ri-edge-line v-else-if="browserName === 'edge'" style="color: #3277BC" /> -->
         <i-ri-window-line v-else />
       </span>
     </el-tooltip>

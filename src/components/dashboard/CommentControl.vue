@@ -29,6 +29,7 @@
     </div>
 
     <div v-if="isEditing" class="w-full">
+      <!-- eslint-disable vue/no-mutating-props -->
       <el-input
         v-model="item.comment"
         class="w-full"
@@ -111,7 +112,6 @@ const { t } = useI18n()
 
 const props = defineProps<{
   item: CommentItem
-  isEditing: boolean
 }>()
 
 const router = useRouter()

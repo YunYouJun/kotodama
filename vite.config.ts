@@ -27,6 +27,20 @@ export default defineConfig({
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/],
+      template: {
+        ssr: true,
+        compilerOptions: {
+          directiveTransforms: {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            loading: (dir, node, context) => {
+              return {
+                // do nothing
+                props: [],
+              }
+            },
+          },
+        },
+      },
     }),
 
     // https://github.com/hannoeru/vite-plugin-pages
@@ -91,9 +105,7 @@ export default defineConfig({
       headEnabled: true,
       markdownItSetup(md) {
         // https://prismjs.com/
-        // @ts-expect-error types mismatch
         md.use(Prism)
-        // @ts-expect-error types mismatch
         md.use(LinkAttributes, {
           pattern: /^https?:\/\//,
           attrs: {
@@ -170,6 +182,8 @@ export default defineConfig({
       'dayjs',
       'ua-parser-js',
       'md5',
+      'lodash',
+      'lodash/isEqual',
     ],
     exclude: [
       'vue-demi',

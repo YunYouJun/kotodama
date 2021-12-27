@@ -1,4 +1,4 @@
-import { WalineResponse } from './waline'
+import type { WalineResponse } from './waline'
 import { $axios } from '~/logic/axios'
 import { token } from '~/stores/user'
 import type { UserInfo } from '~/api/user'
