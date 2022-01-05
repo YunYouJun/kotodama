@@ -1,5 +1,5 @@
 <template>
-  <div v-loading="loading" class="flex flex-col items-start" m="-t-2 x-1" p="t-2 b-7">
+  <div ref="commentRef" v-loading="loading" class="flex flex-col items-start" m="-t-2 x-1" p="t-2 b-7">
     <div class="text-xs" m="b-2">
       <div
         m="r-2"
@@ -42,53 +42,22 @@
   </div>
 
   <div class="flex justify-between absolute left-2 right-2 bottom-1">
-    <div
-      v-if="item.status !== 'approved'"
-      class="icon-btn"
-      hover="text-green-500 bg-green-500 bg-opacity-20"
-      :title="t('button.approve')"
-      @click="updateComment(item.objectId, { status: 'approved' })"
-    >
-      <i-ri-check-line />
-    </div>
-    <div
-      v-if="item.status !== 'waiting'"
-      class="icon-btn"
-      hover="text-blue-500 bg-blue-500 bg-opacity-20"
-      :title="t('button.move_to_waiting')"
-      @click="updateComment(item.objectId, { status: 'waiting' })"
-    >
-      <i-ri-todo-line />
-    </div>
-    <div
-      v-if="item.status !== 'spam'"
-      class="icon-btn"
-      hover="text-red-500 bg-red-500 bg-opacity-20"
-      :title="t('button.move_to_spam')"
-      @click="updateComment(item.objectId, { status: 'spam' })"
-    >
-      <i-ri-chat-delete-line />
-    </div>
+    <template v-for="(controlItem, i) in controlItems">
+      <el-tooltip
+        v-if="controlItem.show()"
+        :key="i"
+        :content="controlItem.title" placement="top"
+      >
+        <div
+          class="icon-btn hover:bg-opacity-20" :class="[`hover:text-${controlItem.color}-500`, `hover:bg-${controlItem.color}-500`]"
+          :title="controlItem.title"
+          @click="controlItem.onClick"
+        >
+          <div :class="controlItem.icon" />
+        </div>
+      </el-tooltip>
+    </template>
 
-    <div v-if="isEditing" class="icon-btn" hover="text-blue-500 bg-blue-500 bg-opacity-20" :title="t('button.save')" @click="saveComment">
-      <i-ri-save-line />
-    </div>
-    <div v-else class="icon-btn" hover="text-blue-500 bg-blue-500 bg-opacity-20" :title="t('button.edit')" @click="editComment">
-      <i-ri-edit-line />
-    </div>
-    <div
-      class="icon-btn"
-      hover="text-green-500 bg-green-500 bg-opacity-20"
-      title="回复"
-      @click="router.push({
-        path: '/client',
-        query: {
-          url: item.url
-        }
-      })"
-    >
-      <i-ri-reply-line />
-    </div>
     <el-popconfirm :title="t('message.delete')" @confirm="triggerDeleteComment(item.objectId)">
       <template #reference>
         <div class="icon-btn" hover="text-red-500 bg-red-500 bg-opacity-20" title="删除">
@@ -108,6 +77,9 @@ import type { CommentItem } from '~/api/comment'
 import { deleteComment, updateComment } from '~/api/comment'
 import { useCommentStore } from '~/stores/comment'
 
+const commentRef = ref()
+const loading = ref(false)
+
 const { t } = useI18n()
 
 const props = defineProps<{
@@ -116,7 +88,6 @@ const props = defineProps<{
 
 const router = useRouter()
 
-const loading = ref(false)
 const commentStore = useCommentStore()
 
 const triggerDeleteComment = async(id: string) => {
@@ -160,4 +131,56 @@ const saveComment = async() => {
   loading.value = false
   isEditing.value = false
 }
+
+const controlItems = [
+  {
+    title: t('button.approve'),
+    show: () => props.item.status !== 'approved',
+    icon: 'i-ri-check-line',
+    color: 'green',
+    onClick: () => updateComment(props.item.objectId, { status: 'approved' }),
+  },
+  {
+    title: t('button.move_to_waiting'),
+    show: () => props.item.status !== 'waiting',
+    icon: 'i-ri-todo-line',
+    color: 'blue',
+    onClick: () => updateComment(props.item.objectId, { status: 'waiting' }),
+  },
+  {
+    title: t('button.move_to_spam'),
+    show: () => props.item.status !== 'spam',
+    icon: 'i-ri-chat-delete-line',
+    color: 'red',
+    onClick: () => updateComment(props.item.objectId, { status: 'spam' }),
+  },
+  {
+    title: t('button.save'),
+    show: () => isEditing.value,
+    icon: 'i-ri-save-line',
+    color: 'blue',
+    onClick: () => saveComment(),
+  },
+  {
+    title: t('button.edit'),
+    show: () => !isEditing.value,
+    icon: 'i-ri-edit-line',
+    color: 'blue',
+    onClick: () => editComment(),
+  },
+  {
+    title: '回复',
+    show: () => true,
+    icon: 'i-ri-reply-line',
+    color: 'green',
+    onClick: () => {
+      router.push({
+        path: '/client',
+        query: {
+          url: props.item.url,
+        },
+      })
+    },
+  },
+]
 </script>

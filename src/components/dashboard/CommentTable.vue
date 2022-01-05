@@ -45,7 +45,7 @@
 
     <el-table-column :label="t('dashboard.content')" min-width="300" prop="comment">
       <template #header>
-        <el-input v-model="search" size="mini" :placeholder="t('placeholder.search')">
+        <el-input v-model="search" size="small" :placeholder="t('placeholder.search')">
           <template #prefix>
             <el-icon class="el-input__icon">
               <i-ri-search-line />

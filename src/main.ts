@@ -13,6 +13,8 @@ import './styles/index.scss'
 import './styles/waline.scss'
 import './styles/main.css'
 
+import 'uno.css'
+
 // windicss utilities should be the last style import
 import 'virtual:windi-utilities.css'
 // windicss devtools support (dev only)
