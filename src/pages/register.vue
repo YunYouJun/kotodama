@@ -96,9 +96,7 @@
         <router-link to="/login">
           <el-button>{{ t('button.login') }}</el-button>
         </router-link>
-        <el-button class="flex" circle>
-          <i-ri-github-line />
-        </el-button>
+        <WithGithub />
       </div>
     </div>
   </main>

@@ -6,6 +6,8 @@ import { getAvatarUrl } from '~/utils'
 
 const { t } = useI18n()
 
+const loading = ref(true)
+
 const userInfo = ref<UserInfo>({
   email: '',
   github: '',
@@ -18,6 +20,8 @@ onBeforeMount(async() => {
   const { data } = await getUserInfo()
   userInfo.value = data
   // console.log(userInfo.value)
+
+  loading.value = false
 })
 
 const update = () => {
@@ -46,7 +50,7 @@ const update = () => {
     >
   </div>
 
-  <el-form :model="userInfo">
+  <el-form v-loading="loading" :model="userInfo">
     <el-form-item>
       <el-input
         v-model="userInfo.email"

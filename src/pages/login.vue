@@ -68,9 +68,7 @@
         <router-link to="/register">
           <el-button>{{ t('button.register') }}</el-button>
         </router-link>
-        <el-button class="flex" circle>
-          <i-ri-github-line />
-        </el-button>
+        <WithGithub />
       </div>
     </div>
   </main>
