@@ -40,23 +40,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       Vue({
         include: [/\.vue$/, /\.md$/],
-        template: {
-          ssr: true,
-          compilerOptions: {
-            directiveTransforms:
-              (mode === 'production')
-                ? {
-                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                  loading: (dir, node, context) => {
-                    return {
-                      // do nothing
-                      props: [],
-                    }
-                  },
-                }
-                : {},
-          },
-        },
+        // use https://github.com/vueuse/patch-vue-directive-ssr patch directive
       }),
 
       Unocss({
