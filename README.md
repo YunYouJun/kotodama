@@ -6,7 +6,9 @@
 
 [Demo 预览](https://kotodama.yunyoujun.cn)
 
-kotodama 是一个纯静态的站点，您可以 fork 其自行部署，也可以直接使用已部署的 `kotodama.yunyoujun.cn` 站点。
+- 备用：<kotodama.vercel.app>
+
+kotodama 是一个纯静态的站点，您可以 fork 其自行部署，也可以直接使用已部署的 `kotodama.yunyoujun.cn` | `kotodama.vercel.app` 站点。
 
 > `kotodama.yunyoujun.cn` 纯静态托管于 GitHub Pages，代码将始终保持开源，不会也无法获取您的用户名密码，请放心使用。
 
@@ -25,7 +27,7 @@ kotodama 是一个纯静态的站点，您可以 fork 其自行部署，也可�
 
 ## 自行部署
 
-> 推荐直接使用 [kotodama.yunyoujun.cn](https://kotodama.yunyoujun.cn)。如果您不放心，也可以自行部署，但可能需要自己记得更新。
+> 推荐直接使用 [kotodama.yunyoujun.cn](https://kotodama.yunyoujun.cn) 或 [kotodama.vercel.app](https://kotodama.vercel.app)。如果您不放心，也可以自行部署，但可能需要自己记得更新。
 
 ```bash
 # fork 或直接 clone 本项目

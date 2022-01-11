@@ -30,7 +30,7 @@ colors.forEach((color) => {
   safelist.push(`hover:bg-${color}-500`)
 })
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(() => {
   return {
     resolve: {
       alias: {

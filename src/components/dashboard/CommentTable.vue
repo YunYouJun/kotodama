@@ -3,13 +3,8 @@
 
   <el-table
     v-loading="commentStore.loading"
-    :data="
-      commentStore.commentListInfo?.data.filter(
-        (data) =>
-          !search || data.nick.toLowerCase().includes(search.toLowerCase())
-      )
-    "
-    style="width: 100%"
+    :data="displayedData"
+    class="w-full"
     :empty-text="t('placeholder.empty')"
   >
     <el-table-column type="selection" width="40" />
@@ -76,6 +71,7 @@
 <script lang="ts" setup>
 import { useCommentStore } from '~/stores/comment'
 import { getAvatarUrl } from '~/utils'
+import type { CommentItem } from '~/api/comment'
 const { t } = useI18n()
 
 const commentStore = useCommentStore()
@@ -92,4 +88,19 @@ const toggleCurrentPage = async(page: number) => {
 }
 
 const updatePageSize = () => { }
+
+const displayedData = computed(() => {
+  const searchContent = search.value.toLowerCase()
+  const fields: (keyof CommentItem)[] = ['mail', 'ip', 'nick', 'comment']
+  return commentStore.commentListInfo?.data.filter(
+    (data) => {
+      let flag = !search.value
+      fields.forEach((field) => {
+        if (data[field]?.toLowerCase().includes(searchContent))
+          flag = true
+      })
+      return flag
+    },
+  )
+})
 </script>
