@@ -26,6 +26,19 @@
         <i-ri-refresh-line class="mr-1" />
         <span>{{ dayjs(item.updatedAt).format('YYYY-MM-DD HH:mm:ss') }}</span>
       </div>
+
+      <el-tooltip
+        v-if="isEditing"
+        content="退出编辑" placement="top"
+      >
+        <div
+          class="icon-btn absolute top-2 right-2 hover:bg-opacity-20" :class="[`hover:text-red-500`, `hover:bg-red-500`]"
+          title="退出编辑"
+          @click="isEditing = false"
+        >
+          <div class="i-ri-close-line" text="sm" />
+        </div>
+      </el-tooltip>
     </div>
 
     <div v-if="isEditing" class="w-full">
@@ -38,7 +51,7 @@
         autosize
       />
     </div>
-    <div v-else v-html="item.comment" />
+    <div v-else v-html="previewedHtml" />
   </div>
 
   <div class="flex justify-between absolute left-2 right-2 bottom-1">
@@ -76,6 +89,7 @@ import { url } from '~/stores/user'
 import type { CommentItem } from '~/api/comment'
 import { deleteComment, updateComment } from '~/api/comment'
 import { useCommentStore } from '~/stores/comment'
+import { parseMarkdown } from '~/utils/markdown'
 
 const commentRef = ref()
 const loading = ref(false)
@@ -103,6 +117,12 @@ const triggerDeleteComment = async(id: string) => {
 }
 
 const isEditing = ref(false)
+
+const previewedHtml = computed(() => {
+  return parseMarkdown(
+    props.item.comment,
+  )
+})
 
 watch(() => props.item, () => {
   isEditing.value = false
