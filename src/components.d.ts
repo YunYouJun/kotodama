@@ -16,7 +16,6 @@ declare module 'vue' {
     IRiAndroidLine: typeof import('~icons/ri/android-line')['default']
     IRiAppleLine: typeof import('~icons/ri/apple-line')['default']
     IRiChromeLine: typeof import('~icons/ri/chrome-line')['default']
-    IRiCloseLine: typeof import('~icons/ri/close-line')['default']
     IRiCpuLine: typeof import('~icons/ri/cpu-line')['default']
     IRiDashboardLine: typeof import('~icons/ri/dashboard-line')['default']
     IRiDeleteBinLine: typeof import('~icons/ri/delete-bin-line')['default']
