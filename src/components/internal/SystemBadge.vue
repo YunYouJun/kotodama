@@ -1,3 +1,23 @@
+<script lang="ts" setup>
+import UaParser from 'ua-parser-js'
+const uaParser = new UaParser()
+
+const props = defineProps<{
+  ua?: string
+}>()
+
+const ua = uaParser.setUA(props.ua || '')
+const os = ua.getOS()
+const browser = ua.getBrowser()
+const device = ua.getDevice()
+const cpu = ua.getCPU()
+
+const systemName = ref((os.name || '').toLowerCase())
+const browserName = ref((browser.name || '').toLowerCase())
+const deviceName = ref((device.vendor || '').toLowerCase())
+const cpuName = ref(cpu.architecture)
+</script>
+
 <template>
   <div class="flex items-center" m="t-2" border="~" p="1">
     <el-tooltip v-if="systemName" :content="`${os.name} ${os.version}`">
@@ -34,23 +54,3 @@
     </el-tooltip>
   </div>
 </template>
-
-<script lang="ts" setup>
-import UaParser from 'ua-parser-js'
-const uaParser = new UaParser()
-
-const props = defineProps<{
-  ua: string
-}>()
-
-const ua = uaParser.setUA(props.ua)
-const os = ua.getOS()
-const browser = ua.getBrowser()
-const device = ua.getDevice()
-const cpu = ua.getCPU()
-
-const systemName = ref((os.name || '').toLowerCase())
-const browserName = ref((browser.name || '').toLowerCase())
-const deviceName = ref((device.vendor || '').toLowerCase())
-const cpuName = ref(cpu.architecture)
-</script>

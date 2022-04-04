@@ -54,9 +54,9 @@
     </el-table-column>
   </el-table>
 
-  <div class="flex items-center justify-center overflow-auto bg-white" p="y-3">
+  <div class="flex items-center justify-center overflow-auto" p="y-3">
     <el-pagination
-      class="w-full"
+      class="w-full justify-center"
       layout="prev, pager, next, jumper"
       background
       :current-page="commentStore.currentPage"
