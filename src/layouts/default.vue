@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { isDark } from '~/composables'
+</script>
+
 <template>
   <main
     class="p-2 text-center text-gray-700 dark:text-gray-200 min-h-screen"
@@ -9,7 +13,3 @@
     <BaseFooter />
   </main>
 </template>
-
-<script setup lang="ts">
-import { isDark } from '~/logic'
-</script>

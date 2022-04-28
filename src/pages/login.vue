@@ -1,3 +1,98 @@
+<script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
+import { login } from '~/api/auth'
+import { validUsername } from '~/utils/validate'
+import { $axios } from '~/composables/axios'
+import { url } from '~/stores/user'
+import { useAppStore } from '~/stores/app'
+
+const router = useRouter()
+const { t } = useI18n()
+
+const app = useAppStore()
+
+const loading = ref(false)
+const loginForm = reactive({
+  serverUrl: app.serverUrl,
+  email: '',
+  password: '',
+})
+
+const loginFormEl = ref()
+const emailEl = ref()
+const passwordEl = ref()
+const remember = ref(true)
+
+const validateUsername = (rule: any, value: string, callback: Function) => {
+  if (!validUsername(value))
+    callback(new Error(t('error.username')))
+  else
+    callback()
+}
+
+const validatePassword = (rule: any, value: string, callback: Function) => {
+  if (value.length < 6)
+    callback(new Error(t('error.password')))
+  else
+    callback()
+}
+
+const loginRules = {
+  email: [{ required: true, trigger: 'blur', validator: validateUsername }],
+  password: [{ required: true, trigger: 'blur', validator: validatePassword }],
+}
+
+onMounted(() => {
+  if (loginForm.email === '')
+    emailEl.value.focus()
+  else if (loginForm.password === '')
+    passwordEl.value.focus()
+})
+
+/**
+ * 处理登录逻辑
+ */
+function handleLogin() {
+  loginFormEl.value.validate(async (valid: boolean) => {
+    if (valid) {
+      $axios.defaults.baseURL = loginForm.serverUrl
+
+      loading.value = true
+
+      try {
+        const res = await login({
+          email: loginForm.email,
+          password: loginForm.password,
+        }, remember.value)
+        if (res && res.data && res.data.token) {
+          // token
+          url.value = res.data.url
+
+          router.push('/dashboard')
+          ElMessage.success({
+            message: t('message.login_success'),
+            showClose: true,
+          })
+        }
+        else {
+          ElMessage.success({
+            message: res.errmsg,
+            showClose: true,
+          })
+        }
+      }
+      catch {
+        // token.value = ''
+      }
+
+      loading.value = false
+    }
+  })
+}
+</script>
+
 <template>
   <main class="max-w-300px m-auto">
     <div class="login-container">
@@ -73,98 +168,3 @@
     </div>
   </main>
 </template>
-
-<script lang="ts" setup>
-import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
-import { login } from '~/api/auth'
-import { validUsername } from '~/utils/validate'
-import { $axios } from '~/logic/axios'
-import { url } from '~/stores/user'
-import { useAppStore } from '~/stores/app'
-
-const router = useRouter()
-const { t } = useI18n()
-
-const app = useAppStore()
-
-const loading = ref(false)
-const loginForm = reactive({
-  serverUrl: app.serverUrl,
-  email: '',
-  password: '',
-})
-
-const loginFormEl = ref()
-const emailEl = ref()
-const passwordEl = ref()
-const remember = ref(true)
-
-const validateUsername = (rule: any, value: string, callback: Function) => {
-  if (!validUsername(value))
-    callback(new Error(t('error.username')))
-  else
-    callback()
-}
-
-const validatePassword = (rule: any, value: string, callback: Function) => {
-  if (value.length < 6)
-    callback(new Error(t('error.password')))
-  else
-    callback()
-}
-
-const loginRules = {
-  email: [{ required: true, trigger: 'blur', validator: validateUsername }],
-  password: [{ required: true, trigger: 'blur', validator: validatePassword }],
-}
-
-onMounted(() => {
-  if (loginForm.email === '')
-    emailEl.value.focus()
-  else if (loginForm.password === '')
-    passwordEl.value.focus()
-})
-
-/**
- * 处理登录逻辑
- */
-function handleLogin() {
-  loginFormEl.value.validate(async(valid: boolean) => {
-    if (valid) {
-      $axios.defaults.baseURL = loginForm.serverUrl
-
-      loading.value = true
-
-      try {
-        const res = await login({
-          email: loginForm.email,
-          password: loginForm.password,
-        }, remember.value)
-        if (res && res.data && res.data.token) {
-          // token
-          url.value = res.data.url
-
-          router.push('/dashboard')
-          ElMessage.success({
-            message: t('message.login_success'),
-            showClose: true,
-          })
-        }
-        else {
-          ElMessage.success({
-            message: res.errmsg,
-            showClose: true,
-          })
-        }
-      }
-      catch {
-        // token.value = ''
-      }
-
-      loading.value = false
-    }
-  })
-}
-</script>

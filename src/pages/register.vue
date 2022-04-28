@@ -1,3 +1,86 @@
+<script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
+import { useCheckPass, validUsername } from '~/utils/validate'
+import { $axios } from '~/composables/axios'
+import { register } from '~/api/auth'
+import { useAppStore } from '~/stores/app'
+
+const router = useRouter()
+const { t } = useI18n()
+
+const app = useAppStore()
+
+const loading = ref(false)
+const registerForm = reactive({
+  serverUrl: app.serverUrl,
+  display_name: '',
+  email: '',
+  password: '',
+  checkPass: '',
+  url: '',
+})
+
+const registerFormEl = ref()
+const emailEl = ref()
+const passwordEl = ref()
+
+const validateUsername = (rule: any, value: string, callback: Function) => {
+  if (!validUsername(value))
+    callback(new Error(t('error.username')))
+  else
+    callback()
+}
+
+const { validatePass, validatePass2 } = useCheckPass(registerFormEl, registerForm)
+
+const registerRules = {
+  email: [{ required: true, trigger: 'blur', validator: validateUsername }],
+  password: [{ required: true, trigger: 'blur', validator: validatePass }],
+  checkPass: [{ required: true, trigger: 'blur', validator: validatePass2 }],
+  url: [{ required: true, trigger: 'blur' }],
+}
+
+onMounted(() => {
+  if (registerForm.email === '')
+    emailEl.value.focus()
+  else if (registerForm.password === '')
+    passwordEl.value.focus()
+})
+
+/**
+ * 处理注册逻辑
+ */
+function handleRegister() {
+  registerFormEl.value.validate(async (valid: boolean) => {
+    if (valid) {
+      $axios.defaults.baseURL = registerForm.serverUrl
+
+      loading.value = true
+
+      try {
+        const { serverUrl, checkPass, ...payload } = registerForm
+        const res = await register(payload)
+        // 1000 USER_EXIST
+        if (res && res.errno !== 1000) {
+          ElMessage.success({
+            message: t('message.register_success'),
+            showClose: true,
+          })
+          router.push('/login')
+        }
+      }
+      catch {
+        // token.value = ''
+      }
+
+      loading.value = false
+    }
+  })
+}
+</script>
+
 <template>
   <main class="max-w-300px m-auto">
     <div class="register-container">
@@ -101,86 +184,3 @@
     </div>
   </main>
 </template>
-
-<script lang="ts" setup>
-import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
-import { useCheckPass, validUsername } from '~/utils/validate'
-import { $axios } from '~/logic/axios'
-import { register } from '~/api/auth'
-import { useAppStore } from '~/stores/app'
-
-const router = useRouter()
-const { t } = useI18n()
-
-const app = useAppStore()
-
-const loading = ref(false)
-const registerForm = reactive({
-  serverUrl: app.serverUrl,
-  display_name: '',
-  email: '',
-  password: '',
-  checkPass: '',
-  url: '',
-})
-
-const registerFormEl = ref()
-const emailEl = ref()
-const passwordEl = ref()
-
-const validateUsername = (rule: any, value: string, callback: Function) => {
-  if (!validUsername(value))
-    callback(new Error(t('error.username')))
-  else
-    callback()
-}
-
-const { validatePass, validatePass2 } = useCheckPass(registerFormEl, registerForm)
-
-const registerRules = {
-  email: [{ required: true, trigger: 'blur', validator: validateUsername }],
-  password: [{ required: true, trigger: 'blur', validator: validatePass }],
-  checkPass: [{ required: true, trigger: 'blur', validator: validatePass2 }],
-  url: [{ required: true, trigger: 'blur' }],
-}
-
-onMounted(() => {
-  if (registerForm.email === '')
-    emailEl.value.focus()
-  else if (registerForm.password === '')
-    passwordEl.value.focus()
-})
-
-/**
- * 处理注册逻辑
- */
-function handleRegister() {
-  registerFormEl.value.validate(async(valid: boolean) => {
-    if (valid) {
-      $axios.defaults.baseURL = registerForm.serverUrl
-
-      loading.value = true
-
-      try {
-        const { serverUrl, checkPass, ...payload } = registerForm
-        const res = await register(payload)
-        // 1000 USER_EXIST
-        if (res && res.errno !== 1000) {
-          ElMessage.success({
-            message: t('message.register_success'),
-            showClose: true,
-          })
-          router.push('/login')
-        }
-      }
-      catch {
-        // token.value = ''
-      }
-
-      loading.value = false
-    }
-  })
-}
-</script>

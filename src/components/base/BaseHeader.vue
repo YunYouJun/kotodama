@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { logout } from '~/api/auth'
-import { isDark, toggleDark } from '~/logic'
+import { isDark, toggleDark } from '~/composables'
 import { token } from '~/stores/user'
 
 const { t, availableLocales, locale } = useI18n()

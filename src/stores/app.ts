@@ -3,6 +3,8 @@ import { acceptHMRUpdate, defineStore } from 'pinia'
 const namespace = 'waline'
 
 export const useAppStore = defineStore('app', () => {
+  const waline = ref()
+
   const isCollapse = ref(false)
   /**
    * waline server url
@@ -18,6 +20,8 @@ export const useAppStore = defineStore('app', () => {
   }
 
   return {
+    waline,
+
     isCollapse,
     serverUrl,
 
