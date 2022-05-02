@@ -14,7 +14,7 @@ const app = useAppStore()
 
 const loading = ref(false)
 const registerForm = reactive({
-  serverUrl: app.serverUrl,
+  serverURL: app.serverURL,
   display_name: '',
   email: '',
   password: '',
@@ -55,12 +55,12 @@ onMounted(() => {
 function handleRegister() {
   registerFormEl.value.validate(async (valid: boolean) => {
     if (valid) {
-      $axios.defaults.baseURL = registerForm.serverUrl
+      $axios.defaults.baseURL = registerForm.serverURL
 
       loading.value = true
 
       try {
-        const { serverUrl, checkPass, ...payload } = registerForm
+        const { serverURL, checkPass, ...payload } = registerForm
         const res = await register(payload)
         // 1000 USER_EXIST
         if (res && res.errno !== 1000) {
@@ -98,12 +98,12 @@ function handleRegister() {
           </h2>
         </div>
 
-        <el-form-item prop="serverUrl" required>
+        <el-form-item prop="serverURL" required>
           <el-input
-            ref="serverUrlEl"
-            v-model="registerForm.serverUrl"
+            ref="serverURLEl"
+            v-model="registerForm.serverURL"
             :placeholder="t('placeholder.server_url')"
-            name="serverUrl"
+            name="serverURL"
             type="text"
             autocomplete="on"
           />

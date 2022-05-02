@@ -9,7 +9,7 @@ export const useAppStore = defineStore('app', () => {
   /**
    * waline server url
    */
-  const serverUrl = useStorage(`${namespace}-serverUrl`, '')
+  const serverURL = useStorage(`${namespace}:serverURL`, '')
 
   /**
    * 切换侧边栏展开
@@ -23,7 +23,7 @@ export const useAppStore = defineStore('app', () => {
     waline,
 
     isCollapse,
-    serverUrl,
+    serverURL,
 
     toggleCollapse,
   }

@@ -15,7 +15,7 @@ const app = useAppStore()
 
 const loading = ref(false)
 const loginForm = reactive({
-  serverUrl: app.serverUrl,
+  serverURL: app.serverURL,
   email: '',
   password: '',
 })
@@ -57,7 +57,7 @@ onMounted(() => {
 function handleLogin() {
   loginFormEl.value.validate(async (valid: boolean) => {
     if (valid) {
-      $axios.defaults.baseURL = loginForm.serverUrl
+      $axios.defaults.baseURL = loginForm.serverURL
 
       loading.value = true
 
@@ -69,6 +69,8 @@ function handleLogin() {
         if (res && res.data && res.data.token) {
           // token
           url.value = res.data.url
+
+          app.serverURL = loginForm.serverURL
 
           router.push('/dashboard')
           ElMessage.success({
@@ -110,12 +112,12 @@ function handleLogin() {
           </h2>
         </div>
 
-        <el-form-item prop="serverUrl" required>
+        <el-form-item prop="serverURL" required>
           <el-input
-            ref="serverUrlEl"
-            v-model="loginForm.serverUrl"
+            ref="serverURLEl"
+            v-model="loginForm.serverURL"
             :placeholder="t('placeholder.server_url')"
-            name="serverUrl"
+            name="serverURL"
             type="text"
             autocomplete="on"
           />

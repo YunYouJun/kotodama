@@ -11,7 +11,7 @@ const cStore = useCommentStore()
 const { curPath } = storeToRefs(cStore)
 
 app.waline = useWaline({
-  serverURL: app.serverUrl,
+  serverURL: app.serverURL,
 })
 
 // 文章标题

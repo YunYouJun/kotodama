@@ -9,7 +9,7 @@ const route = useRoute()
 const pageUrl = computed(() => route.query.url?.toString() || '/')
 
 useWaline({
-  serverURL: app.serverUrl,
+  serverURL: app.serverURL,
   path: pageUrl.value,
 })
 </script>

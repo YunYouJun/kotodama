@@ -71,10 +71,6 @@ Fork 本项目。
 
 > [secureDomains | Waline](https://waline.js.org/reference/server.html#securedomains)
 
-### 暗色太丑？
-
-别骂了，别骂了，先用亮色模式吧。等咱功能做的差不多了再优化。
-
 More info see [README.md](https://github.com/YunYouJun/kotodama/blob/main/README.md).
 
 ## [Sponsors](https://sponsors.yunyoujun.cn)
