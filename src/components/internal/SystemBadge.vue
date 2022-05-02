@@ -22,7 +22,7 @@ const cpuName = ref(cpu.architecture)
 </script>
 
 <template>
-  <div class="flex items-center" m="t-2" border="~" p="1">
+  <div class="flex items-center" m="t-2" border="~ gray-200 dark:gray-700" p="1">
     <el-tooltip v-if="systemName" :content="systemName">
       <span class="inline-flex mx-1">
         <i-ri-windows-line v-if="systemName.includes('windows')" style="color: #0078d7" />
