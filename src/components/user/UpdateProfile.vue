@@ -16,7 +16,7 @@ const userInfo = ref<UserInfo>({
   display_name: '',
 })
 
-onBeforeMount(async() => {
+onBeforeMount(async () => {
   const { data } = await getUserInfo()
   userInfo.value = data
   // console.log(userInfo.value)
@@ -62,7 +62,7 @@ const update = () => {
           <a
             class="el-input__icon"
             :class="userInfo.email && 'text-black'"
-            :href="'mailto:' + userInfo.email"
+            :href="`mailto:${userInfo.email}`"
             target="_blank"
             title="GitHub"
           >
@@ -94,7 +94,7 @@ const update = () => {
           <a
             class="el-input__icon"
             :class="userInfo.github && 'text-black'"
-            :href="'https://github.com/' + userInfo.github"
+            :href="`https://github.com/${userInfo.github}`"
             target="_blank"
             title="GitHub"
           >

@@ -1,3 +1,40 @@
+<script lang="ts" setup>
+import { useCommentStore } from '~/stores/comment'
+import { getAvatarUrl } from '~/utils'
+import type { CommentItem } from '~/api/comment'
+const { t } = useI18n()
+
+const commentStore = useCommentStore()
+
+const search = ref('')
+
+onBeforeMount(async () => {
+  commentStore.fetchCommentList()
+})
+
+const toggleCurrentPage = async (page: number) => {
+  commentStore.currentPage = page
+  await commentStore.fetchCommentList()
+}
+
+const updatePageSize = () => { }
+
+const displayedData = computed(() => {
+  const searchContent = search.value.toLowerCase()
+  const fields: (keyof CommentItem)[] = ['mail', 'ip', 'nick', 'comment']
+  return commentStore.commentListInfo?.data.filter(
+    (data) => {
+      let flag = !search.value
+      fields.forEach((field) => {
+        if (data[field]?.toLowerCase().includes(searchContent))
+          flag = true
+      })
+      return flag
+    },
+  )
+})
+</script>
+
 <template>
   <CommentToolbar />
 
@@ -67,40 +104,3 @@
     />
   </div>
 </template>
-
-<script lang="ts" setup>
-import { useCommentStore } from '~/stores/comment'
-import { getAvatarUrl } from '~/utils'
-import type { CommentItem } from '~/api/comment'
-const { t } = useI18n()
-
-const commentStore = useCommentStore()
-
-const search = ref('')
-
-onBeforeMount(async() => {
-  commentStore.fetchCommentList()
-})
-
-const toggleCurrentPage = async(page: number) => {
-  commentStore.currentPage = page
-  await commentStore.fetchCommentList()
-}
-
-const updatePageSize = () => { }
-
-const displayedData = computed(() => {
-  const searchContent = search.value.toLowerCase()
-  const fields: (keyof CommentItem)[] = ['mail', 'ip', 'nick', 'comment']
-  return commentStore.commentListInfo?.data.filter(
-    (data) => {
-      let flag = !search.value
-      fields.forEach((field) => {
-        if (data[field]?.toLowerCase().includes(searchContent))
-          flag = true
-      })
-      return flag
-    },
-  )
-})
-</script>

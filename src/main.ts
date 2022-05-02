@@ -9,6 +9,9 @@ import 'virtual:windi-base.css'
 import 'virtual:windi-components.css'
 
 // your custom styles here
+import 'star-markdown-css/src/scss/theme/yun.scss'
+import 'element-plus/theme-chalk/src/dark/css-vars.scss'
+
 import './styles/index.scss'
 import './styles/waline.scss'
 import './styles/main.css'

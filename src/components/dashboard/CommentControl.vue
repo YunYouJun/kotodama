@@ -8,14 +8,14 @@ import { deleteComment, updateComment } from '~/api/comment'
 import { useCommentStore } from '~/stores/comment'
 import { parseMarkdown } from '~/utils/markdown'
 
+const props = defineProps<{
+  item: CommentItem
+}>()
+
 const commentRef = ref()
 const loading = ref(false)
 
 const { t } = useI18n()
-
-const props = defineProps<{
-  item: CommentItem
-}>()
 
 const commentStore = useCommentStore()
 
@@ -150,7 +150,7 @@ const controlItems = [
         content="退出编辑" placement="top"
       >
         <div
-          class="icon-btn absolute top-2 right-2 hover:bg-opacity-20" :class="[`hover:text-red-500`, `hover:bg-red-500`]"
+          class="icon-btn absolute top-2 right-2 hover:bg-opacity-20 hover:text-red-500 hover:bg-red-500"
           title="退出编辑"
           @click="isEditing = false"
         >

@@ -17,10 +17,9 @@ import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 
 import Unocss from 'unocss/vite'
-import { presetAttributify, presetUno } from 'unocss'
-import presetIcons from '@unocss/preset-icons'
+import { presetAttributify, presetUno, presetIcons } from 'unocss'
 
-const markdownWrapperClasses = ['prose', 'prose-sm', 'm-auto', 'text-left', 'max-w-800px']
+const markdownWrapperClasses = ['markdown-body', 'm-auto', 'text-left', 'max-w-800px']
 
 const colors = ['blue', 'green', 'red']
 

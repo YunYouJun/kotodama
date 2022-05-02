@@ -1,3 +1,8 @@
+<script lang="ts" setup>
+const { t } = useI18n()
+const activeName = 'profile'
+</script>
+
 <template>
   <div class="shadow bg-white p-5 max-w-100 m-auto">
     <el-tabs v-model="activeName">
@@ -10,8 +15,3 @@
     </el-tabs>
   </div>
 </template>
-
-<script lang="ts" setup>
-const { t } = useI18n()
-const activeName = 'profile'
-</script>

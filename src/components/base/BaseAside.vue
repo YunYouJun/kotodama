@@ -1,14 +1,3 @@
-<template>
-  <el-menu router :collapse="app.isCollapse">
-    <el-menu-item v-for="item in menuList" :key="item.index" :index="item.index">
-      <component :is="item.icon" class="menu-item-icon -mt-1 mr-4" />
-      <template #title>
-        {{ item.title }}
-      </template>
-    </el-menu-item>
-  </el-menu>
-</template>
-
 <script setup lang="ts">
 import IconUser2Line from '~icons/ri/user-2-line'
 import IconInformationOutline from '~icons/mdi/information-outline'
@@ -29,6 +18,17 @@ const menuList = [
   },
 ]
 </script>
+
+<template>
+  <el-menu router :collapse="app.isCollapse">
+    <el-menu-item v-for="item in menuList" :key="item.index" :index="item.index">
+      <component :is="item.icon" class="menu-item-icon -mt-1 mr-4" />
+      <template #title>
+        {{ item.title }}
+      </template>
+    </el-menu-item>
+  </el-menu>
+</template>
 
 <style>
 .menu-item-icon {

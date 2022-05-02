@@ -145,7 +145,7 @@ function handleLogin() {
 
         <!-- <el-form-item>
           <el-checkbox v-model="remember">{{ t("login.message") }}</el-checkbox>
-        </el-form-item>-->
+        </el-form-item> -->
 
         <el-form-item>
           <el-button

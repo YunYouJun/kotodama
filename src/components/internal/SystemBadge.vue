@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import UaParser from 'ua-parser-js'
-const uaParser = new UaParser()
-
 const props = defineProps<{
   ua?: string
 }>()
+const uaParser = new UaParser()
 
 const ua = uaParser.setUA(props.ua || '')
 const os = ua.getOS()

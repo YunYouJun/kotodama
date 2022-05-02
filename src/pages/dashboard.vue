@@ -16,13 +16,18 @@ useWaline({
 
 <template>
   <div
-    class="bg-white rounded hover:shadow-md transition duration-400 max-w-800px"
+    class="comments-container rounded hover:shadow-md transition duration-400 max-w-800px"
     p="1"
     m="auto"
-    dark="bg-transparent"
   >
     <CommentTable />
   </div>
 
   <WalineClient m="t-4 auto" />
 </template>
+
+<style>
+.comments-container {
+  background-color: var(--el-bg-color-overlay);
+}
+</style>

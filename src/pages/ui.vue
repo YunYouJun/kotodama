@@ -1,8 +1,5 @@
-<template>
-  <div />
-</template>
-
-<script lang="ts" setup>import { token } from '~/stores/user'
+<script lang="ts" setup>
+import { token } from '~/stores/user'
 
 const router = useRouter()
 onBeforeMount(() => {
@@ -12,3 +9,7 @@ onBeforeMount(() => {
     router.push('/login')
 })
 </script>
+
+<template>
+  <div />
+</template>
