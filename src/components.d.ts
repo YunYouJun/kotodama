@@ -11,7 +11,6 @@ declare module '@vue/runtime-core' {
     CommentControl: typeof import('./components/dashboard/CommentControl.vue')['default']
     CommentTable: typeof import('./components/dashboard/CommentTable.vue')['default']
     CommentToolbar: typeof import('./components/dashboard/CommentToolbar.vue')['default']
-    ICarbonDicomOverlay: typeof import('~icons/carbon/dicom-overlay')['default']
     ILogosMicrosoftEdge: typeof import('~icons/logos/microsoft-edge')['default']
     IMdiExitToApp: typeof import('~icons/mdi/exit-to-app')['default']
     IMdiLogin: typeof import('~icons/mdi/login')['default']

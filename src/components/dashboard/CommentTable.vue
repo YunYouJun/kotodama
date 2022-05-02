@@ -70,7 +70,7 @@ const displayedData = computed(() => {
             target="_blank"
           >{{ scope.row.mail }}</a>
           <span v-if="scope.row.ip" class="block" font="mono normal" text="xs">{{ scope.row.ip }}</span>
-          <SystemBadge :ua="scope.row.ua" />
+          <SystemBadge :ua="scope.row.ua" :os="scope.row.os" :browser="scope.row.browser" />
         </div>
       </template>
     </el-table-column>
