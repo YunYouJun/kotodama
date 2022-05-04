@@ -1,10 +1,19 @@
 html {
   scroll-behavior: smooth;
+
+  background-color: var(--ko-c-bg);
+  transition: background-color var(--el-transition-duration-fast);
 }
 
 :root {
   --ko-c-brand: #0078E7;
   --ko-c-link: var(--ko-c-brand);
+
+  --ko-c-bg: #f0f2f5;
+}
+
+.dark {
+  --ko-c-bg: #121212;
 }
 
 p {

@@ -28,7 +28,7 @@ watch(curPath, async (val) => {
 </script>
 
 <template>
-  <div id="waline-wrapper" class="waline-wrapper shadow max-w-800px rounded" m="auto" p="x-2 y-4">
+  <div id="waline-wrapper" class="el-bg-overlay shadow max-w-800px rounded" m="auto" p="x-2 y-4">
     <a
       class="inline-flex flex-col rounded shadow-md transition"
       hover="shadow-xl"
@@ -46,9 +46,3 @@ watch(curPath, async (val) => {
     <div id="waline" />
   </div>
 </template>
-
-<style>
-.waline-wrapper {
-  background-color: var(--el-bg-color-overlay);
-}
-</style>
