@@ -67,7 +67,7 @@ const update = () => {
             title="GitHub"
           >
             <el-icon>
-              <i-ri-mail-line />
+              <div i-ri-mail-line />
             </el-icon>
           </a>
         </template>
@@ -78,7 +78,7 @@ const update = () => {
       <el-input v-model="userInfo.display_name" :placeholder="t('user.name')">
         <template #prefix>
           <el-icon class="el-input__icon" :class="userInfo.display_name && 'text-gray'">
-            <i-ri-user-line />
+            <div i-ri-user-line />
           </el-icon>
         </template>
         <template #suffix>
@@ -99,7 +99,7 @@ const update = () => {
             title="GitHub"
           >
             <el-icon>
-              <i-ri-github-line />
+              <div i-ri-github-line />
             </el-icon>
           </a>
         </template>
@@ -117,7 +117,7 @@ const update = () => {
             :title="t('user.url')"
           >
             <el-icon>
-              <i-ri-link />
+              <div i-ri-link />
             </el-icon>
           </a>
         </template>

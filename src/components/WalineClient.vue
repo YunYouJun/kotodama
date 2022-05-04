@@ -39,7 +39,7 @@ watch(curPath, async (val) => {
     >
       <h2 m="1">{{ title }}</h2>
       <small class="flex justify-center items-center">
-        <i-ri-link class="mr-1" />
+        <div i-ri-link class="mr-1" />
         {{ url + curPath }}
       </small>
     </a>

@@ -32,16 +32,6 @@ html.dark {
   height: 2px;
 }
 
-.btn {
-  @apply px-4 py-1 rounded inline-block
-    bg-blue-500 text-white cursor-pointer
-    hover:bg-blue-600
-    disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50;
-}
-
 .icon-btn {
-  @apply w-8 h-8 inline-flex justify-center items-center cursor-pointer
-    opacity-75 transition duration-200 rounded-full
-   hover:(text-blue-500);
   font-size: 0.9em;
 }

@@ -2,8 +2,14 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --ko-c-link: #0078E7;
+}
+
+a,
 .at {
-  color: #0078E7;
+  color: var(--ko-c-link);
+  text-decoration: none;
 }
 
 .el-bg-overlay {

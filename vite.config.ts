@@ -3,13 +3,10 @@ import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
 // import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Markdown from 'vite-plugin-md'
-import WindiCSS from 'vite-plugin-windicss'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Inspect from 'vite-plugin-inspect'
@@ -17,9 +14,8 @@ import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 
 import Unocss from 'unocss/vite'
-import { presetAttributify, presetUno, presetIcons } from 'unocss'
 
-const markdownWrapperClasses = ['markdown-body', 'm-auto', 'text-left', 'max-w-800px']
+export const markdownWrapperClasses = ['markdown-body', 'el-bg-overlay', 'p-4', 'lt-md:px-2', 'm-auto', 'text-left', 'max-w-800px']
 
 const colors = ['blue', 'green', 'red']
 
@@ -42,20 +38,7 @@ export default defineConfig(() => {
         // use https://github.com/vueuse/patch-vue-directive-ssr patch directive
       }),
 
-      Unocss({
-        presets: [
-          presetUno(),
-          presetAttributify({ /* preset options */ }),
-          presetIcons({
-            extraProperties: {
-              'display': 'inline-block',
-              'height': '1.2em',
-              'width': '1.2em',
-              'vertical-align': 'text-bottom',
-            },
-          }),
-        ],
-      }),
+      Unocss(),
 
       // https://github.com/hannoeru/vite-plugin-pages
       Pages({
@@ -87,12 +70,6 @@ export default defineConfig(() => {
 
         // custom resolvers
         resolvers: [
-          // auto import icons
-          // https://github.com/antfu/unplugin-icons
-          IconsResolver({
-            // componentPrefix: '',
-            // enabledCollections: ['carbon']
-          }),
           // see src/modules/element.ts
           // ElementPlusResolver({
           //   importStyle: "sass",
@@ -100,16 +77,6 @@ export default defineConfig(() => {
         ],
 
         dts: 'src/components.d.ts',
-      }),
-
-      // https://github.com/antfu/unplugin-icons
-      Icons({
-        autoInstall: true,
-      }),
-
-      // https://github.com/antfu/vite-plugin-windicss
-      WindiCSS({
-        safelist: markdownWrapperClasses.concat(safelist),
       }),
 
       // https://github.com/antfu/vite-plugin-md

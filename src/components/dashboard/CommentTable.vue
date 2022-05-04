@@ -81,7 +81,7 @@ const displayedData = computed(() => {
         <el-input v-model="search" size="small" :placeholder="t('placeholder.search')">
           <template #prefix>
             <el-icon class="el-input__icon">
-              <i-ri-search-line />
+              <div i-ri-search-line />
             </el-icon>
           </template>
         </el-input>

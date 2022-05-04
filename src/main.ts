@@ -4,10 +4,6 @@ import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:generated-layouts'
 import App from './App.vue'
 
-// windicss layers
-import 'virtual:windi-base.css'
-import 'virtual:windi-components.css'
-
 // your custom styles here
 import 'star-markdown-css/src/scss/theme/yun.scss'
 import 'element-plus/theme-chalk/src/dark/css-vars.scss'
@@ -17,11 +13,6 @@ import './styles/waline.scss'
 import './styles/main.css'
 
 import 'uno.css'
-
-// windicss utilities should be the last style import
-import 'virtual:windi-utilities.css'
-// windicss devtools support (dev only)
-import 'virtual:windi-devtools'
 
 const routes = setupLayouts(generatedRoutes)
 

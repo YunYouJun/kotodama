@@ -124,7 +124,7 @@ const controlItems = [
         class="opacity-90 inline-flex justify-start items-center"
         :title="t('dashboard.createdAt')"
       >
-        <i-ri-pencil-line class="mr-1" />
+        <div i-ri-pencil-line class="mr-1" />
         <span>{{ dayjs(item.createdAt).format('YYYY-MM-DD HH:mm:ss') }}</span>
       </div>
       <a
@@ -132,7 +132,7 @@ const controlItems = [
         :href="url + item.url"
         target="_blank"
       >
-        <i-ri-link class="mr-1" />
+        <div i-ri-link class="mr-1" />
         {{ item.url }}
       </a>
       <div
@@ -141,7 +141,7 @@ const controlItems = [
         class="opacity-90 inline-flex justify-center items-center"
         :title="t('dashboard.updatedAt')"
       >
-        <i-ri-refresh-line class="mr-1" />
+        <div i-ri-refresh-line class="mr-1" />
         <span>{{ dayjs(item.updatedAt).format('YYYY-MM-DD HH:mm:ss') }}</span>
       </div>
 
@@ -192,7 +192,7 @@ const controlItems = [
     <el-popconfirm :title="t('message.delete')" @confirm="triggerDeleteComment(item.objectId)">
       <template #reference>
         <div class="icon-btn" hover="text-red-500 bg-red-500 bg-opacity-20" title="删除">
-          <i-ri-delete-bin-line />
+          <div i-ri-delete-bin-line />
         </div>
       </template>
     </el-popconfirm>

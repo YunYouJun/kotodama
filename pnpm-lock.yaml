@@ -38,7 +38,6 @@ specifiers:
   ua-parser-js: ^1.0.2
   unocss: ^0.32.12
   unplugin-auto-import: ^0.7.1
-  unplugin-icons: ^0.14.3
   unplugin-vue-components: ^0.19.3
   vite: ^2.9.7
   vite-plugin-inspect: ^0.5.0
@@ -46,7 +45,6 @@ specifiers:
   vite-plugin-pages: ^0.23.0
   vite-plugin-pwa: ^0.12.0
   vite-plugin-vue-layouts: ^0.6.0
-  vite-plugin-windicss: ^1.8.4
   vite-ssg: 0.16.2
   vue: ^3.2.33
   vue-demi: ^0.12.5
@@ -98,7 +96,6 @@ devDependencies:
   typescript: 4.6.4
   unocss: 0.32.12_vite@2.9.7
   unplugin-auto-import: 0.7.1_gdiwbr7kysdwsdyndhkzocpiwq
-  unplugin-icons: 0.14.3_vite@2.9.7
   unplugin-vue-components: 0.19.3_vite@2.9.7+vue@3.2.33
   vite: 2.9.7_sass@1.51.0
   vite-plugin-inspect: 0.5.0_vite@2.9.7
@@ -106,7 +103,6 @@ devDependencies:
   vite-plugin-pages: 0.23.0_vite@2.9.7
   vite-plugin-pwa: 0.12.0_vite@2.9.7
   vite-plugin-vue-layouts: 0.6.0_khv5hr3jkjj3v2binzaekby4fi
-  vite-plugin-windicss: 1.8.4_vite@2.9.7
   vite-ssg: 0.16.2_rbw2uvazdykg7rriopsllv7xru
   vue-tsc: 0.34.11_typescript@4.6.4
 
@@ -2218,30 +2214,6 @@ packages:
     dependencies:
       vue: 3.2.33
       vue-demi: 0.12.5_vue@3.2.33
-
-  /@windicss/config/1.8.4:
-    resolution: {integrity: sha512-i4fFGFfZoRess6WMkauykHC3PFd9xKYVx7lSuLfMK7sgo6x3+l4dY42GbsWMHyLqH1sTMfyt1LgfXSIKYJozSA==}
-    dependencies:
-      debug: 4.3.4
-      jiti: 1.13.0
-      windicss: 3.5.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /@windicss/plugin-utils/1.8.4:
-    resolution: {integrity: sha512-DqJVwAfzlgd8nYSNlmhXOey32pI8UwH7QiOWdFS/AR2O/q9oLDGHDn97Its/kZdfoyhi8ylwZNP2Pk0H7cihhQ==}
-    dependencies:
-      '@antfu/utils': 0.5.1
-      '@windicss/config': 1.8.4
-      debug: 4.3.4
-      fast-glob: 3.2.11
-      magic-string: 0.26.1
-      micromatch: 4.0.5
-      windicss: 3.5.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
 
   /abab/2.0.5:
     resolution: {integrity: sha1-wLZ4+zLWD8EhnHhNaoJv44Wut5o=, tarball: abab/download/abab-2.0.5.tgz}
@@ -4722,7 +4694,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.8
+      graceful-fs: 4.2.10
     dev: true
 
   /jsonpointer/5.0.0:
@@ -4965,14 +4937,6 @@ packages:
 
   /micromatch/4.0.4:
     resolution: {integrity: sha512-pRmzw/XUcwXGpD9aI9q/0XOwLNygjETJ8y0ao0wdqprrzDa4YnxLcz7fQRZr8voh8V10kGhABbNcHVk5wHgWwg==}
-    engines: {node: '>=8.6'}
-    dependencies:
-      braces: 3.0.2
-      picomatch: 2.3.1
-    dev: true
-
-  /micromatch/4.0.5:
-    resolution: {integrity: sha512-DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==}
     engines: {node: '>=8.6'}
     dependencies:
       braces: 3.0.2
@@ -6398,38 +6362,6 @@ packages:
       - webpack
     dev: true
 
-  /unplugin-icons/0.14.3_vite@2.9.7:
-    resolution: {integrity: sha512-PyyNMACpZ/EAiG3B6K1wPGZ151VGdlHIEx8/utgP546yVmPpV/xC1k1V2eEebf71fGm3WD6gzPrERNsbMgIVgg==}
-    peerDependencies:
-      '@svgr/core': '>=5.5.0'
-      '@vue/compiler-sfc': ^3.0.2
-      vue-template-compiler: ^2.6.12
-      vue-template-es2015-compiler: ^1.9.0
-    peerDependenciesMeta:
-      '@svgr/core':
-        optional: true
-      '@vue/compiler-sfc':
-        optional: true
-      vue-template-compiler:
-        optional: true
-      vue-template-es2015-compiler:
-        optional: true
-    dependencies:
-      '@antfu/install-pkg': 0.1.0
-      '@antfu/utils': 0.5.1
-      '@iconify/utils': 1.0.32
-      debug: 4.3.4
-      kolorist: 1.5.1
-      local-pkg: 0.4.1
-      unplugin: 0.6.2_vite@2.9.7
-    transitivePeerDependencies:
-      - esbuild
-      - rollup
-      - supports-color
-      - vite
-      - webpack
-    dev: true
-
   /unplugin-vue-components/0.19.3_vite@2.9.7+vue@3.2.33:
     resolution: {integrity: sha512-z/kpYJnqrJuWglDNs7fy0YRHr41oLc07y2TkP3by6DqPb1GG9xGC9SFigeFwd4J7GVTqyFVsnjoeup7uK7I2dA==}
     engines: {node: '>=14'}
@@ -6607,20 +6539,6 @@ packages:
       vite: 2.9.7_sass@1.51.0
       vue: 3.2.33
       vue-router: 4.0.15_vue@3.2.33
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /vite-plugin-windicss/1.8.4_vite@2.9.7:
-    resolution: {integrity: sha512-LSZAO8BZn3x406GRbYX5t5ONXXJVdqiQtN1qrznLA/Dy5/NzZVhfcrL6N1qEYYO7HsCDT4pLAjTzObvDnM9Y8A==}
-    peerDependencies:
-      vite: ^2.0.1
-    dependencies:
-      '@windicss/plugin-utils': 1.8.4
-      debug: 4.3.4
-      kolorist: 1.5.1
-      vite: 2.9.7_sass@1.51.0
-      windicss: 3.5.1
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6884,12 +6802,6 @@ packages:
     hasBin: true
     dependencies:
       isexe: 2.0.0
-    dev: true
-
-  /windicss/3.5.1:
-    resolution: {integrity: sha512-E1hYZATcZFci/XhGS0sJAMRxULjnK+glNukE78Ku7xeb3jxgMY55fFOdIrav+GjQCsgR+IZxPq9/DwmO6eyc4Q==}
-    engines: {node: '>= 12'}
-    hasBin: true
     dev: true
 
   /word-wrap/1.2.3:

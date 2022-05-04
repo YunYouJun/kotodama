@@ -22,7 +22,7 @@ const exit = () => {
 <template>
   <nav class="text-xl my-5">
     <router-link v-if="token" class="icon-btn mx-2" active-class="text-blue-500" to="/dashboard">
-      <i-ri-dashboard-line />
+      <div i-ri-dashboard-line />
     </router-link>
     <router-link
       v-else
@@ -31,7 +31,7 @@ const exit = () => {
       to="/"
       :title="t('button.home')"
     >
-      <i-ri-home-2-line />
+      <div i-ri-home-2-line />
     </router-link>
 
     <button
@@ -39,12 +39,12 @@ const exit = () => {
       :title="t('button.toggle_dark')"
       @click="toggleDark()"
     >
-      <i-ri-moon-line v-if="isDark" />
-      <i-ri-sun-line v-else />
+      <div i-ri-moon-line v-if="isDark" />
+      <div i-ri-sun-line v-else />
     </button>
 
     <a class="icon-btn mx-2" :title="t('button.toggle_langs')" @click="toggleLocales">
-      <i-ri-translate />
+      <div i-ri-translate />
     </a>
 
     <router-link
@@ -53,7 +53,7 @@ const exit = () => {
       to="/about"
       :title="t('button.about')"
     >
-      <i-ri-file-info-line />
+      <div i-ri-file-info-line />
     </router-link>
 
     <a
@@ -63,19 +63,19 @@ const exit = () => {
       target="_blank"
       title="GitHub"
     >
-      <i-ri-github-line />
+      <div i-ri-github-line />
     </a>
 
     <router-link v-if="token" class="icon-btn mx-2" to="/user">
-      <i-ri-user-line />
+      <div i-ri-user-line />
     </router-link>
 
     <router-link v-if="!token" class="icon-btn mx-2" to="/login" :title="t('button.login')">
-      <i-mdi-login />
+      <div i-mdi-login />
     </router-link>
 
     <a v-else class="icon-btn mx-2" :title="t('button.exit')" @click="exit">
-      <i-mdi-exit-to-app />
+      <div i-mdi-exit-to-app />
     </a>
   </nav>
 </template>

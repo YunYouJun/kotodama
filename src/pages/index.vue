@@ -7,7 +7,7 @@ const { t } = useI18n()
 <template>
   <div>
     <p class="text-6xl" m="t-10 b-5">
-      <i-ri-discuss-line />
+      <div i-ri-discuss-line />
     </p>
     <p class="my-4">
       <a

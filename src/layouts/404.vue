@@ -7,7 +7,7 @@ const { t } = useI18n()
   <main class="p-4 text-center text-teal-700 dark:text-gray-200">
     <div>
       <p class="text-4xl">
-        <i-carbon-warning class="inline-block" />
+        <div i-carbon-warning class="inline-block" />
       </p>
     </div>
     <router-view />
