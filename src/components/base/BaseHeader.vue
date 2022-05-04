@@ -39,8 +39,8 @@ const exit = () => {
       :title="t('button.toggle_dark')"
       @click="toggleDark()"
     >
-      <div i-ri-moon-line v-if="isDark" />
-      <div i-ri-sun-line v-else />
+      <div v-if="isDark" i-ri-moon-line />
+      <div v-else i-ri-sun-line />
     </button>
 
     <a class="icon-btn mx-2" :title="t('button.toggle_langs')" @click="toggleLocales">

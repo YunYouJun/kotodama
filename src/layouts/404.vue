@@ -6,9 +6,9 @@ const { t } = useI18n()
 <template>
   <main class="p-4 text-center text-teal-700 dark:text-gray-200">
     <div>
-      <p class="text-4xl">
+      <h2 class="text-4xl">
         <div i-carbon-warning class="inline-block" />
-      </p>
+      </h2>
     </div>
     <router-view />
     <div>

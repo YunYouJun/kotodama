@@ -6,9 +6,10 @@ const { t } = useI18n()
 
 <template>
   <div>
-    <p class="text-6xl" m="t-10 b-5">
+    <h2 class="text-6xl" m="t-10 b-5">
       <div i-ri-discuss-line />
-    </p>
+    </h2>
+    
     <p class="my-4">
       <a
         class="text-xl font-bold"

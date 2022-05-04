@@ -1,6 +1,6 @@
 // import ElementPlus from 'element-plus'
 import {
-  ElButton, ElForm, ElFormItem, ElIcon, ElInput, ElLoading, ElMenu, ElMenuItem, ElPagination, ElPopconfirm, ElTabPane, ElTable, ElTableColumn, ElTabs, ElTooltip
+  ElButton, ElForm, ElFormItem, ElIcon, ElInput, ElLoading, ElMenu, ElMenuItem, ElPagination, ElPopconfirm, ElTabPane, ElTable, ElTableColumn, ElTabs, ElTooltip,
 } from 'element-plus'
 import type { UserModule } from '~/types'
 
