@@ -28,7 +28,6 @@ declare module '@vue/runtime-core' {
     IRiHome2Line: typeof import('~icons/ri/home2-line')['default']
     IRiLink: typeof import('~icons/ri/link')['default']
     IRiMacLine: typeof import('~icons/ri/mac-line')['default']
-    IRiMailLine: typeof import('~icons/ri/mail-line')['default']
     IRiMoonLine: typeof import('~icons/ri/moon-line')['default']
     IRiPencilLine: typeof import('~icons/ri/pencil-line')['default']
     IRiRefreshLine: typeof import('~icons/ri/refresh-line')['default']
