@@ -4,6 +4,8 @@ import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:generated-layouts'
 import App from './App.vue'
 
+// import '@unocss/reset/tailwind.css'
+
 // your custom styles here
 import 'star-markdown-css/src/scss/theme/yun.scss'
 import 'element-plus/theme-chalk/src/dark/css-vars.scss'

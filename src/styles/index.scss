@@ -3,7 +3,17 @@ html {
 }
 
 :root {
-  --ko-c-link: #0078E7;
+  --ko-c-brand: #0078E7;
+  --ko-c-link: var(--ko-c-brand);
+}
+
+p {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 a,

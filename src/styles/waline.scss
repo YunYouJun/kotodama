@@ -1,13 +1,17 @@
-.vemoji {
+.wl-emoji {
   display: inline-block;
   width: 1rem;
+  
   margin-left: 2px;
   margin-right: 2px;
+
+  line-height: 1rem;
+  vertical-align: middle;
 }
 
 .el-table {
   a {
-    @apply text-blue-500;
+    color: var(--ko-c-link);
   }
 
   .cell {
