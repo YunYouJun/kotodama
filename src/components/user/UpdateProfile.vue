@@ -61,7 +61,7 @@ const update = () => {
         <template #prefix>
           <a
             class="el-input__icon"
-            :class="userInfo.email && 'text-black'"
+            :class="userInfo.email && 'text-gray'"
             :href="`mailto:${userInfo.email}`"
             target="_blank"
             title="GitHub"
@@ -77,7 +77,7 @@ const update = () => {
     <el-form-item>
       <el-input v-model="userInfo.display_name" :placeholder="t('user.name')">
         <template #prefix>
-          <el-icon class="el-input__icon" :class="userInfo.display_name && 'text-black'">
+          <el-icon class="el-input__icon" :class="userInfo.display_name && 'text-gray'">
             <i-ri-user-line />
           </el-icon>
         </template>
@@ -93,7 +93,7 @@ const update = () => {
         <template #prefix>
           <a
             class="el-input__icon"
-            :class="userInfo.github && 'text-black'"
+            :class="userInfo.github && 'text-gray'"
             :href="`https://github.com/${userInfo.github}`"
             target="_blank"
             title="GitHub"
@@ -111,7 +111,7 @@ const update = () => {
         <template #prefix>
           <a
             class="el-input__icon"
-            :class="userInfo.url && 'text-black'"
+            :class="userInfo.url && 'text-gray'"
             :href="userInfo.url || '#'"
             :target="userInfo.url && '_blank'"
             :title="t('user.url')"

@@ -6,8 +6,6 @@ html {
   color: #0078E7;
 }
 
-.dark {
-  .el-table {
-    --el-table-background-color: black;
-  }
+.el-bg-overlay {
+  background-color: var(--el-bg-color-overlay);
 }
