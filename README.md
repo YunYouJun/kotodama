@@ -77,6 +77,6 @@ More info see [README.md](https://github.com/YunYouJun/kotodama/blob/main/README
 
 <p align="center">
   <a href="https://sponsors.yunyoujun.cn">
-    <img src='https://cdn.jsdelivr.net/gh/YunYouJun/sponsors/public/sponsors.svg'/>
+    <img src='https://fastly.jsdelivr.net/gh/YunYouJun/sponsors/public/sponsors.svg'/>
   </a>
 </p>

@@ -9,7 +9,7 @@ const { t } = useI18n()
     <h2 class="text-6xl" m="t-10 b-5">
       <div i-ri-discuss-line />
     </h2>
-    
+
     <p class="my-4">
       <a
         class="text-xl font-bold"

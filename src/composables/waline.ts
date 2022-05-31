@@ -3,12 +3,14 @@ import { onUnmounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useCommentStore } from '~/stores/comment'
 
+const cdnPrefix = 'https://cdn.jsdelivr.net/'
+
 export function useWaline(options: {} = {}) {
   const cStore = useCommentStore()
 
   useHead({
     link: [
-      { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.css' },
+      { rel: 'stylesheet', href: `${cdnPrefix}npm/@waline/client/dist/waline.css` },
     ],
   })
 
@@ -17,7 +19,7 @@ export function useWaline(options: {} = {}) {
   let waline: any
 
   // 直接使用 CDN
-  useScriptTag('//cdn.jsdelivr.net/npm/@waline/client/dist/waline.js', () => {
+  useScriptTag(`${cdnPrefix}npm/@waline/client/dist/waline.js`, () => {
     if (!isClient)
       return
 
@@ -26,9 +28,9 @@ export function useWaline(options: {} = {}) {
       lang: locale.value,
       dark: 'html.dark',
       emoji: [
-        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili',
-        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq',
-        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo',
+        `${cdnPrefix}gh/walinejs/emojis@1.0.0/bilibili`,
+        `${cdnPrefix}gh/walinejs/emojis@1.0.0/qq`,
+        `${cdnPrefix}gh/walinejs/emojis@1.0.0/weibo`,
       ],
       path: cStore.curPath,
     }
