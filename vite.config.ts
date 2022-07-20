@@ -6,7 +6,7 @@ import Layouts from 'vite-plugin-vue-layouts'
 // import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import Markdown from 'vite-plugin-md'
+import Markdown from 'vite-plugin-vue-markdown'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Inspect from 'vite-plugin-inspect'
@@ -79,8 +79,6 @@ export default defineConfig(() => {
         dts: 'src/components.d.ts',
       }),
 
-      // https://github.com/antfu/vite-plugin-md
-      // Don't need this? Try vitesse-lite: https://github.com/antfu/vitesse-lite
       Markdown({
         wrapperClasses: markdownWrapperClasses,
         headEnabled: true,
