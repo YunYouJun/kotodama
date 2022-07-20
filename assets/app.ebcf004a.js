@@ -1,0 +1,1 @@
+import{i as t,r as s,I as n}from"./index.d4e52ae3.js";const l="waline",c=t("app",()=>{const a=s(),e=s(!1),o=n(`${l}:serverURL`,"");function r(){e.value=!e.value}return{waline:a,isCollapse:e,serverURL:o,toggleCollapse:r}});export{c as u};
