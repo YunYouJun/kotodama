@@ -4,6 +4,7 @@ export const avatarCDN = {
   geekzu: 'https://sdn.geekzu.org/avatar/',
   v2ex: 'https://cdn.v2ex.com/gravatar/',
   loli: 'https://gravatar.loli.net/avatar/',
+  cravatar: 'https://cravatar.cn/avatar/',
 }
 
 /**
@@ -11,6 +12,6 @@ export const avatarCDN = {
  * @param email
  * @returns
  */
-export function getAvatarUrl(email: string, size = 40, host: keyof (typeof avatarCDN) = 'geekzu') {
+export function getAvatarUrl(email: string, size = 40, host: keyof (typeof avatarCDN) = 'cravatar') {
   return `${avatarCDN[host]}${email.includes('@') ? md5(email) : email}?s=${size}&r=G&d=`
 }
