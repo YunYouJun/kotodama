@@ -12,6 +12,8 @@ const props = defineProps<{
   item: CommentItem
 }>()
 
+const router = useRouter()
+
 const commentRef = ref()
 const loading = ref(false)
 
@@ -109,7 +111,11 @@ const controlItems = [
     icon: 'i-ri-reply-line',
     color: 'green',
     onClick: () => {
-      commentStore.curPath = props.item.url
+      router.push({
+        query: {
+          url: props.item.url,
+        },
+      })
       scrollTo(0, document.getElementById('waline-wrapper')?.offsetTop || 0)
     },
   },

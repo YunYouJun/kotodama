@@ -46,6 +46,7 @@
     "@types/nprogress": "^0.2.0",
     "@types/ua-parser-js": "^0.7.36",
     "@vitejs/plugin-vue": "^3.1.0",
+    "@waline/client": "^2.11.3",
     "critters": "^0.0.16",
     "cross-env": "^7.0.3",
     "element-plus": "2.2.17",

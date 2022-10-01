@@ -16,6 +16,7 @@ specifiers:
   '@vitejs/plugin-vue': ^3.1.0
   '@vueuse/core': ^9.3.0
   '@vueuse/head': ^0.8.0
+  '@waline/client': ^2.11.3
   axios: ^0.27.2
   critters: ^0.0.16
   cross-env: ^7.0.3
@@ -81,6 +82,7 @@ devDependencies:
   '@types/nprogress': 0.2.0
   '@types/ua-parser-js': 0.7.36
   '@vitejs/plugin-vue': 3.1.0_vite@3.1.4+vue@3.2.40
+  '@waline/client': 2.11.3
   critters: 0.0.16
   cross-env: 7.0.3
   element-plus: 2.2.17_vue@3.2.40
@@ -2304,6 +2306,18 @@ packages:
       - '@vue/composition-api'
       - vue
 
+  /@waline/client/2.11.3:
+    resolution: {integrity: sha512-xjLGIlwfF7nRnpd/rBfbyiYY5j5NwdHHT9CqT7rI24gHmd98pizYbfp0QITMAvM7zCUIKIe743Y2yeIKCBHHAA==}
+    engines: {node: '>=14'}
+    dependencies:
+      '@vueuse/core': 9.3.0_vue@3.2.40
+      autosize: 5.0.1
+      marked: 4.1.1
+      vue: 3.2.40
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+    dev: true
+
   /@zhead/schema-vue/0.7.4_vue@3.2.40:
     resolution: {integrity: sha512-Q7wPUly3ZWbPYQ5SEJBUuD6Mw3wiUfPMPquGfqsR2KF6sxQKRF8oaHnRLuu2uxpjuXjkzpBlZBPu1JgQX+Lf6Q==}
     peerDependencies:
@@ -2488,6 +2502,10 @@ packages:
   /at-least-node/1.0.0:
     resolution: {integrity: sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==}
     engines: {node: '>= 4.0.0'}
+    dev: true
+
+  /autosize/5.0.1:
+    resolution: {integrity: sha512-UIWUlE4TOVPNNj2jjrU39wI4hEYbneUypEqcyRmRFIx5CC2gNdg3rQr+Zh7/3h6egbBvm33TDQjNQKtj9Tk1HA==}
     dev: true
 
   /available-typed-arrays/1.0.5:

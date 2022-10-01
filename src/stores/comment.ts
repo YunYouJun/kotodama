@@ -6,8 +6,6 @@ import { getCommentList } from '~/api/comment'
 export const useCommentStore = defineStore('comment', () => {
   const { t } = useI18n()
 
-  const curPath = ref('/')
-
   const loading = ref(true)
   const currentPage = ref(1)
 
@@ -48,7 +46,6 @@ export const useCommentStore = defineStore('comment', () => {
     loading,
     filter,
     currentPage,
-    curPath,
 
     commentListInfo,
 
