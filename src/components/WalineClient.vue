@@ -15,11 +15,11 @@ const app = useAppStore()
 const route = useRoute()
 const curPath = computed(() => route.query.url?.toString() || '')
 
-const cdnPrefix = 'https://cdn.jsdelivr.net/'
+const cdnPrefix = 'https://unpkg.com/'
 const emoji = [
-  `${cdnPrefix}gh/walinejs/emojis@1.0.0/bilibili`,
-  `${cdnPrefix}gh/walinejs/emojis@1.0.0/qq`,
-  `${cdnPrefix}gh/walinejs/emojis@1.0.0/weibo`,
+  `${cdnPrefix}@waline/emojis/bilibili`,
+  `${cdnPrefix}@waline/emojis/qq`,
+  `${cdnPrefix}@waline/emojis/weibo`,
 ]
 
 // 文章标题

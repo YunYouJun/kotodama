@@ -97,6 +97,7 @@ const displayedData = computed(() => {
       class="w-full justify-center"
       layout="prev, pager, next, jumper"
       background
+      :total="0"
       :current-page="commentStore.currentPage"
       :page-size="commentStore.commentListInfo?.pageSize"
       :page-count="commentStore.commentListInfo?.totalPages"
