@@ -25,7 +25,10 @@ export interface TokenData {
  * @param token
  */
 export async function setAuthorization(token: string) {
-  ($axios.defaults.headers as any).Authorization = token ? `Bearer ${token}` : null
+  if (token)
+    ($axios.defaults.headers as any).Authorization = `Bearer ${token}`
+  else
+    delete ($axios.defaults.headers as any).Authorization
 }
 
 /**
