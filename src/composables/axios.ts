@@ -1,9 +1,13 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import { setAuthorization } from '~/api/auth'
+import { namespace } from '~/utils'
 
+const token = localStorage.getItem(`${namespace}:token`)
 export const $axios = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL?.toString(),
 })
+setAuthorization(token || '')
 
 $axios.interceptors.response.use((response) => {
   // Any status code that lie within the range of 2xx cause this function to trigger

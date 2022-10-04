@@ -49,6 +49,9 @@ export async function login(payload: LoginParams, remember = true) {
       )
     }
   }
+  else {
+    setAuthorization('')
+  }
   return res
 }
 
