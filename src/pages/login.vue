@@ -83,8 +83,8 @@ function handleLogin() {
           })
         }
         else {
-          ElMessage.success({
-            message: res.errmsg,
+          ElMessage.error({
+            message: `${res.errno ? `${res.errno}: ` : ''}${res.errmsg || '未知错误'}`,
             showClose: true,
           })
         }
