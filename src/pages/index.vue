@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { token } from '~/stores/user'
+import { useUserStore } from '~/stores/user'
 
+const uStore = useUserStore()
 const { t } = useI18n()
 </script>
 
@@ -35,7 +36,7 @@ const { t } = useI18n()
       >Waline #552.</a>
     </blockquote>
 
-    <router-link v-if="token" class="btn m-1" to="/dashboard">
+    <router-link v-if="uStore.token" class="btn m-1" to="/dashboard">
       {{ t('dashboard.title') }}
     </router-link>
 

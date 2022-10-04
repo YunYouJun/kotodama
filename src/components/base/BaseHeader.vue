@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { logout } from '~/api/auth'
 import { isDark, toggleDark } from '~/composables'
-import { token } from '~/stores/user'
+import { useUserStore } from '~/stores/user'
 
 const { t, availableLocales, locale } = useI18n()
 
+const uStore = useUserStore()
 const router = useRouter()
 
 const toggleLocales = () => {
@@ -21,7 +22,7 @@ const exit = () => {
 
 <template>
   <nav class="text-xl my-5">
-    <router-link v-if="token" class="icon-btn mx-2" active-class="text-blue-500" to="/dashboard">
+    <router-link v-if="uStore.token" class="icon-btn mx-2" active-class="text-blue-500" to="/dashboard">
       <div i-ri-dashboard-line />
     </router-link>
     <router-link
@@ -66,11 +67,11 @@ const exit = () => {
       <div i-ri-github-line />
     </a>
 
-    <router-link v-if="token" class="icon-btn mx-2" to="/user">
+    <router-link v-if="uStore.token" class="icon-btn mx-2" to="/user">
       <div i-ri-user-line />
     </router-link>
 
-    <router-link v-if="!token" class="icon-btn mx-2" to="/login" :title="t('button.login')">
+    <router-link v-if="!uStore.token" class="icon-btn mx-2" to="/login" :title="t('button.login')">
       <div i-mdi-login />
     </router-link>
 

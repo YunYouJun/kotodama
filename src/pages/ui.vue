@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-import { token } from '~/stores/user'
+import { useUserStore } from '~/stores/user'
 
+const uStore = useUserStore()
 const router = useRouter()
+
 onBeforeMount(() => {
-  if (token.value)
+  if (uStore.token)
     router.push('/dashboard')
   else
     router.push('/login')

@@ -5,13 +5,14 @@ import { ElMessage } from 'element-plus'
 import { login } from '~/api/auth'
 import { validUsername } from '~/utils/validate'
 import { $axios } from '~/composables/axios'
-import { url } from '~/stores/user'
+import { useUserStore } from '~/stores/user'
 import { useAppStore } from '~/stores/app'
 
 const router = useRouter()
 const { t } = useI18n()
 
 const app = useAppStore()
+const uStore = useUserStore()
 
 const loading = ref(false)
 const loginForm = reactive({
@@ -68,7 +69,10 @@ function handleLogin() {
         }, remember.value)
         if (res && res.data && res.data.token) {
           // token
-          url.value = res.data.url
+          uStore.url = res.data.url
+
+          if (remember.value)
+            uStore.token = res.data.token
 
           app.serverURL = loginForm.serverURL
 
@@ -86,7 +90,7 @@ function handleLogin() {
         }
       }
       catch {
-        // token.value = ''
+        uStore.token = ''
       }
 
       loading.value = false

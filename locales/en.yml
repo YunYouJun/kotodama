@@ -16,7 +16,6 @@ button:
   move_to_waiting: Move to Waiting
   move_to_spam: Move to Spam
 
-
 intro:
   desc: 💬 Control the magic of speech spirit, an elegant pure static comment management system
   dynamic-route: Demo of dynamic route
@@ -53,7 +52,7 @@ status:
   approved: Approved
   waiting: Waiting
   spam: Spam
-  
+
 owner:
   all: All
   mine: Mine

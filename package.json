@@ -6,17 +6,20 @@
     "name": "YunYouJun",
     "url": "https://www.yunyoujun.cn"
   },
+  "homepage": "https://kotodama.vercel.app",
+  "repository": {
+    "url": "https://github.com/YunYouJun/kotodama"
+  },
   "scripts": {
     "build": "vite build",
     "build:ssg": "cross-env NODE_ENV=production vite-ssg build",
     "dev": "vite --port 3333 --open",
-    "lint": "eslint \"**/*.{vue,ts,js}\"",
-    "lint:fix": "eslint \"**/*.{vue,ts,js}\" --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "preview-https": "serve dist",
     "typecheck": "vue-tsc --noEmit"
   },
-  "homepage": "https://kotodama.vercel.app",
   "dependencies": {
     "@vueuse/core": "^9.3.0",
     "@vueuse/head": "^0.9.1",
@@ -71,8 +74,5 @@
     "vite-plugin-vue-markdown": "^0.22.1",
     "vite-ssg": "0.21.0",
     "vue-tsc": "^0.40.13"
-  },
-  "repository": {
-    "url": "https://github.com/YunYouJun/kotodama"
   }
 }
