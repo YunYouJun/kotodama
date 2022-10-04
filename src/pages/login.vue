@@ -7,6 +7,7 @@ import { validUsername } from '~/utils/validate'
 import { $axios } from '~/composables/axios'
 import { useUserStore } from '~/stores/user'
 import { useAppStore } from '~/stores/app'
+import { namespace } from '~/utils'
 
 const router = useRouter()
 const { t } = useI18n()
@@ -17,7 +18,7 @@ const uStore = useUserStore()
 const loading = ref(false)
 const loginForm = reactive({
   serverURL: app.serverURL,
-  email: '',
+  email: useStorage(`${namespace}:email`, ''),
   password: '',
 })
 
@@ -68,11 +69,12 @@ function handleLogin() {
           password: loginForm.password,
         }, remember.value)
         if (res && res.data && res.data.token) {
-          // token
           uStore.url = res.data.url
 
-          if (remember.value)
+          if (remember.value) {
             uStore.token = res.data.token
+            uStore.email = loginForm.email
+          }
 
           app.serverURL = loginForm.serverURL
 

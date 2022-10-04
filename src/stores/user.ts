@@ -1,10 +1,10 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
-
-const namespace = 'kotodama'
+import { namespace } from '~/utils'
 
 export const useUserStore = defineStore('user', () => {
-  const token = useStorage(`${namespace}-token`, '')
-  const url = useStorage(`${namespace}-url`, '')
+  const token = useStorage(`${namespace}:token`, '')
+  const url = useStorage(`${namespace}:url`, '')
+  const email = useStorage(`${namespace}:email`, '')
 
   return {
     token,
@@ -12,6 +12,8 @@ export const useUserStore = defineStore('user', () => {
      * user website url
      */
     url,
+
+    email,
   }
 })
 
