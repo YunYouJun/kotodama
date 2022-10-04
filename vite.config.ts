@@ -150,23 +150,9 @@ export default defineConfig(() => {
       formatting: 'minify',
     },
 
-    optimizeDeps: {
-      include: [
-        'vue',
-        'vue-router',
-        '@vueuse/core',
-        '@vueuse/head',
-        'element-plus',
-        'axios',
-        'dayjs',
-        'ua-parser-js',
-        'md5',
-        'lodash',
-        'lodash/isEqual',
-      ],
-      exclude: [
-        'vue-demi',
-      ],
+    ssr: {
+    // TODO: workaround until they support native ESM
+      noExternal: ['workbox-window', /vue-i18n/],
     },
   }
 })

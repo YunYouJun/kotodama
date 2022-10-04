@@ -8,6 +8,9 @@ export const useUserStore = defineStore('user', () => {
 
   return {
     token,
+    /**
+     * user website url
+     */
     url,
   }
 })

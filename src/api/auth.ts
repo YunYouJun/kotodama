@@ -20,8 +20,12 @@ export interface TokenData {
   url: string
 }
 
+/**
+ * set bearer token authorization for axios
+ * @param token
+ */
 export async function setAuthorization(token: string) {
-  ($axios.defaults.headers as any).Authorization = `Bearer ${token}`
+  ($axios.defaults.headers as any).Authorization = token ? `Bearer ${token}` : null
 }
 
 /**
@@ -51,6 +55,7 @@ export async function login(payload: LoginParams, remember = true) {
 export function logout() {
   const uStore = useUserStore()
   uStore.token = ''
+  setAuthorization('')
 }
 
 export type RegisterParams = Omit<UserInfo, 'github' | 'type'> & { password: string }

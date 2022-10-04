@@ -1,14 +1,8 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
-import { useUserStore } from '~/stores/user'
-
-const uStore = useUserStore()
 
 export const $axios = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL?.toString(),
-  headers: {
-    Authorization: uStore.token ? `Bearer ${uStore.token}` : '',
-  },
 })
 
 $axios.interceptors.response.use((response) => {
