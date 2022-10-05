@@ -3,9 +3,10 @@ import { ElMessage } from 'element-plus'
 import { setAuthorization } from '~/api/auth'
 import { namespace } from '~/utils'
 
+const serverURL = localStorage.getItem(`${namespace}:serverURL`)
 const token = localStorage.getItem(`${namespace}:token`)
 export const $axios = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL?.toString(),
+  baseURL: serverURL || import.meta.env.VITE_API_BASE_URL?.toString(),
 })
 setAuthorization(token || '')
 

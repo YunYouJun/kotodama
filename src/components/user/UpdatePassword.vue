@@ -51,7 +51,7 @@ const updatePassword = () => {
     <el-form ref="pwdFormRef" :model="pwdForm" :rules="rules">
       <el-form-item prop="pass" required>
         <el-input
-          v-model="pwdForm.pass"
+          v-model="pwdForm.password"
           type="password"
           autocomplete="off"
           :placeholder="t('user.password')"
