@@ -6,17 +6,15 @@ import { login } from '~/api/auth'
 import { validUsername } from '~/utils/validate'
 import { $axios } from '~/composables/axios'
 import { useUserStore } from '~/stores/user'
-import { useAppStore } from '~/stores/app'
 
 const router = useRouter()
 const { t } = useI18n()
 
-const app = useAppStore()
 const uStore = useUserStore()
 
 const loading = ref(false)
 const loginForm = reactive({
-  serverURL: app.serverURL,
+  serverURL: uStore.serverURL,
   email: uStore.email,
   password: '',
 })
@@ -58,6 +56,7 @@ onMounted(() => {
 function handleLogin() {
   loginFormEl.value.validate(async (valid: boolean) => {
     if (valid) {
+      uStore.serverURL = loginForm.serverURL
       $axios.defaults.baseURL = loginForm.serverURL
 
       loading.value = true
@@ -74,8 +73,6 @@ function handleLogin() {
             uStore.token = res.data.token
             uStore.email = loginForm.email
           }
-
-          app.serverURL = loginForm.serverURL
 
           router.push('/dashboard')
           ElMessage.success({

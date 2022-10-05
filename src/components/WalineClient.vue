@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 // @ts-expect-error vue waline component type
 import { Waline } from '@waline/client/dist/component'
-import { useAppStore } from '~/stores/app'
 import { useUserStore } from '~/stores/user'
 
 import { isDark } from '~/composables'
@@ -12,7 +11,6 @@ defineProps<{ path: string }>()
 const { locale } = useI18n()
 
 const uStore = useUserStore()
-const app = useAppStore()
 const route = useRoute()
 const curPath = computed(() => route.query.url?.toString() || '')
 
@@ -52,6 +50,6 @@ watch(() => curPath.value, async (val) => {
         {{ uStore.url + curPath }}
       </small>
     </a>
-    <Waline :server-u-r-l="app.serverURL" :lang="locale" :path="path" :dark="isDark" :emoji="emoji" />
+    <Waline :server-u-r-l="uStore.serverURL" :lang="locale" :path="path" :dark="isDark" :emoji="emoji" />
   </div>
 </template>

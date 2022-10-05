@@ -5,16 +5,15 @@ import { ElMessage } from 'element-plus'
 import { useCheckPass, validUsername } from '~/utils/validate'
 import { $axios } from '~/composables/axios'
 import { register } from '~/api/auth'
-import { useAppStore } from '~/stores/app'
+import { useUserStore } from '~/stores/user'
 
 const router = useRouter()
 const { t } = useI18n()
 
-const app = useAppStore()
-
+const uStore = useUserStore()
 const loading = ref(false)
 const registerForm = reactive({
-  serverURL: app.serverURL,
+  serverURL: uStore.serverURL,
   display_name: '',
   email: '',
   password: '',
