@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
 import { VueRecaptcha } from 'vue-recaptcha'
+import { getNsName } from '~/utils'
 import { validUsername } from '~/utils/validate'
 import { useUserStore } from '~/stores/user'
 import type { LoginForm } from '~/composables/login'
@@ -17,6 +18,7 @@ const loginForm = reactive<LoginForm>({
   code: '',
   email: uStore.email,
   password: '',
+  recaptchaV3: '',
   recaptchaV3Key: '',
 })
 
@@ -59,11 +61,11 @@ onMounted(() => {
 const onVerify = (res: string) => {
   if (!res)
     return
-  loginForm.recaptchaV3Key = res
+  loginForm.recaptchaV3 = res
   handleLogin()
 }
 
-const enableRecaptcha = ref(config.enableRecaptcha)
+const enableRecaptcha = useStorage(getNsName('enableRecaptcha'), config.enableRecaptcha)
 </script>
 
 <template>
@@ -120,6 +122,17 @@ const enableRecaptcha = ref(config.enableRecaptcha)
           <el-checkbox v-model="enableRecaptcha">
             {{ t("login.use_recaptcha") }}
           </el-checkbox>
+        </el-form-item>
+
+        <el-form-item v-if="enableRecaptcha" prop="serverURL" required>
+          <el-input
+            ref="serverURLEl"
+            v-model="loginForm.recaptchaV3Key"
+            :placeholder="t('placeholder.recaptcha_v3_key')"
+            name="serverURL"
+            type="text"
+            autocomplete="on"
+          />
         </el-form-item>
 
         <!-- <el-form-item>

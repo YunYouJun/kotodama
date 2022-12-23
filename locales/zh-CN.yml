@@ -25,6 +25,7 @@ not-found: 未找到页面
 
 placeholder:
   server_url: Waline 服务端地址，如 https://waline.xx.xx
+  recaptcha_v3_key: Recaptcha V3 Key 客户端密钥
   email: 邮箱
   nickname: 昵称
   username: 用户名

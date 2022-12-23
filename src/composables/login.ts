@@ -7,6 +7,10 @@ import { useUserStore } from '~/stores/user'
 
 export interface LoginForm extends LoginParams {
   serverURL: string
+  /**
+   * recaptcha v3 key
+   */
+  recaptchaV3Key?: ''
 }
 
 export function useLogin(loginFormEl: Ref<HTMLFormElement>, loginForm: LoginForm) {
@@ -33,7 +37,7 @@ export function useLogin(loginFormEl: Ref<HTMLFormElement>, loginForm: LoginForm
           const res = await login({
             email: loginForm.email,
             password: loginForm.password,
-            recaptchaV3Key: loginForm.recaptchaV3Key,
+            recaptchaV3: loginForm.recaptchaV3,
           }, remember.value)
           if (res && res.data && res.data.token) {
             uStore.url = res.data.url

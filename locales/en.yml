@@ -25,6 +25,7 @@ not-found: Not found
 
 placeholder:
   server_url: Server Url
+  recaptcha_v3_key: Recaptcha V3 Key (Client)
   nickname: Nickname
   username: Username
   password: Password

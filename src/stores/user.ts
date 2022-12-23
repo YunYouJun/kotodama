@@ -1,14 +1,16 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
-import { namespace } from '~/utils'
+import { getNsName } from '~/utils'
 
 export const useUserStore = defineStore('user', () => {
   /**
    * waline server url
    */
-  const serverURL = useStorage(`${namespace}:serverURL`, '')
-  const token = useStorage(`${namespace}:token`, '')
-  const url = useStorage(`${namespace}:url`, '')
-  const email = useStorage(`${namespace}:email`, '')
+  const serverURL = useStorage(getNsName('serverURL'), '')
+  const token = useStorage(getNsName('token'), '')
+  const url = useStorage(getNsName('url'), '')
+  const email = useStorage(getNsName('email'), '')
+
+  const recaptchaV3Key = useStorage(getNsName('recaptchaV3Key'), '')
 
   return {
     token,
@@ -20,6 +22,7 @@ export const useUserStore = defineStore('user', () => {
     url,
 
     email,
+    recaptchaV3Key,
   }
 })
 

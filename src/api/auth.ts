@@ -10,7 +10,10 @@ export interface LoginParams {
    * 2FA TODO
    */
   code?: string
-  recaptchaV3Key?: string
+  /**
+   * recaptcha v3 verify response
+   */
+  recaptchaV3?: string
 }
 
 export interface TokenData {
