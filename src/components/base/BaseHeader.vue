@@ -21,7 +21,7 @@ const exit = () => {
 </script>
 
 <template>
-  <nav class="text-xl my-5">
+  <nav class="text-xl" py-5>
     <router-link v-if="uStore.token" class="icon-btn mx-2" active-class="text-blue-500" to="/dashboard">
       <div i-ri-dashboard-line />
     </router-link>

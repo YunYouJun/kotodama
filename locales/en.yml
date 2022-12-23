@@ -36,6 +36,7 @@ placeholder:
 login:
   title: Login
   message: Remember Login
+  use_recaptcha: Use Google Recaptcha
 
 error:
   username: Please enter the correct user name

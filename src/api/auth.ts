@@ -6,6 +6,11 @@ import type { UserInfo } from '~/api/user'
 export interface LoginParams {
   email: string
   password: string
+  /**
+   * 2FA TODO
+   */
+  code?: string
+  recaptchaV3Key?: string
 }
 
 export interface TokenData {

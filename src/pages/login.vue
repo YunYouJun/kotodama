@@ -1,28 +1,30 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
-import { login } from '~/api/auth'
+import { VueRecaptcha } from 'vue-recaptcha'
 import { validUsername } from '~/utils/validate'
-import { $axios } from '~/composables/axios'
 import { useUserStore } from '~/stores/user'
+import type { LoginForm } from '~/composables/login'
+import { useLogin } from '~/composables/login'
 
-const router = useRouter()
+import { config } from '~/config'
+
 const { t } = useI18n()
 
 const uStore = useUserStore()
 
-const loading = ref(false)
-const loginForm = reactive({
+const loginForm = reactive<LoginForm>({
   serverURL: uStore.serverURL,
+  code: '',
   email: uStore.email,
   password: '',
+  recaptchaV3Key: '',
 })
 
 const loginFormEl = ref()
 const emailEl = ref()
 const passwordEl = ref()
-const remember = ref(true)
+
+const { handleLogin, loading } = useLogin(loginFormEl, loginForm)
 
 const validateUsername = (rule: any, value: string, callback: Function) => {
   if (!validUsername(value))
@@ -51,50 +53,17 @@ onMounted(() => {
 })
 
 /**
- * 处理登录逻辑
+ * google recaptcha res
+ * @param res
  */
-function handleLogin() {
-  loginFormEl.value.validate(async (valid: boolean) => {
-    if (valid) {
-      uStore.serverURL = loginForm.serverURL
-      $axios.defaults.baseURL = loginForm.serverURL
-
-      loading.value = true
-
-      try {
-        const res = await login({
-          email: loginForm.email,
-          password: loginForm.password,
-        }, remember.value)
-        if (res && res.data && res.data.token) {
-          uStore.url = res.data.url
-
-          if (remember.value) {
-            uStore.token = res.data.token
-            uStore.email = loginForm.email
-          }
-
-          router.push('/dashboard')
-          ElMessage.success({
-            message: t('message.login_success'),
-            showClose: true,
-          })
-        }
-        else {
-          ElMessage.error({
-            message: `${res.errno ? `${res.errno}: ` : ''}${res.errmsg || '未知错误'}`,
-            showClose: true,
-          })
-        }
-      }
-      catch {
-        uStore.token = ''
-      }
-
-      loading.value = false
-    }
-  })
+const onVerify = (res: string) => {
+  if (!res)
+    return
+  loginForm.recaptchaV3Key = res
+  handleLogin()
 }
+
+const enableRecaptcha = ref(config.enableRecaptcha)
 </script>
 
 <template>
@@ -125,7 +94,7 @@ function handleLogin() {
           />
         </el-form-item>
 
-        <el-form-item prop="email">
+        <el-form-item prop="email" required>
           <el-input
             ref="emailEl"
             v-model="loginForm.email"
@@ -147,12 +116,34 @@ function handleLogin() {
           />
         </el-form-item>
 
+        <el-form-item>
+          <el-checkbox v-model="enableRecaptcha">
+            {{ t("login.use_recaptcha") }}
+          </el-checkbox>
+        </el-form-item>
+
         <!-- <el-form-item>
           <el-checkbox v-model="remember">{{ t("login.message") }}</el-checkbox>
         </el-form-item> -->
 
         <el-form-item>
+          <VueRecaptcha
+            v-if="enableRecaptcha" class="w-full"
+            size="invisible"
+            :sitekey="config.recaptchaV3Key"
+            @verify="onVerify"
+          >
+            <el-button
+              type="primary"
+              class="block w-full"
+              :loading="loading"
+            >
+              {{ t('button.login') }}
+            </el-button>
+          </VueRecaptcha>
+
           <el-button
+            v-else
             type="primary"
             class="block w-full"
             :loading="loading"

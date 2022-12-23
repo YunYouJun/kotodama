@@ -37,6 +37,7 @@ placeholder:
 login:
   title: 登录
   message: 下次自动登录
+  use_recaptcha: 使用谷歌验证码
 
 register:
   title: 注册
