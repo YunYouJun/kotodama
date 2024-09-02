@@ -20,7 +20,7 @@ export const useCommentStore = defineStore('comment', () => {
   const fetchCommentList = async () => {
     loading.value = true
     try {
-      const { data } = await getCommentList({
+      const data = await getCommentList({
         page: currentPage.value,
         filter,
       })

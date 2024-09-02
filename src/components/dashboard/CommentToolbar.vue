@@ -62,7 +62,7 @@ const ownerItems = [
       </el-button-group>
     </div>
   </div>
-  <div class="flex justify-between" m="x-1">
+  <div class="flex justify-between" m="x-1 y-2">
     <el-input v-model="comment.filter.keyword" class="mx-2" size="small" :placeholder="t('placeholder.keyword')" />
   </div>
 </template>

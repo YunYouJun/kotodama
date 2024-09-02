@@ -45,7 +45,7 @@ export interface CommentList {
  * 获取评论列表
  * @param params
  */
-export async function getCommentList(params: CommentParams): Promise<WalineResponse<CommentList>> {
+export async function getCommentList(params: CommentParams): Promise<CommentList> {
   return $axios.get('/comment', {
     params: {
       type: 'list',

@@ -1,6 +1,6 @@
 {
   "name": "kotodama",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "packageManager": "pnpm@7.8.0",
   "author": {
