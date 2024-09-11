@@ -11,14 +11,14 @@ const uaParser = new UaParser()
 
 const ua = uaParser.setUA(props.ua || '')
 const osResult = ua.getOS()
-const browserResult = ua.getBrowser()
-const deviceResult = ua.getDevice()
-const cpuResult = ua.getCPU()
+const iBrowser = ua.getBrowser()
+const iDevice = ua.getDevice()
+const iCPU = ua.getCPU()
 
 const systemName = ref((osResult.name || props.os || '').toLowerCase())
-const browserName = ref((browserResult.name || props.browser || '').toLowerCase())
-const deviceName = ref((deviceResult.vendor || '').toLowerCase())
-const cpuName = ref(cpuResult.architecture)
+const browserName = ref((iBrowser.name || props.browser || '').toLowerCase())
+const deviceName = ref((iDevice.vendor || '').toLowerCase())
+const cpuName = ref(iCPU.architecture)
 </script>
 
 <template>
@@ -43,14 +43,14 @@ const cpuName = ref(cpuResult.architecture)
         <div v-else i-ri-window-line />
       </span>
     </el-tooltip>
-    <el-tooltip v-if="deviceName" :content="`${device.vendor} ${device.model}`">
+    <el-tooltip v-if="deviceName" :content="`${iDevice.vendor} ${iDevice.model}`">
       <span class="inline-flex mx-1">
         <div v-if="deviceName === 'xiaomi'" i-simple-icons-xiaomi style="color: #fd4900" />
-        <div v-else-if="device.type === 'tablet'" i-ri-tablet-line />
+        <div v-else-if="iDevice.type === 'tablet'" i-ri-tablet-line />
         <div v-else i-ri-smartphone-line />
       </span>
     </el-tooltip>
-    <el-tooltip v-if="cpuName" :content="cpu.architecture">
+    <el-tooltip v-if="cpuName" :content="iCPU.architecture">
       <span class="inline-flex mx-1">
         <div i-ri-cpu-line />
       </span>
