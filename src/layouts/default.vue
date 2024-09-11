@@ -4,7 +4,7 @@ import { isDark } from '~/composables'
 
 <template>
   <main
-    class="text-center text-gray-700 dark:text-gray-200"
+    class="text-center text-gray-700 dark:text-gray-200 min-h-screen"
     bg="cover center no-repeat fixed gradient-to-tl"
     :class="isDark ? [''] : ['from-blue-50', 'to-gray-200']"
   >
