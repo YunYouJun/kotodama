@@ -10,15 +10,15 @@ const props = defineProps<{
 const uaParser = new UaParser()
 
 const ua = uaParser.setUA(props.ua || '')
-const os = ua.getOS()
-const browser = ua.getBrowser()
-const device = ua.getDevice()
-const cpu = ua.getCPU()
+const osResult = ua.getOS()
+const browserResult = ua.getBrowser()
+const deviceResult = ua.getDevice()
+const cpuResult = ua.getCPU()
 
-const systemName = ref((os.name || props.os || '').toLowerCase())
-const browserName = ref((browser.name || props.browser || '').toLowerCase())
-const deviceName = ref((device.vendor || '').toLowerCase())
-const cpuName = ref(cpu.architecture)
+const systemName = ref((osResult.name || props.os || '').toLowerCase())
+const browserName = ref((browserResult.name || props.browser || '').toLowerCase())
+const deviceName = ref((deviceResult.vendor || '').toLowerCase())
+const cpuName = ref(cpuResult.architecture)
 </script>
 
 <template>
@@ -38,7 +38,7 @@ const cpuName = ref(cpu.architecture)
         <div v-if="browserName.includes('chrome')" i-ri-chrome-line style="color: #FFCD46" />
         <div v-else-if="browserName.includes('safari')" i-ri-safari-line style="color: #006CFF" />
         <div v-else-if="browserName.includes('firefox')" i-ri-firefox-line style="color: #E66000" />
-        <div v-else-if="browserName.includes('edge')" i-logos-microsoft-edge />
+        <div v-else-if="browserName.includes('edge')" i-ri-edge-new-line />
         <!-- <div i-ri-edge-line v-else-if="browserName === 'edge'" style="color: #3277BC" /> -->
         <div v-else i-ri-window-line />
       </span>

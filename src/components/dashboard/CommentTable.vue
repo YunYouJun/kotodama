@@ -45,7 +45,7 @@ const displayedData = computed(() => {
     :empty-text="t('placeholder.empty')"
   >
     <el-table-column type="selection" width="40" />
-    <el-table-column width="150" :label="t('dashboard.author')" prop="nick">
+    <el-table-column width="200" :label="t('dashboard.author')" prop="nick">
       <template #default="scope">
         <div>
           <div class="flex items-center" m="b-2">
