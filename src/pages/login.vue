@@ -117,6 +117,7 @@ const enableRecaptcha = useStorage(getNsName('enableRecaptcha'), config.enableRe
             name="password"
             type="password"
             autocomplete="on"
+            show-password
           />
         </el-form-item>
 

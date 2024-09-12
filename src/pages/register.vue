@@ -153,6 +153,7 @@ function handleRegister() {
             name="password"
             type="password"
             autocomplete="on"
+            show-password
           />
         </el-form-item>
 
