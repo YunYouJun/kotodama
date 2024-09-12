@@ -21,6 +21,7 @@
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "preview-https": "serve dist",
+    "postinstall": "npx simple-git-hooks",
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {

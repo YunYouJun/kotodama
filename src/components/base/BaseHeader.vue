@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { logout } from '~/api/auth'
 import { isDark, toggleDark } from '~/composables'
-import { loadLanguageAsync } from '~/modules/i18n';
+import { loadLanguageAsync } from '~/modules/i18n'
 import { useUserStore } from '~/stores/user'
 
 const { t, availableLocales, locale } = useI18n()
