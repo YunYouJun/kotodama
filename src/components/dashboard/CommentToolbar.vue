@@ -1,17 +1,10 @@
 <script lang="ts" setup>
-import type { CommentStatus } from '~/api/comment'
 import { useCommentStore } from '~/stores/comment'
+import type { StatusItem } from '~/types'
 
 const { t } = useI18n()
 const comment = useCommentStore()
-
-interface StatusItem {
-  title: string
-  value: CommentStatus
-  icon: string
-}
-
-const statusItems: StatusItem[] = computed(() => (
+const statusItems = computed<StatusItem[]>(() => (
   [
     {
       title: t('status.approved'),
