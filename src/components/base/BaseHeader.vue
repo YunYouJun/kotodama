@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { logout } from '~/api/auth'
 import { isDark, toggleDark } from '~/composables'
+import { loadLanguageAsync } from '~/modules/i18n';
 import { useUserStore } from '~/stores/user'
 
 const { t, availableLocales, locale } = useI18n()
@@ -8,10 +9,12 @@ const { t, availableLocales, locale } = useI18n()
 const uStore = useUserStore()
 const router = useRouter()
 
-function toggleLocales() {
+async function toggleLocales() {
   // change to some real logic
   const locales = availableLocales
-  locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length]
+  const newLocale = locales[(locales.indexOf(locale.value) + 1) % locales.length]
+  await loadLanguageAsync(newLocale)
+  locale.value = newLocale
 }
 
 function exit() {
