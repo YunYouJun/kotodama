@@ -4,7 +4,7 @@ const activeName = ref('profile')
 </script>
 
 <template>
-  <div class="el-bg-overlay shadow p-5 max-w-100 m-auto">
+  <div class="el-bg-overlay m-auto max-w-100 p-5 shadow">
     <el-tabs v-model="activeName">
       <el-tab-pane :label="t('title.profile')" name="profile">
         <UpdateProfile />

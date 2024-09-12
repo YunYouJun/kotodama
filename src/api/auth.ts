@@ -1,7 +1,7 @@
-import type { WalineResponse } from './waline'
+import type { UserInfo } from '~/api/user'
 import { $axios } from '~/composables/axios'
 import { useUserStore } from '~/stores/user'
-import type { UserInfo } from '~/api/user'
+import type { WalineResponse } from './waline'
 
 export interface LoginParams {
   email: string
@@ -30,7 +30,6 @@ export interface TokenData {
 
 /**
  * set bearer token authorization for axios
- * @param token
  */
 export async function setAuthorization(token: string) {
   if (token)
@@ -41,8 +40,6 @@ export async function setAuthorization(token: string) {
 
 /**
  * 登录
- * @param payload
- * @returns
  */
 export async function login(payload: LoginParams, remember = true) {
   const res = await $axios.post<LoginParams, WalineResponse<TokenData>>('/token', payload)

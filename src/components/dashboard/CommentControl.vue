@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import dayjs from 'dayjs'
 import { ElMessage } from 'element-plus'
-import { useUserStore } from '~/stores/user'
-
 import type { CommentItem } from '~/api/comment'
+
 import { deleteComment, updateComment } from '~/api/comment'
 import { useCommentStore } from '~/stores/comment'
+import { useUserStore } from '~/stores/user'
 import { parseMarkdown } from '~/utils/markdown'
 
 const props = defineProps<{
@@ -22,7 +22,7 @@ const { t } = useI18n()
 
 const commentStore = useCommentStore()
 
-const triggerDeleteComment = async (id: string) => {
+async function triggerDeleteComment(id: string) {
   const data = await deleteComment(id)
   if (data.errno === 0) {
     ElMessage.success(t('message.delete_success'))
@@ -36,8 +36,8 @@ const triggerDeleteComment = async (id: string) => {
 
 const isEditing = ref(false)
 
-const previewedHtml = computed(() => {
-  return parseMarkdown(
+const previewedHtml = computedAsync(async () => {
+  return await parseMarkdown(
     props.item.comment,
   )
 })
@@ -49,14 +49,14 @@ watch(() => props.item, () => {
 /**
  * 编辑评论
  */
-const editComment = () => {
+function editComment() {
   isEditing.value = true
 }
 
 /**
  * 保存评论
  */
-const saveComment = async () => {
+async function saveComment() {
   loading.value = true
   const data = await updateComment(props.item.objectId, {
     comment: props.item.comment,
@@ -128,14 +128,14 @@ const controlItems = [
     <div class="text-xs" m="b-2">
       <div
         m="r-2"
-        class="opacity-90 inline-flex justify-start items-center"
+        class="inline-flex items-center justify-start opacity-90"
         :title="t('dashboard.createdAt')"
       >
         <div i-ri-pencil-line class="mr-1" />
         <span>{{ dayjs(item.createdAt).format('YYYY-MM-DD HH:mm:ss') }}</span>
       </div>
       <a
-        class="inline-flex justify-center items-center text-blue-500"
+        class="inline-flex items-center justify-center text-blue-500"
         :href="uStore.url + item.url"
         target="_blank"
       >
@@ -145,7 +145,7 @@ const controlItems = [
       <div
         v-if="item.createdAt !== item.updatedAt"
         m="l-2"
-        class="opacity-90 inline-flex justify-center items-center"
+        class="inline-flex items-center justify-center opacity-90"
         :title="t('dashboard.updatedAt')"
       >
         <div i-ri-refresh-line class="mr-1" />
@@ -157,7 +157,7 @@ const controlItems = [
         content="退出编辑" placement="top"
       >
         <div
-          class="icon-btn absolute top-2 right-2 hover:bg-opacity-20 hover:text-red-500 hover:bg-red-500"
+          class="absolute right-2 top-2 icon-btn hover:bg-red-500 hover:bg-opacity-20 hover:text-red-500"
           title="退出编辑"
           @click="isEditing = false"
         >
@@ -179,7 +179,7 @@ const controlItems = [
     <div v-else v-html="previewedHtml" />
   </div>
 
-  <div class="flex justify-between absolute left-2 right-2 bottom-1">
+  <div class="absolute bottom-1 left-2 right-2 flex justify-between">
     <template v-for="(controlItem, i) in controlItems">
       <el-tooltip
         v-if="controlItem.show()"

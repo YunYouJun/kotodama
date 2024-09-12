@@ -10,7 +10,6 @@ export const avatarCDN = {
 /**
  * 根据邮件地址获取头像
  * @param email
- * @returns
  */
 export function getAvatarUrl(email: string, size = 40, host: keyof (typeof avatarCDN) = 'cravatar') {
   return `${avatarCDN[host]}${email.includes('@') ? md5(email) : email}?s=${size}&r=G&d=`

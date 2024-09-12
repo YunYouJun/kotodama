@@ -3,7 +3,7 @@ import pkg from '~/../package.json'
 </script>
 
 <template>
-  <div class="mt-6 mx-auto text-center opacity-70 text-sm">
+  <div class="mx-auto mt-6 text-center text-sm opacity-70">
     <div>
       <a :href="pkg.repository.url" target="_blank">Kotodama</a>
       <a class="mx-2" href="https://sponsors.yunyoujun.cn" target="_blank">☁️</a>

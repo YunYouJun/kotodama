@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 // @ts-expect-error vue waline component type
 import { Waline } from '@waline/client/dist/component'
-import { useUserStore } from '~/stores/user'
-
 import { isDark } from '~/composables'
+
+import { useUserStore } from '~/stores/user'
 import '@waline/client/dist/waline.css'
 
 defineProps<{ path: string }>()
@@ -35,7 +35,7 @@ watch(() => curPath.value, async (val) => {
 </script>
 
 <template>
-  <div id="waline-wrapper" class="el-bg-overlay shadow max-w-800px rounded" m="auto" p="4">
+  <div id="waline-wrapper" class="el-bg-overlay max-w-800px rounded shadow" m="auto" p="4">
     <a
       class="inline-flex flex-col rounded shadow-md transition"
       hover="shadow-xl"
@@ -45,7 +45,7 @@ watch(() => curPath.value, async (val) => {
       target="_blank"
     >
       <h2 m="1">{{ title }}</h2>
-      <small class="flex justify-center items-center">
+      <small class="flex items-center justify-center">
         <div i-ri-link class="mr-1" />
         {{ uStore.url + curPath }}
       </small>

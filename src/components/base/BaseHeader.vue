@@ -8,13 +8,13 @@ const { t, availableLocales, locale } = useI18n()
 const uStore = useUserStore()
 const router = useRouter()
 
-const toggleLocales = () => {
+function toggleLocales() {
   // change to some real logic
   const locales = availableLocales
   locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length]
 }
 
-const exit = () => {
+function exit() {
   logout()
   router.push('/login')
 }
@@ -22,13 +22,13 @@ const exit = () => {
 
 <template>
   <nav class="text-xl" py-5>
-    <router-link v-if="uStore.token" class="icon-btn mx-2" active-class="text-blue-500" to="/dashboard">
+    <router-link v-if="uStore.token" class="mx-2 icon-btn" active-class="text-blue-500" to="/dashboard">
       <div i-ri-dashboard-line />
     </router-link>
     <router-link
       v-else
       active-class="text-blue-500"
-      class="icon-btn mx-2"
+      class="mx-2 icon-btn"
       to="/"
       :title="t('button.home')"
     >
@@ -36,7 +36,7 @@ const exit = () => {
     </router-link>
 
     <button
-      class="icon-btn mx-2 !outline-none"
+      class="mx-2 icon-btn !outline-none"
       :title="t('button.toggle_dark')"
       @click="toggleDark()"
     >
@@ -44,12 +44,12 @@ const exit = () => {
       <div v-else i-ri-sun-line />
     </button>
 
-    <a class="icon-btn mx-2" :title="t('button.toggle_langs')" @click="toggleLocales">
+    <a class="mx-2 icon-btn" :title="t('button.toggle_langs')" @click="toggleLocales">
       <div i-ri-translate />
     </a>
 
     <router-link
-      class="icon-btn mx-2"
+      class="mx-2 icon-btn"
       active-class="text-blue-500"
       to="/about"
       :title="t('button.about')"
@@ -58,7 +58,7 @@ const exit = () => {
     </router-link>
 
     <a
-      class="icon-btn mx-2"
+      class="mx-2 icon-btn"
       rel="noreferrer"
       href="https://github.com/YunYouJun/kotodama"
       target="_blank"
@@ -67,15 +67,15 @@ const exit = () => {
       <div i-ri-github-line />
     </a>
 
-    <router-link v-if="uStore.token" class="icon-btn mx-2" to="/user">
+    <router-link v-if="uStore.token" class="mx-2 icon-btn" to="/user">
       <div i-ri-user-line />
     </router-link>
 
-    <router-link v-if="!uStore.token" class="icon-btn mx-2" to="/login" :title="t('button.login')">
+    <router-link v-if="!uStore.token" class="mx-2 icon-btn" to="/login" :title="t('button.login')">
       <div i-mdi-login />
     </router-link>
 
-    <a v-else class="icon-btn mx-2" :title="t('button.exit')" @click="exit">
+    <a v-else class="mx-2 icon-btn" :title="t('button.exit')" @click="exit">
       <div i-mdi-exit-to-app />
     </a>
   </nav>

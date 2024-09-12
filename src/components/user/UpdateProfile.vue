@@ -24,7 +24,7 @@ onBeforeMount(async () => {
   loading.value = false
 })
 
-const update = () => {
+function update() {
   updateUser({
     display_name: userInfo.value.display_name,
     url: userInfo.value.url,
@@ -45,7 +45,7 @@ const update = () => {
     <img
       m="auto"
       p="1"
-      class="rounded-full shadow-lg w-25 h-25"
+      class="h-25 w-25 rounded-full shadow-lg"
       :src="getAvatarUrl(userInfo.email, 100)"
     >
   </div>

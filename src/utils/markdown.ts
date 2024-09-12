@@ -10,13 +10,9 @@ export type Highlighter =
     callback?: (error: unknown | undefined, code?: string) => void
   ) => void)
 
-export const parseMarkdown = (
-  content: string,
-): string => {
+export async function parseMarkdown(content: string) {
   marked.setOptions({
     breaks: true,
-    smartLists: true,
-    smartypants: true,
   })
-  return marked.parse(content)
+  return await marked.parse(content)
 }

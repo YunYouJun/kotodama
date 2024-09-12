@@ -1,7 +1,8 @@
 <script lang="ts" setup>
+import type { CommentItem } from '~/api/comment'
 import { useCommentStore } from '~/stores/comment'
 import { getAvatarUrl } from '~/utils'
-import type { CommentItem } from '~/api/comment'
+
 const { t } = useI18n()
 
 const commentStore = useCommentStore()
@@ -12,12 +13,12 @@ onBeforeMount(async () => {
   commentStore.fetchCommentList()
 })
 
-const toggleCurrentPage = async (page: number) => {
+async function toggleCurrentPage(page: number) {
   commentStore.currentPage = page
   await commentStore.fetchCommentList()
 }
 
-const updatePageSize = () => { }
+function updatePageSize() { }
 
 const displayedData = computed(() => {
   const searchContent = search.value.toLowerCase()
@@ -49,7 +50,7 @@ const displayedData = computed(() => {
       <template #default="scope">
         <div>
           <div class="flex items-center" m="b-2">
-            <img class="w-6 h-6 rounded-full shadow" :src="getAvatarUrl(scope.row.mail)">
+            <img class="h-6 w-6 rounded-full shadow" :src="getAvatarUrl(scope.row.mail)">
             <div class="ml-2">
               <a
                 v-if="scope.row.link"

@@ -14,7 +14,7 @@ body,
 
 #nprogress .bar {
   background: var(--ko-c-brand);
-  
+
   position: fixed;
   z-index: 1031;
   top: 0;

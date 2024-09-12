@@ -1,10 +1,10 @@
 // register vue composition api globally
-import { ViteSSG } from 'vite-ssg'
-import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:generated-layouts'
+import generatedRoutes from 'virtual:generated-pages'
+import { ViteSSG } from 'vite-ssg'
 import { createWebHashHistory } from 'vue-router'
-import type { UserModule } from './types'
 import App from './App.vue'
+import type { UserModule } from './types'
 
 // import '@unocss/reset/tailwind.css'
 

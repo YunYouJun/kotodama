@@ -19,7 +19,7 @@ const rules = {
   checkPass: [{ validator: validatePass2, trigger: 'blur' }],
 }
 
-const updatePassword = () => {
+function updatePassword() {
   pwdFormRef.value.validate(async (valid: boolean) => {
     if (valid) {
       loading.value = true

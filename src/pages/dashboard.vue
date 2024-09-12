@@ -5,7 +5,7 @@ const pageUrl = computed(() => route.query.url?.toString() || '/')
 
 <template>
   <div
-    class="el-bg-overlay rounded hover:shadow-md max-w-800px"
+    class="el-bg-overlay max-w-800px rounded hover:shadow-md"
     p="x-4 y-2"
     m="auto"
   >

@@ -36,11 +36,11 @@ const { t } = useI18n()
       >Waline #552.</a>
     </blockquote>
 
-    <router-link v-if="uStore.token" class="btn m-1" to="/dashboard">
+    <router-link v-if="uStore.token" class="m-1 btn" to="/dashboard">
       {{ t('dashboard.title') }}
     </router-link>
 
-    <router-link v-else class="btn m-1" to="/login">
+    <router-link v-else class="m-1 btn" to="/login">
       {{ t('button.login') }}
     </router-link>
   </div>

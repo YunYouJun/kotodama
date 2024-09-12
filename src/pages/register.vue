@@ -1,11 +1,11 @@
 <script lang="ts" setup>
+import { ElMessage } from 'element-plus'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
-import { useCheckPass, validUsername } from '~/utils/validate'
-import { $axios } from '~/composables/axios'
 import { register } from '~/api/auth'
+import { $axios } from '~/composables/axios'
 import { useUserStore } from '~/stores/user'
+import { useCheckPass, validUsername } from '~/utils/validate'
 
 const router = useRouter()
 const { t } = useI18n()
@@ -25,7 +25,11 @@ const registerFormEl = ref()
 const emailEl = ref()
 const passwordEl = ref()
 
-const validateUsername = (rule: any, value: string, callback: Function) => {
+const serverURLEl = ref()
+const displayNameEl = ref()
+const urlEl = ref()
+
+function validateUsername(_rule: any, value: string, callback: (error?: Error) => void) {
   if (!validUsername(value))
     callback(new Error(t('error.username')))
   else
@@ -81,7 +85,7 @@ function handleRegister() {
 </script>
 
 <template>
-  <main class="max-w-300px m-auto">
+  <main class="m-auto max-w-300px">
     <div class="register-container">
       <el-form
         ref="registerFormEl"

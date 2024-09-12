@@ -1,6 +1,6 @@
+import { $axios } from '~/composables/axios'
 import type { CommentUserInfo } from './user'
 import type { WalineResponse } from './waline'
-import { $axios } from '~/composables/axios'
 
 export type CommentStatus = 'approved' | 'waiting' | 'spam'
 
@@ -62,7 +62,6 @@ export async function replyComment() {
 /**
  * 更新评论
  * @param id
- * @returns
  */
 export async function updateComment(id: string, data: Partial<CommentItem>): Promise<WalineResponse<null>> {
   return $axios.put(`/comment/${id}`, data)
@@ -71,7 +70,6 @@ export async function updateComment(id: string, data: Partial<CommentItem>): Pro
 /**
  * 删除评论
  * @param id
- * @returns
  */
 export async function deleteComment(id: string): Promise<WalineResponse<null>> {
   return $axios.delete(`/comment/${id}`)

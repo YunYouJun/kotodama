@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
 import { VueRecaptcha } from 'vue-recaptcha'
-import { getNsName } from '~/utils'
-import { validUsername } from '~/utils/validate'
-import { useUserStore } from '~/stores/user'
 import type { LoginForm } from '~/composables/login'
 import { useLogin } from '~/composables/login'
-
 import { config } from '~/config'
+import { useUserStore } from '~/stores/user'
+import { getNsName } from '~/utils'
+
+import { validUsername } from '~/utils/validate'
 
 const { t } = useI18n()
 
@@ -26,16 +26,18 @@ const loginFormEl = ref()
 const emailEl = ref()
 const passwordEl = ref()
 
+const serverURLEl = ref()
+
 const { handleLogin, loading } = useLogin(loginFormEl, loginForm)
 
-const validateUsername = (rule: any, value: string, callback: Function) => {
+function validateUsername(_rule: any, value: string, callback: (error?: Error) => void) {
   if (!validUsername(value))
     callback(new Error(t('error.username')))
   else
     callback()
 }
 
-const validatePassword = (rule: any, value: string, callback: Function) => {
+function validatePassword(_rule: any, value: string, callback: (error?: Error) => void) {
   if (value.length < 6)
     callback(new Error(t('error.password')))
   else
@@ -58,7 +60,7 @@ onMounted(() => {
  * google recaptcha res
  * @param res
  */
-const onVerify = (res: string) => {
+function onVerify(res: string) {
   if (!res)
     return
   loginForm.recaptchaV3 = res
@@ -69,7 +71,7 @@ const enableRecaptcha = useStorage(getNsName('enableRecaptcha'), config.enableRe
 </script>
 
 <template>
-  <main class="max-w-300px m-auto">
+  <main class="m-auto max-w-300px">
     <div class="login-container">
       <el-form
         ref="loginFormEl"
