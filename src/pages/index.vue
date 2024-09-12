@@ -23,8 +23,9 @@ const { t } = useI18n()
     </p>
 
     <div class="m-5" text="sm">
-      （适配
-      <a class="text-blue-500" href="https://github.com/walinejs/waline" target="_blank">Waline</a> 后台评论接口）开发中……（又不是不能用）
+      <span>（适配</span>
+      <a class="text-blue-500" href="https://github.com/walinejs/waline" target="_blank">Waline</a>
+      <span> 后台评论接口）</span>
     </div>
 
     <blockquote m="2">

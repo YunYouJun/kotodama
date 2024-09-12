@@ -70,57 +70,59 @@ async function saveComment() {
   isEditing.value = false
 }
 
-const controlItems = [
-  {
-    title: t('button.approve'),
-    show: () => props.item.status !== 'approved',
-    icon: 'i-ri-check-line',
-    color: 'green',
-    onClick: () => updateComment(props.item.objectId, { status: 'approved' }),
-  },
-  {
-    title: t('button.move_to_waiting'),
-    show: () => props.item.status !== 'waiting',
-    icon: 'i-ri-todo-line',
-    color: 'blue',
-    onClick: () => updateComment(props.item.objectId, { status: 'waiting' }),
-  },
-  {
-    title: t('button.move_to_spam'),
-    show: () => props.item.status !== 'spam',
-    icon: 'i-ri-chat-delete-line',
-    color: 'red',
-    onClick: () => updateComment(props.item.objectId, { status: 'spam' }),
-  },
-  {
-    title: t('button.save'),
-    show: () => isEditing.value,
-    icon: 'i-ri-save-line',
-    color: 'blue',
-    onClick: () => saveComment(),
-  },
-  {
-    title: t('button.edit'),
-    show: () => !isEditing.value,
-    icon: 'i-ri-edit-line',
-    color: 'blue',
-    onClick: () => editComment(),
-  },
-  {
-    title: '回复',
-    show: () => true,
-    icon: 'i-ri-reply-line',
-    color: 'green',
-    onClick: () => {
-      router.push({
-        query: {
-          url: props.item.url,
-        },
-      })
-      scrollTo(0, document.getElementById('waline-wrapper')?.offsetTop || 0)
+const controlItems = computed(() => (
+  [
+    {
+      title: t('button.approve'),
+      show: () => props.item.status !== 'approved',
+      icon: 'i-ri-check-line',
+      color: 'green',
+      onClick: () => updateComment(props.item.objectId, { status: 'approved' }),
     },
-  },
-]
+    {
+      title: t('button.move_to_waiting'),
+      show: () => props.item.status !== 'waiting',
+      icon: 'i-ri-todo-line',
+      color: 'blue',
+      onClick: () => updateComment(props.item.objectId, { status: 'waiting' }),
+    },
+    {
+      title: t('button.move_to_spam'),
+      show: () => props.item.status !== 'spam',
+      icon: 'i-ri-chat-delete-line',
+      color: 'red',
+      onClick: () => updateComment(props.item.objectId, { status: 'spam' }),
+    },
+    {
+      title: t('button.save'),
+      show: () => isEditing.value,
+      icon: 'i-ri-save-line',
+      color: 'blue',
+      onClick: () => saveComment(),
+    },
+    {
+      title: t('button.edit'),
+      show: () => !isEditing.value,
+      icon: 'i-ri-edit-line',
+      color: 'blue',
+      onClick: () => editComment(),
+    },
+    {
+      title: '回复',
+      show: () => true,
+      icon: 'i-ri-reply-line',
+      color: 'green',
+      onClick: () => {
+        router.push({
+          query: {
+            url: props.item.url,
+          },
+        })
+        scrollTo(0, document.getElementById('waline-wrapper')?.offsetTop || 0)
+      },
+    },
+  ]
+))
 </script>
 
 <template>

@@ -1,13 +1,15 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { logout } from '~/api/auth'
 import { isDark, toggleDark } from '~/composables'
-import { loadLanguageAsync } from '~/modules/i18n'
-import { useUserStore } from '~/stores/user'
+import { availableLocales, loadLanguageAsync } from '~/modules/i18n'
 
-const { t, availableLocales, locale } = useI18n()
+import { useUserStore } from '~/stores/user'
 
 const uStore = useUserStore()
 const router = useRouter()
+
+const { t, locale } = useI18n()
 
 async function toggleLocales() {
   // change to some real logic
@@ -47,9 +49,14 @@ function exit() {
       <div v-else i-ri-sun-line />
     </button>
 
-    <a class="mx-2 icon-btn" :title="t('button.toggle_langs')" @click="toggleLocales">
+    <button
+      class="mx-2 icon-btn"
+      :title="t('button.toggle_langs')"
+      :class="locale === 'en' ? '' : '-rotate-y-180'"
+      @click="toggleLocales()"
+    >
       <div i-ri-translate />
-    </a>
+    </button>
 
     <router-link
       class="mx-2 icon-btn"

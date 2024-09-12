@@ -144,6 +144,13 @@ export default defineConfig({
     VueDevTools(),
   ],
 
+  optimizeDeps: {
+    include: [
+      'axios',
+      'md5',
+    ],
+  },
+
   // https://github.com/vitest-dev/vitest
   test: {
     include: ['test/**/*.test.ts'],

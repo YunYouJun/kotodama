@@ -11,34 +11,38 @@ interface StatusItem {
   icon: string
 }
 
-const statusItems: StatusItem[] = [
-  {
-    title: t('status.approved'),
-    value: 'approved',
-    icon: 'i-ri-chat-check-line',
-  },
-  {
-    title: t('status.waiting'),
-    value: 'waiting',
-    icon: 'i-ri-message-line',
-  },
-  {
-    title: t('status.spam'),
-    value: 'spam',
-    icon: 'i-ri-chat-delete-line',
-  },
-]
+const statusItems: StatusItem[] = computed(() => (
+  [
+    {
+      title: t('status.approved'),
+      value: 'approved',
+      icon: 'i-ri-chat-check-line',
+    },
+    {
+      title: t('status.waiting'),
+      value: 'waiting',
+      icon: 'i-ri-message-line',
+    },
+    {
+      title: t('status.spam'),
+      value: 'spam',
+      icon: 'i-ri-chat-delete-line',
+    },
+  ]
+))
 
-const ownerItems = [
-  {
-    title: t('owner.all'),
-    value: 'all',
-  },
-  {
-    title: t('owner.mine'),
-    value: 'mine',
-  },
-]
+const ownerItems = computed(() => (
+  [
+    {
+      title: t('owner.all'),
+      value: 'all',
+    },
+    {
+      title: t('owner.mine'),
+      value: 'mine',
+    },
+  ]
+))
 </script>
 
 <template>

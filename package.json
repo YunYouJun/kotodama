@@ -36,7 +36,7 @@
     "prism-theme-vars": "^0.2.5",
     "ua-parser-js": "^1.0.38",
     "vue": "^3.5.4",
-    "vue-i18n": "^10.0.1",
+    "vue-i18n": "9",
     "vue-router": "^4.4.4"
   },
   "devDependencies": {
@@ -46,8 +46,8 @@
     "@iconify-json/mdi": "^1.2.0",
     "@iconify-json/ri": "^1.2.0",
     "@iconify-json/simple-icons": "^1.2.2",
-    "@intlify/unplugin-vue-i18n": "^5.0.0",
-    "@shikijs/markdown-it": "^1.17.0",
+    "@intlify/unplugin-vue-i18n": "4",
+    "@shikijs/markdown-it": "^1.17.4",
     "@types/markdown-it-link-attributes": "^3.0.5",
     "@types/md5": "^2.3.5",
     "@types/node": "^22.5.4",

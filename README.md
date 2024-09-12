@@ -2,12 +2,11 @@
 
 [![GitHub Pages](https://github.com/YunYouJun/kotodama/actions/workflows/gh-pages.yml/badge.svg?branch=main)](https://github.com/YunYouJun/kotodama/actions/workflows/gh-pages.yml)
 
-> 💬 掌控言灵的魔法，一个优雅的纯静态评论管理后台（开发中...）
+> 💬 掌控言灵的魔法，一个优雅的纯静态评论管理后台
 
-[Demo 预览](https://kotodama.yunyoujun.cn)
-
-- 备用1：<kotodama.elpsy.cn>
-- 备用2：<kotodama.vercel.app>（国内已被污染）
+- Demo 预览: <https://kotodama.yunyoujun.cn>
+- 备用1：<https://kotodama.elpsy.cn>
+- 备用2：<https://kotodama.vercel.app>（国内已被污染）
 
 kotodama 是一个纯静态的站点，您可以 fork 其自行部署，也可以直接使用已部署的 `kotodama.yunyoujun.cn` | `kotodama.elpsy.cn` 站点。
 
@@ -20,7 +19,7 @@ kotodama 是一个纯静态的站点，您可以 fork 其自行部署，也可�
 
 ## Waline
 
-- 适配 [Waline](https://github.com/walinejs/waline) 后台管理（开发中...）
+- 适配 [Waline](https://github.com/walinejs/waline) 后台管理
   - 已实现基础的登录、评论预览、翻页、删除功能
   - Todo: 编辑评论、细节优化、GitHub 登录、批量删除、审核
 
