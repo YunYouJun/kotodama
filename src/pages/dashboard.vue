@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 const route = useRoute()
 const pageUrl = computed(() => route.query.url?.toString() || '/')
 </script>

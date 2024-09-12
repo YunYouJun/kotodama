@@ -3,14 +3,22 @@ declare interface Window {
   Waline: any
 }
 
+// with unplugin-vue-markdown, markdown files can be treated as Vue components
 declare module '*.md' {
-  import type { ComponentOptions } from 'vue'
+  import type { DefineComponent } from 'vue'
 
-  const component: ComponentOptions
+  const component: DefineComponent<object, object, any>
   export default component
 }
 
-declare module '@waline/client/dist/component' {
+declare module '*.vue' {
+  import type { DefineComponent } from 'vue'
+
+  const component: DefineComponent<object, object, any>
+  export default component
+}
+
+declare module '@waline/client/component' {
   import type { ComponentOptions } from 'vue'
 
   const component: ComponentOptions

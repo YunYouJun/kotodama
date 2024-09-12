@@ -1,12 +1,14 @@
-<script lang="ts" setup>
+<script  setup lang="ts">
 // @ts-expect-error vue waline component type
-import { Waline } from '@waline/client/dist/component'
+import { Waline } from '@waline/client/component'
 import { isDark } from '~/composables'
 
 import { useUserStore } from '~/stores/user'
-import '@waline/client/dist/waline.css'
+import '@waline/client/style'
 
-defineProps<{ path: string }>()
+defineProps<{
+  path: string
+}>()
 
 const { locale } = useI18n()
 
@@ -14,12 +16,12 @@ const uStore = useUserStore()
 const route = useRoute()
 const curPath = computed(() => route.query.url?.toString() || '')
 
-const cdnPrefix = 'https://unpkg.com/'
-const emoji = [
-  `${cdnPrefix}@waline/emojis/bilibili`,
-  `${cdnPrefix}@waline/emojis/qq`,
-  `${cdnPrefix}@waline/emojis/weibo`,
-]
+const cdnPrefix = ref('https://unpkg.com/')
+const emoji = computed(() => ([
+  `${cdnPrefix.value}@waline/emojis/bilibili`,
+  `${cdnPrefix.value}@waline/emojis/qq`,
+  `${cdnPrefix.value}@waline/emojis/weibo`,
+]))
 
 // 文章标题
 const title = ref('')
@@ -50,6 +52,10 @@ watch(() => curPath.value, async (val) => {
         {{ uStore.url + curPath }}
       </small>
     </a>
-    <Waline :server-u-r-l="uStore.serverURL" :lang="locale" :path="path" :dark="isDark" :emoji="emoji" />
+    <Waline
+      :server-u-r-l="uStore.serverURL"
+      :lang="locale"
+      :path="path" :dark="isDark" :emoji="emoji"
+    />
   </div>
 </template>

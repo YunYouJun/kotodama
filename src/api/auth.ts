@@ -1,7 +1,7 @@
+import type { WalineResponse } from './waline'
 import type { UserInfo } from '~/api/user'
 import { $axios } from '~/composables/axios'
 import { useUserStore } from '~/stores/user'
-import type { WalineResponse } from './waline'
 
 export interface LoginParams {
   email: string

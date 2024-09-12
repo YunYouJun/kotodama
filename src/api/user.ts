@@ -1,5 +1,5 @@
-import { $axios } from '~/composables/axios'
 import type { WalineResponse } from './waline'
+import { $axios } from '~/composables/axios'
 
 export interface CommentUserInfo {
   user_id: string
@@ -22,13 +22,6 @@ export interface UserInfo extends BaseUserInfo {
 
 export interface UserProfile extends BaseUserInfo {
   password: string
-}
-
-/**
- * 注册用户
- */
-export async function register(user: UserProfile): Promise<WalineResponse<null>> {
-  return $axios.post('/user', user)
 }
 
 /**

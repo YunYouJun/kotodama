@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import pkg from '~/../package.json'
 </script>
 

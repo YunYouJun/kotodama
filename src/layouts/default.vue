@@ -9,7 +9,7 @@ import { isDark } from '~/composables'
     :class="isDark ? [''] : ['from-blue-50', 'to-gray-200']"
   >
     <BaseHeader />
-    <router-view />
+    <RouterView />
     <BaseFooter />
   </main>
 </template>

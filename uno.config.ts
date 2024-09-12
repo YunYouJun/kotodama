@@ -7,7 +7,7 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
-import { markdownWrapperClasses } from './vite.config'
+import { markdownWrapperClasses } from './config'
 
 const safelist: string[] = markdownWrapperClasses.concat([])
 

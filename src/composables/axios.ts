@@ -1,10 +1,17 @@
+import { isClient } from '@vueuse/core'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import { setAuthorization } from '~/api/auth'
 import { namespace } from '~/utils'
 
-const serverURL = localStorage.getItem(`${namespace}:serverURL`)
-const token = localStorage.getItem(`${namespace}:token`)
+let serverURL = ''
+let token = ''
+
+if (isClient) {
+  serverURL = localStorage.getItem(`${namespace}:serverURL`) || ''
+  token = localStorage.getItem(`${namespace}:token`) || ''
+}
+
 export const $axios = axios.create({
   baseURL: serverURL || import.meta.env.VITE_API_BASE_URL?.toString(),
 })
