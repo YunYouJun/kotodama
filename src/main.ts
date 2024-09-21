@@ -10,7 +10,8 @@ import App from './App.vue'
 
 // your custom styles here
 import 'star-markdown-css/src/scss/theme/yun.scss'
-import 'element-plus/theme-chalk/src/dark/css-vars.scss'
+// import 'element-plus/theme-chalk/src/dark/css-vars.scss'
+import 'element-plus/theme-chalk/dark/css-vars.css'
 import 'element-plus/dist/index.css'
 
 import './styles/index.scss'
