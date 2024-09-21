@@ -134,7 +134,8 @@ const controlItems = computed(() => (
         :title="t('dashboard.createdAt')"
       >
         <div i-ri-pencil-line class="mr-1" />
-        <span>{{ dayjs(item.createdAt).format('YYYY-MM-DD HH:mm:ss') }}</span>
+        <!-- <span>{{ dayjs(item.createdAt).format('YYYY-MM-DD HH:mm:ss') }}</span> -->
+        <span>{{ dayjs(item.insertedAt).format('YYYY-MM-DD HH:mm:ss') }}</span>
       </div>
       <a
         class="inline-flex items-center justify-center text-blue-500"

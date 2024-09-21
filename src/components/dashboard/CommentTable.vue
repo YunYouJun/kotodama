@@ -50,7 +50,7 @@ const displayedData = computed(() => {
       <template #default="scope">
         <div>
           <div class="flex items-center" m="b-2">
-            <img class="h-6 w-6 rounded-full shadow" :src="getAvatarUrl(scope.row.mail)">
+            <img class="size-6 rounded-full shadow" :src="getAvatarUrl(scope.row.mail)">
             <div class="ml-2">
               <a
                 v-if="scope.row.link"

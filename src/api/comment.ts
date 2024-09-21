@@ -15,7 +15,15 @@ export interface CommentParams {
 
 export interface BaseItem {
   objectId: string
+  /**
+   * @deprecated
+   * waline api 更新后，createdAt 和 updatedAt 被移除了
+   */
   createdAt: string
+  /**
+   * @deprecated
+   * waline api 更新后，createdAt 和 updatedAt 被移除了
+   */
   updatedAt: string
   insertedAt: string
 }
