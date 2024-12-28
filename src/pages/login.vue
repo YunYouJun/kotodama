@@ -68,6 +68,18 @@ function onVerify(res: string) {
 }
 
 const enableRecaptcha = useStorage(getNsName('enableRecaptcha'), config.enableRecaptcha)
+
+/**
+ * 重置登录表单
+ */
+function resetLoginForm() {
+  loginForm.value.serverURL = ''
+  loginForm.value.email = ''
+  loginForm.value.password = ''
+  loginForm.value.recaptchaV3 = ''
+  loginForm.value.recaptchaV3Key = ''
+  serverURLEl.value.focus()
+}
 </script>
 
 <template>
@@ -142,7 +154,7 @@ const enableRecaptcha = useStorage(getNsName('enableRecaptcha'), config.enableRe
           <el-checkbox v-model="remember">{{ t("login.message") }}</el-checkbox>
         </el-form-item> -->
 
-        <el-form-item>
+        <el-form-item class="flex justify-between" grid="~ cols-2">
           <VueRecaptcha
             v-if="enableRecaptcha" class="w-full"
             size="invisible"
@@ -157,16 +169,6 @@ const enableRecaptcha = useStorage(getNsName('enableRecaptcha'), config.enableRe
               {{ t('button.login') }}
             </el-button>
           </VueRecaptcha>
-
-          <el-button
-            v-else
-            type="primary"
-            class="block w-full"
-            :loading="loading"
-            @click="handleLogin"
-          >
-            {{ t('button.login') }}
-          </el-button>
         </el-form-item>
       </el-form>
 
@@ -174,7 +176,12 @@ const enableRecaptcha = useStorage(getNsName('enableRecaptcha'), config.enableRe
         <router-link to="/register">
           <el-button>{{ t('button.register') }}</el-button>
         </router-link>
+
         <WithGithub />
+
+        <el-button @click="resetLoginForm">
+          {{ t('button.reset') }}
+        </el-button>
       </div>
     </div>
   </main>
