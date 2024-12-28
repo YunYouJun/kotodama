@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import type { LoginForm } from '~/composables/login'
 import { useI18n } from 'vue-i18n'
 import { VueRecaptcha } from 'vue-recaptcha'
-import type { LoginForm } from '~/composables/login'
 import { useLogin } from '~/composables/login'
 import { config } from '~/config'
 import { useUserStore } from '~/stores/user'
@@ -13,7 +13,7 @@ const { t } = useI18n()
 
 const uStore = useUserStore()
 
-const loginForm = reactive<LoginForm>({
+const loginForm = useStorage<LoginForm>('kotodama:login-form', {
   serverURL: uStore.serverURL,
   code: '',
   email: uStore.email,
@@ -50,9 +50,9 @@ const loginRules = {
 }
 
 onMounted(() => {
-  if (loginForm.email === '')
+  if (loginForm.value.email === '')
     emailEl.value.focus()
-  else if (loginForm.password === '')
+  else if (loginForm.value.password === '')
     passwordEl.value.focus()
 })
 
@@ -63,7 +63,7 @@ onMounted(() => {
 function onVerify(res: string) {
   if (!res)
     return
-  loginForm.recaptchaV3 = res
+  loginForm.value.recaptchaV3 = res
   handleLogin()
 }
 
@@ -71,7 +71,7 @@ const enableRecaptcha = useStorage(getNsName('enableRecaptcha'), config.enableRe
 </script>
 
 <template>
-  <main class="m-auto max-w-300px">
+  <main class="m-auto max-w-xs">
     <div class="login-container">
       <el-form
         ref="loginFormEl"
@@ -94,7 +94,7 @@ const enableRecaptcha = useStorage(getNsName('enableRecaptcha'), config.enableRe
             :placeholder="t('placeholder.server_url')"
             name="serverURL"
             type="text"
-            autocomplete="on"
+            autocomplete
           />
         </el-form-item>
 
@@ -105,7 +105,7 @@ const enableRecaptcha = useStorage(getNsName('enableRecaptcha'), config.enableRe
             :placeholder="t('placeholder.email')"
             name="email"
             type="text"
-            autocomplete="on"
+            autocomplete
           />
         </el-form-item>
 
@@ -116,7 +116,7 @@ const enableRecaptcha = useStorage(getNsName('enableRecaptcha'), config.enableRe
             :placeholder="t('placeholder.password')"
             name="password"
             type="password"
-            autocomplete="on"
+            autocomplete
             show-password
           />
         </el-form-item>

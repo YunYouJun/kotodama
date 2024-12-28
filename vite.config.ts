@@ -156,21 +156,17 @@ export default defineConfig({
     include: [
       'axios',
       'md5',
+      'vue-recaptcha',
     ],
-  },
-
-  // https://github.com/vitest-dev/vitest
-  test: {
-    include: ['test/**/*.test.ts'],
-    environment: 'jsdom',
   },
 
   // https://github.com/antfu/vite-ssg
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
-    crittersOptions: {
+    beastiesOptions: {
       reduceInlineStyles: false,
+      preload: 'swap',
     },
     onFinished() {
       generateSitemap()

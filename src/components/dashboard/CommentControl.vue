@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import type { CommentItem } from '~/api/comment'
 import dayjs from 'dayjs'
 import { ElMessage } from 'element-plus'
-import type { CommentItem } from '~/api/comment'
 
 import { deleteComment, updateComment } from '~/api/comment'
 import { useCommentStore } from '~/stores/comment'

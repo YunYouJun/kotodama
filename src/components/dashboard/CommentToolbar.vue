@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useCommentStore } from '~/stores/comment'
 import type { StatusItem } from '~/types'
+import { useCommentStore } from '~/stores/comment'
 
 const { t } = useI18n()
 const comment = useCommentStore()

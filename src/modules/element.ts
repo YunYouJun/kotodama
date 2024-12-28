@@ -1,3 +1,4 @@
+import type { UserModule } from '~/types'
 // import ElementPlus from 'element-plus'
 import {
   ElButton,
@@ -17,7 +18,6 @@ import {
   ElTabs,
   ElTooltip,
 } from 'element-plus'
-import type { UserModule } from '~/types'
 
 const components = [ElButton, ElForm, ElFormItem, ElIcon, ElInput, ElMenu, ElMenuItem, ElTabPane, ElTable, ElTableColumn, ElTabs, ElTooltip, ElPagination, ElPopconfirm, ElLoading, ElCheckbox]
 

@@ -1,6 +1,6 @@
+import type { CommentList, CommentParams } from '~/api/comment'
 import { ElMessage } from 'element-plus'
 import { acceptHMRUpdate, defineStore } from 'pinia'
-import type { CommentList, CommentParams } from '~/api/comment'
 import { getCommentList } from '~/api/comment'
 
 export const useCommentStore = defineStore('comment', () => {

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ElMessage } from 'element-plus'
 import type { UserInfo } from '~/api/user'
+import { ElMessage } from 'element-plus'
 import { getUserInfo, updateUser } from '~/api/user'
 import { getAvatarUrl } from '~/utils'
 
