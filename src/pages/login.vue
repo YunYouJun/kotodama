@@ -169,6 +169,16 @@ function resetLoginForm() {
               {{ t('button.login') }}
             </el-button>
           </VueRecaptcha>
+
+          <el-button
+            v-else
+            type="primary"
+            class="block w-full"
+            :loading="loading"
+            @click="handleLogin"
+          >
+            {{ t('button.login') }}
+          </el-button>
         </el-form-item>
       </el-form>
 
