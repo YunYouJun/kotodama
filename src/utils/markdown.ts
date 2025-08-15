@@ -2,13 +2,13 @@
 import { marked } from 'marked'
 
 export type EmojiMaps = Record<string, string>
-export type Highlighter =
-  | ((code: string, lang: string) => string)
-  | ((
-    code: string,
-    lang: string,
-    callback?: (error: unknown | undefined, code?: string) => void
-  ) => void)
+export type Highlighter
+  = | ((code: string, lang: string) => string)
+    | ((
+      code: string,
+      lang: string,
+      callback?: (error: unknown | undefined, code?: string) => void
+    ) => void)
 
 export async function parseMarkdown(content: string) {
   marked.setOptions({

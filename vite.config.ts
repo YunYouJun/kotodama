@@ -26,14 +26,6 @@ colors.forEach((color) => {
 })
 
 export default defineConfig({
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern-compiler',
-      },
-    },
-  },
-
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
@@ -42,7 +34,6 @@ export default defineConfig({
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/],
-      // use https://github.com/vueuse/patch-vue-directive-ssr patch directive
     }),
 
     // https://github.com/posva/unplugin-vue-router
@@ -166,7 +157,6 @@ export default defineConfig({
     formatting: 'minify',
     beastiesOptions: {
       reduceInlineStyles: false,
-      preload: 'swap',
     },
     onFinished() {
       generateSitemap()

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import UaParser from 'ua-parser-js'
+import { UAParser } from 'ua-parser-js'
 
 const props = defineProps<{
   // ua just for compatibility
@@ -8,7 +8,7 @@ const props = defineProps<{
   os?: string
   browser?: string
 }>()
-const uaParser = new UaParser()
+const uaParser = new UAParser()
 
 const ua = uaParser.setUA(props.ua || '')
 const osResult = ua.getOS()

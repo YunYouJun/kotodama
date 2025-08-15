@@ -43,7 +43,7 @@ const ownerItems = computed(() => (
     <div class="flex items-center justify-center">
       <el-tooltip v-for="(item, i) in statusItems" :key="i" placement="top" :content="item.title">
         <button
-          class="rounded-full p-2 icon-btn focus:outline-none"
+          class="icon-btn rounded-full p-2 focus:outline-none"
           m="1"
           :class="item.value === comment.filter.status ? 'bg-black text-white shadow' : ''"
           :title="item.title"
