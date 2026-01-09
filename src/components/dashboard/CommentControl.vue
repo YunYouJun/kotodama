@@ -15,7 +15,8 @@ const props = defineProps<{
 const router = useRouter()
 const uStore = useUserStore()
 
-const commentRef = ref()
+// @ts-expect-error - Used in template via ref="commentRef" (Vue 3.5+ useTemplateRef)
+const commentRef = useTemplateRef('commentRef')
 const loading = ref(false)
 
 const { t } = useI18n()

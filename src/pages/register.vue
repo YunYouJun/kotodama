@@ -25,9 +25,12 @@ const registerFormEl = ref()
 const emailEl = ref()
 const passwordEl = ref()
 
-const serverURLEl = ref()
-const displayNameEl = ref()
-const urlEl = ref()
+// @ts-expect-error: Used in template
+const serverURLEl = ref<HTMLInputElement>()
+// @ts-expect-error: Used in template
+const displayNameEl = ref<HTMLInputElement>()
+// @ts-expect-error: Used in template
+const urlEl = ref<HTMLInputElement>()
 
 function validateUsername(_rule: any, value: string, callback: (error?: Error) => void) {
   if (!validUsername(value))

@@ -25,7 +25,7 @@ export const createApp = ViteSSG(
   App,
   {
     // history: createWebHashHistory(),
-    routes: setupLayouts(routes),
+    routes: setupLayouts([...routes]),
     base: import.meta.env.BASE_URL,
   },
   (ctx) => {

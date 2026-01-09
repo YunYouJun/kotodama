@@ -7,7 +7,7 @@ export type Highlighter
     | ((
       code: string,
       lang: string,
-      callback?: (error: unknown | undefined, code?: string) => void
+      callback?: (error: unknown | undefined, code?: string) => void,
     ) => void)
 
 export async function parseMarkdown(content: string) {
